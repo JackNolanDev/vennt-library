@@ -1,2 +1,2 @@
-export * from "./computedAttributes";
+export * from "./attributes";
 export * from "./equations";

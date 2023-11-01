@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { CollectedEntity, EntityAttribute, EntityAttributes } from "..";
+import { CollectedEntity, EntityAttribute, EntityAttributes } from "../..";
 import { computeAttributes } from "./computedAttributes";
 
 const buildEntity = (
