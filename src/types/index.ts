@@ -1077,9 +1077,12 @@ export interface AttackResponse {
 export interface ComputedAttribute {
   base?: number;
   val: number;
-  reason?: Array<{ val: number; src: string }>;
-  items?: string[];
-  abilities?: string[];
+  reason?: Array<{
+    val: number;
+    src: string;
+    abilityId?: string;
+    itemId?: string;
+  }>;
   dice?: DiceSettings;
 }
 

@@ -104,18 +104,19 @@ interface PendingAdjustment {
     | { type: "item"; item: EntityItem }
     | { type: "ability"; ability: EntityAbility };
   criteria?: { id: string; check: UseCriteria };
+  builtIn?: boolean;
 }
 
 export const computeAttributes = (
   entity: CollectedEntity
 ): ComputedAttributes => {
   const attrs: ComputedAttributes = {};
-  const initAttrs = (map: PartialEntityAttributes, reasonStr: String) => {
+  const initAttrs = (map: PartialEntityAttributes, reasonStr: string) => {
     Object.entries(map).forEach(([attr, val]) => {
       attrs[attr as EntityAttribute] = {
         val,
         base: val,
-        reason: [{ val: val, src: `${reasonStr}: ${val}` }],
+        reason: [{ val: val, src: reasonStr }],
       };
     });
   };
@@ -134,6 +135,7 @@ export const computeAttributes = (
     attr,
     adjust: eq,
     order: orderForAttr(attr, eq),
+    builtIn: true,
   }));
 
   // 2. collect adjustments from items
@@ -199,10 +201,30 @@ export const computeAttributes = (
   // 4. sort pending adjustments
   pendingAdjustments.sort((a, b) => a.order - b.order);
 
-  const criteriaResult: Record<string, boolean> = {};
-
   // 5. apply pending adjustments
-  pendingAdjustments.forEach(({ attr, adjust, src, criteria }) => {
+  const appendReason = (
+    attr: EntityAttribute,
+    src: string,
+    itemId?: string,
+    abilityId?: string
+  ) => {
+    const reason = {
+      val: attrs[attr].val,
+      src,
+      ...(itemId && { itemId }),
+      ...(abilityId && { abilityId }),
+    };
+    const reasonCheck = attrs[attr].reason;
+    if (reasonCheck) {
+      reasonCheck.push(reason);
+    } else {
+      attrs[attr].reason = [reason];
+    }
+  };
+
+  // When a criteria effects multiple attributes, we only want to run the expensive criteria calculation once, so we cache results here
+  const criteriaResult: Record<string, boolean> = {};
+  pendingAdjustments.forEach(({ attr, adjust, src, criteria, builtIn }) => {
     if (criteria && src?.type === "ability") {
       let criteriaSuccessful = criteriaResult[criteria.id];
       if (typeof criteriaSuccessful !== "boolean") {
@@ -223,27 +245,24 @@ export const computeAttributes = (
     if (!attrCheck) {
       attrs[attr] = { val: 0 };
     }
+    let srcName: string | null = null;
+    let itemId: string | undefined = undefined;
+    let abilityId: string | undefined = undefined;
     if (src?.type === "item") {
-      const id = (src.item as FullEntityItem).id;
-      if (id) {
-        if (attrs[attr].items) {
-          attrs[attr].items?.push(id);
-        } else {
-          attrs[attr].items = [id];
-        }
-      }
+      srcName = src.item.name;
+      itemId = (src.item as FullEntityItem).id;
     } else if (src?.type === "ability") {
-      const id = (src.ability as FullEntityAbility).id;
-      if (id) {
-        if (attrs[attr].abilities) {
-          attrs[attr].abilities?.push(id);
-        } else {
-          attrs[attr].abilities = [id];
-        }
-      }
+      srcName = src.ability.name;
+      abilityId = (src.ability as FullEntityAbility).id;
+    } else if (builtIn) {
+      srcName = "Base Equations";
     }
     if (typeof adjust === "number") {
       attrs[attr].val += adjust;
+      const reason = `${attr} ${adjust >= 0 ? "+" : "-"} ${Math.abs(adjust)} ${
+        srcName ? `(From ${srcName})` : ""
+      }`;
+      appendReason(attr, reason, itemId, abilityId);
     } else {
       const extendedAttrs =
         src?.type === "ability"
@@ -253,6 +272,8 @@ export const computeAttributes = (
         const newVal = solveEquation(adjust, extendedAttrs);
         if (newVal) {
           attrs[attr].val = newVal;
+          const reason = `${adjust} ${srcName ? `(From ${srcName})` : ""}`;
+          appendReason(attr, reason, itemId, abilityId);
         }
       } else {
         const diceCheck = attrs[attr].dice;

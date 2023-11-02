@@ -1,41 +1,12 @@
 import { describe, expect, test } from "bun:test";
-import { CollectedEntity, EntityAttribute, EntityAttributes } from "../..";
+import { CollectedEntity, EntityAttribute } from "../..";
 import { computeAttributes } from "./computedAttributes";
-
-const buildEntity = (
-  attrsOverride?: Partial<EntityAttributes>
-): CollectedEntity => ({
-  entity: {
-    name: "Test",
-    type: "CHARACTER",
-    attributes: {
-      agi: 0,
-      cha: 0,
-      dex: 0,
-      int: 0,
-      per: 0,
-      spi: 0,
-      str: 3,
-      tek: 0,
-      wis: 2,
-      hp: 10,
-      max_hp: 0,
-      mp: 5,
-      max_mp: 0,
-      vim: 15,
-      max_vim: 0,
-      init: 0,
-      speed: 0,
-      ...attrsOverride,
-    },
-    other_fields: {},
-    public: false,
-  },
-  abilities: [],
-  items: [],
-  text: [],
-  flux: [],
-});
+import {
+  ARMOR_ITEM,
+  SHIELD_WHEN_HEALTHY,
+  WEAPON_ITEM,
+  buildEntity,
+} from "../../testFixtures";
 
 describe("computeAttributes", () => {
   type TestCase = [string, CollectedEntity, Record<EntityAttribute, number>];
@@ -47,6 +18,25 @@ describe("computeAttributes", () => {
       "base entity attributes override default attributes",
       buildEntity({ free_hands: 1 }),
       { free_hands: 1 },
+    ],
+    [
+      "combat stats are calculated for characters",
+      buildEntity({ cha_dmg: 1, hp: 10, max_hp: 2 }),
+      { cha: -1, hp: 10, max_hp: 31 },
+    ],
+    [
+      "items and abilities effect attributes",
+      buildEntity(
+        { hp: 30, max_hp: 1 },
+        [SHIELD_WHEN_HEALTHY],
+        [ARMOR_ITEM, WEAPON_ITEM]
+      ),
+      { hp: 30, max_hp: 30, free_hands: 1, armor: 3, shield: 2, burden: 2 },
+    ],
+    [
+      "failed criteria are not applied",
+      buildEntity({ hp: 5, max_hp: 1 }, [SHIELD_WHEN_HEALTHY], [ARMOR_ITEM]),
+      { hp: 5, max_hp: 30, armor: 3, burden: 1 },
     ],
   ];
 
