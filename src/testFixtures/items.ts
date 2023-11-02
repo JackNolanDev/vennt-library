@@ -6,7 +6,13 @@ export const ARMOR_ITEM: EntityItem = {
   desc: "Armor Value: 3, Burden: 1",
   type: "armor",
   custom_fields: {},
-  uses: { adjust: { time: "permanent", attr: { armor: 3, burden: 1 } } },
+  uses: {
+    adjust: {
+      time: "permanent",
+      attr: { armor: 3, burden: 1 },
+      dice: { str: { explodes: true } },
+    },
+  },
   comment: null,
   active: true,
 };

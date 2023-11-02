@@ -16,6 +16,7 @@ export const SHIELD_WHEN_HEALTHY: EntityAbility = {
         adjust: {
           time: "permanent",
           attr: { shield: 2, burden: "burden * 2" },
+          dice: { str: { end: "+1" } },
         },
       },
     ],

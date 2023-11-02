@@ -11,7 +11,7 @@ import {
 describe("computeAttributes", () => {
   type TestCase = [string, CollectedEntity, Record<EntityAttribute, number>];
 
-  const testCases: TestCase[] = [
+  const mathTestCases: TestCase[] = [
     ["default attributes are set", buildEntity(), { free_hands: 2 }],
     ["base entity attributes are set", buildEntity(), { str: 3 }],
     [
@@ -40,10 +40,41 @@ describe("computeAttributes", () => {
     ],
   ];
 
-  test.each(testCases)("%s", (_label, entity, expectedAttrVal) => {
+  test.each(mathTestCases)("%s", (_label, entity, expectedAttrVal) => {
     const result = computeAttributes(entity);
     Object.entries(expectedAttrVal ?? {}).forEach(([attr, expectedVal]) => {
       expect(result[attr]?.val).toBe(expectedVal);
     });
+  });
+
+  test("reasons are generated", () => {
+    const entity = buildEntity(
+      { hp: 30, cha: 2, cha_dmg: 1 },
+      [SHIELD_WHEN_HEALTHY],
+      [WEAPON_ITEM, ARMOR_ITEM]
+    );
+    const attrs = computeAttributes(entity);
+    expect(attrs.cha.reason).toStrictEqual([
+      { src: "Base Value", val: 2 },
+      { src: "cha - cha_dmg (From Base Equations)", val: 1 },
+    ]);
+    expect(attrs.burden.reason).toStrictEqual([
+      { src: "burden + 1 (From Hard Leather Vest)", val: 1 },
+      { src: "burden * 2 (From Shield When Healthy)", val: 2 },
+    ]);
+    expect(attrs.free_hands.reason).toStrictEqual([
+      { src: "Default", val: 2 },
+      {
+        src: "free_hands - 1 (From Longsword)",
+        val: 1,
+        itemId: "5d2f9718-0462-441c-afe8-40a705ba34f7",
+      },
+    ]);
+  });
+
+  test("attribute dice settings are generated", () => {
+    const entity = buildEntity({ hp: 30 }, [SHIELD_WHEN_HEALTHY], [ARMOR_ITEM]);
+    const attrs = computeAttributes(entity);
+    expect(attrs.str.dice).toStrictEqual({ end: "+1", explodes: true });
   });
 });
