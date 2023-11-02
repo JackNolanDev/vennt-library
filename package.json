@@ -4,6 +4,10 @@
   "description": "Common library for Vennt frontend and backend code",
   "module": "index.ts",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JackNolanDev/vennt-library.git"
+  },
   "dependencies": {
     "lodash.isempty": "^4.4.0",
     "lodash.isequal": "^4.5.0",
