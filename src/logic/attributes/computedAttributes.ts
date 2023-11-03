@@ -31,7 +31,7 @@ export const ORDER_COMBAT_STAT = 60;
 export const ORDER_CUSTOM_ATTR = 1000;
 export const ORDER_LAST = 10000;
 
-export const orderForAttr = (
+const orderForAttr = (
   attr: EntityAttribute,
   adjust: Equation | DiceSettings
 ): number => {
