@@ -1,20 +1,27 @@
-export * from "./abilities";
-export * from "./accounts";
+// EXPORT ORDER MATTERS HERE :(
+export * from "./typeConfig";
+export * from "./highlights";
+export * from "./general";
+
+export * from "./diceSettings";
 export * from "./attributes";
-export * from "./campaigns";
+export * from "./itemFields";
+export * from "./uses";
+export * from "./abilities";
+export * from "./items";
+
 export * from "./changelog";
 export * from "./cogs";
-export * from "./collectedEntities";
-export * from "./damageCalculator";
-export * from "./diceSettings";
 export * from "./entities";
 export * from "./entityFlux";
 export * from "./entityText";
-export * from "./general";
-export * from "./highlights";
-export * from "./items";
+
+export * from "./collectedEntities";
+
+export * from "./accounts";
+export * from "./campaigns";
+
+export * from "./damageCalculator";
 export * from "./jsonStorage";
 export * from "./server";
-export * from "./typeConfig";
-export * from "./uses";
 export * from "./website";
