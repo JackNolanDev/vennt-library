@@ -1165,6 +1165,271 @@ export declare const otherAttributesValidator: z.ZodObject<{
 		icon?: string | undefined;
 	}[]> | undefined;
 }>;
+export declare const computedAttributeReason: z.ZodObject<{
+	val: z.ZodNumber;
+	src: z.ZodString;
+	abilityId: z.ZodOptional<z.ZodString>;
+	itemId: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+	val: number;
+	src: string;
+	abilityId?: string | undefined;
+	itemId?: string | undefined;
+}, {
+	val: number;
+	src: string;
+	abilityId?: string | undefined;
+	itemId?: string | undefined;
+}>;
+export declare const computedAttributeValidator: z.ZodObject<{
+	base: z.ZodOptional<z.ZodNumber>;
+	val: z.ZodNumber;
+	reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+		val: z.ZodNumber;
+		src: z.ZodString;
+		abilityId: z.ZodOptional<z.ZodString>;
+		itemId: z.ZodOptional<z.ZodString>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		src: string;
+		abilityId?: string | undefined;
+		itemId?: string | undefined;
+	}, {
+		val: number;
+		src: string;
+		abilityId?: string | undefined;
+		itemId?: string | undefined;
+	}>, "many">>;
+	dice: z.ZodOptional<z.ZodObject<{
+		explodes: z.ZodOptional<z.ZodBoolean>;
+		rr1s: z.ZodOptional<z.ZodBoolean>;
+		drop: z.ZodOptional<z.ZodNumber>;
+		fatigued: z.ZodOptional<z.ZodBoolean>;
+		end: z.ZodOptional<z.ZodString>;
+		flow: z.ZodOptional<z.ZodNumber>;
+		ebb: z.ZodOptional<z.ZodNumber>;
+		heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+		otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			toggled: z.ZodBoolean;
+		}, "strip", z.ZodTypeAny, {
+			toggled: boolean;
+		}, {
+			toggled: boolean;
+		}>>>;
+		adjust: z.ZodOptional<z.ZodUnion<[
+			z.ZodNumber,
+			z.ZodString
+		]>>;
+		count: z.ZodOptional<z.ZodNumber>;
+		sides: z.ZodOptional<z.ZodNumber>;
+	}, "strip", z.ZodTypeAny, {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	}, {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	}>>;
+}, "strip", z.ZodTypeAny, {
+	val: number;
+	base?: number | undefined;
+	reason?: {
+		val: number;
+		src: string;
+		abilityId?: string | undefined;
+		itemId?: string | undefined;
+	}[] | undefined;
+	dice?: {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	} | undefined;
+}, {
+	val: number;
+	base?: number | undefined;
+	reason?: {
+		val: number;
+		src: string;
+		abilityId?: string | undefined;
+		itemId?: string | undefined;
+	}[] | undefined;
+	dice?: {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	} | undefined;
+}>;
+export declare const computedAttributesValidator: z.ZodRecord<z.ZodString, z.ZodObject<{
+	base: z.ZodOptional<z.ZodNumber>;
+	val: z.ZodNumber;
+	reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+		val: z.ZodNumber;
+		src: z.ZodString;
+		abilityId: z.ZodOptional<z.ZodString>;
+		itemId: z.ZodOptional<z.ZodString>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		src: string;
+		abilityId?: string | undefined;
+		itemId?: string | undefined;
+	}, {
+		val: number;
+		src: string;
+		abilityId?: string | undefined;
+		itemId?: string | undefined;
+	}>, "many">>;
+	dice: z.ZodOptional<z.ZodObject<{
+		explodes: z.ZodOptional<z.ZodBoolean>;
+		rr1s: z.ZodOptional<z.ZodBoolean>;
+		drop: z.ZodOptional<z.ZodNumber>;
+		fatigued: z.ZodOptional<z.ZodBoolean>;
+		end: z.ZodOptional<z.ZodString>;
+		flow: z.ZodOptional<z.ZodNumber>;
+		ebb: z.ZodOptional<z.ZodNumber>;
+		heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+		otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			toggled: z.ZodBoolean;
+		}, "strip", z.ZodTypeAny, {
+			toggled: boolean;
+		}, {
+			toggled: boolean;
+		}>>>;
+		adjust: z.ZodOptional<z.ZodUnion<[
+			z.ZodNumber,
+			z.ZodString
+		]>>;
+		count: z.ZodOptional<z.ZodNumber>;
+		sides: z.ZodOptional<z.ZodNumber>;
+	}, "strip", z.ZodTypeAny, {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	}, {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	}>>;
+}, "strip", z.ZodTypeAny, {
+	val: number;
+	base?: number | undefined;
+	reason?: {
+		val: number;
+		src: string;
+		abilityId?: string | undefined;
+		itemId?: string | undefined;
+	}[] | undefined;
+	dice?: {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	} | undefined;
+}, {
+	val: number;
+	base?: number | undefined;
+	reason?: {
+		val: number;
+		src: string;
+		abilityId?: string | undefined;
+		itemId?: string | undefined;
+	}[] | undefined;
+	dice?: {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	} | undefined;
+}>>;
+export type ComputedAttributeReason = z.infer<typeof computedAttributeReason>;
+export type ComputedAttribute = z.infer<typeof computedAttributeValidator>;
+export type ComputedAttributes = z.infer<typeof computedAttributesValidator>;
 export declare const entityValidator: z.ZodObject<{
 	name: z.ZodString;
 	type: z.ZodEnum<[
@@ -2574,6 +2839,129 @@ export declare const fullEntityValidator: z.ZodObject<{
 	public: z.ZodDefault<z.ZodBoolean>;
 	id: z.ZodString;
 	owner: z.ZodString;
+	computed_attributes: z.ZodNullable<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>;
 }, "strip", z.ZodTypeAny, {
 	type: "CHARACTER" | "COG";
 	id: string;
@@ -2730,6 +3118,32 @@ export declare const fullEntityValidator: z.ZodObject<{
 	};
 	public: boolean;
 	owner: string;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 }, {
 	type: "CHARACTER" | "COG";
 	id: string;
@@ -2886,6 +3300,32 @@ export declare const fullEntityValidator: z.ZodObject<{
 	};
 	owner: string;
 	public?: boolean | undefined;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 }>;
 export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	type: z.ZodOptional<z.ZodEnum<[
@@ -3437,6 +3877,129 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	}>>;
 	public: z.ZodOptional<z.ZodDefault<z.ZodBoolean>>;
 	owner: z.ZodOptional<z.ZodString>;
+	computed_attributes: z.ZodOptional<z.ZodNullable<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>>;
 }, "strip", z.ZodTypeAny, {
 	type?: "CHARACTER" | "COG" | undefined;
 	name?: string | undefined;
@@ -3590,6 +4153,32 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	} | undefined;
 	public?: boolean | undefined;
 	owner?: string | undefined;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 }, {
 	type?: "CHARACTER" | "COG" | undefined;
 	name?: string | undefined;
@@ -3743,6 +4332,32 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	} | undefined;
 	public?: boolean | undefined;
 	owner?: string | undefined;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 }>, {
 	type?: "CHARACTER" | "COG" | undefined;
 	name?: string | undefined;
@@ -3896,6 +4511,32 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	} | undefined;
 	public?: boolean | undefined;
 	owner?: string | undefined;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 }, {
 	type?: "CHARACTER" | "COG" | undefined;
 	name?: string | undefined;
@@ -4049,6 +4690,32 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	} | undefined;
 	public?: boolean | undefined;
 	owner?: string | undefined;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 }>;
 export declare const itemFieldsValidator: z.ZodObject<{
 	attr: z.ZodOptional<z.ZodString>;
@@ -4133,12 +4800,12 @@ export declare const useRollValidator: z.ZodObject<{
 		z.ZodString
 	]>>>;
 }, "strip", z.ZodTypeAny, {
-	attr: string;
 	dice: string;
+	attr: string;
 	heal?: Record<string, string | number> | undefined;
 }, {
-	attr: string;
 	dice: string;
+	attr: string;
 	heal?: Record<string, string | number> | undefined;
 }>;
 export declare const useHealValidator: z.ZodObject<{
@@ -6277,12 +6944,12 @@ export declare const usesValidator: z.ZodObject<{
 			z.ZodString
 		]>>>;
 	}, "strip", z.ZodTypeAny, {
-		attr: string;
 		dice: string;
+		attr: string;
 		heal?: Record<string, string | number> | undefined;
 	}, {
-		attr: string;
 		dice: string;
+		attr: string;
 		heal?: Record<string, string | number> | undefined;
 	}>>;
 	heal: z.ZodOptional<z.ZodObject<{
@@ -7202,10 +7869,11 @@ export declare const usesValidator: z.ZodObject<{
 		not_evadable?: boolean | undefined;
 		label?: string | undefined;
 	}>, "many">>;
+	hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 }, "strip", z.ZodTypeAny, {
 	roll?: {
-		attr: string;
 		dice: string;
+		attr: string;
 		heal?: Record<string, string | number> | undefined;
 	} | undefined;
 	heal?: {
@@ -7377,10 +8045,11 @@ export declare const usesValidator: z.ZodObject<{
 		not_evadable?: boolean | undefined;
 		label?: string | undefined;
 	}[] | undefined;
+	hide_default_use_button?: boolean | undefined;
 }, {
 	roll?: {
-		attr: string;
 		dice: string;
+		attr: string;
 		heal?: Record<string, string | number> | undefined;
 	} | undefined;
 	heal?: {
@@ -7552,6 +8221,7 @@ export declare const usesValidator: z.ZodObject<{
 		not_evadable?: boolean | undefined;
 		label?: string | undefined;
 	}[] | undefined;
+	hide_default_use_button?: boolean | undefined;
 }>;
 export declare const RED_HIGHLIGHT = "red";
 export declare const DARK_RED_HIGHLIGHT = "dark_red";
@@ -8007,12 +8677,12 @@ export declare const abilityValidator: z.ZodObject<{
 				z.ZodString
 			]>>>;
 		}, "strip", z.ZodTypeAny, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}>>;
 		heal: z.ZodOptional<z.ZodObject<{
@@ -8932,10 +9602,11 @@ export declare const abilityValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}>, "many">>;
+		hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 	}, "strip", z.ZodTypeAny, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -9107,10 +9778,11 @@ export declare const abilityValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -9282,6 +9954,7 @@ export declare const abilityValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}>>>>;
 	comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 	active: z.ZodBoolean;
@@ -9325,8 +9998,8 @@ export declare const abilityValidator: z.ZodObject<{
 	} | null | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -9498,6 +10171,7 @@ export declare const abilityValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 	comment?: string | null | undefined;
 }, {
@@ -9688,12 +10362,12 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 				z.ZodString
 			]>>>;
 		}, "strip", z.ZodTypeAny, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}>>;
 		heal: z.ZodOptional<z.ZodObject<{
@@ -10613,10 +11287,11 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}>, "many">>;
+		hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 	}, "strip", z.ZodTypeAny, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -10788,10 +11463,11 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -10963,6 +11639,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}>>>>>;
 	comment: z.ZodOptional<z.ZodNullable<z.ZodOptional<z.ZodString>>>;
 	active: z.ZodOptional<z.ZodBoolean>;
@@ -11005,8 +11682,8 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 	} | null | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -11178,6 +11855,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 	comment?: string | null | undefined;
 	active?: boolean | undefined;
@@ -11260,8 +11938,8 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 	} | null | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -11433,6 +12111,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 	comment?: string | null | undefined;
 	active?: boolean | undefined;
@@ -11624,12 +12303,12 @@ export declare const fullAbilityValidator: z.ZodObject<{
 				z.ZodString
 			]>>>;
 		}, "strip", z.ZodTypeAny, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}>>;
 		heal: z.ZodOptional<z.ZodObject<{
@@ -12549,10 +13228,11 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}>, "many">>;
+		hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 	}, "strip", z.ZodTypeAny, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -12724,10 +13404,11 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -12899,6 +13580,7 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}>>>>;
 	comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 	active: z.ZodBoolean;
@@ -12946,8 +13628,8 @@ export declare const fullAbilityValidator: z.ZodObject<{
 	} | null | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -13119,6 +13801,7 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 	comment?: string | null | undefined;
 }, {
@@ -13233,12 +13916,12 @@ export declare const itemValidator: z.ZodObject<{
 				z.ZodString
 			]>>>;
 		}, "strip", z.ZodTypeAny, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}>>;
 		heal: z.ZodOptional<z.ZodObject<{
@@ -14158,10 +14841,11 @@ export declare const itemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}>, "many">>;
+		hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 	}, "strip", z.ZodTypeAny, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -14333,10 +15017,11 @@ export declare const itemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -14508,6 +15193,7 @@ export declare const itemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}>>>>;
 	comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 	active: z.ZodBoolean;
@@ -14531,8 +15217,8 @@ export declare const itemValidator: z.ZodObject<{
 	} | null | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -14704,6 +15390,7 @@ export declare const itemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 	comment?: string | null | undefined;
 }, {
@@ -14782,12 +15469,12 @@ export declare const partialItemValidator: z.ZodEffects<z.ZodObject<{
 				z.ZodString
 			]>>>;
 		}, "strip", z.ZodTypeAny, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}>>;
 		heal: z.ZodOptional<z.ZodObject<{
@@ -15707,10 +16394,11 @@ export declare const partialItemValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}>, "many">>;
+		hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 	}, "strip", z.ZodTypeAny, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -15882,10 +16570,11 @@ export declare const partialItemValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -16057,6 +16746,7 @@ export declare const partialItemValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}>>>>>;
 	comment: z.ZodOptional<z.ZodNullable<z.ZodOptional<z.ZodString>>>;
 	active: z.ZodOptional<z.ZodBoolean>;
@@ -16079,8 +16769,8 @@ export declare const partialItemValidator: z.ZodEffects<z.ZodObject<{
 	} | null | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -16252,6 +16942,7 @@ export declare const partialItemValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 	comment?: string | null | undefined;
 	active?: boolean | undefined;
@@ -16294,8 +16985,8 @@ export declare const partialItemValidator: z.ZodEffects<z.ZodObject<{
 	} | null | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -16467,6 +17158,7 @@ export declare const partialItemValidator: z.ZodEffects<z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 	comment?: string | null | undefined;
 	active?: boolean | undefined;
@@ -16545,12 +17237,12 @@ export declare const fullItemValidator: z.ZodObject<{
 				z.ZodString
 			]>>>;
 		}, "strip", z.ZodTypeAny, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}>>;
 		heal: z.ZodOptional<z.ZodObject<{
@@ -17470,10 +18162,11 @@ export declare const fullItemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}>, "many">>;
+		hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 	}, "strip", z.ZodTypeAny, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -17645,10 +18338,11 @@ export declare const fullItemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -17820,6 +18514,7 @@ export declare const fullItemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}>>>>;
 	comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 	active: z.ZodBoolean;
@@ -17848,8 +18543,8 @@ export declare const fullItemValidator: z.ZodObject<{
 	} | null | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -18021,6 +18716,7 @@ export declare const fullItemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 	comment?: string | null | undefined;
 }, {
@@ -18081,12 +18777,12 @@ export declare const shopItemValidator: z.ZodObject<{
 				z.ZodString
 			]>>>;
 		}, "strip", z.ZodTypeAny, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}, {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		}>>;
 		heal: z.ZodOptional<z.ZodObject<{
@@ -19006,10 +19702,11 @@ export declare const shopItemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}>, "many">>;
+		hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 	}, "strip", z.ZodTypeAny, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -19181,10 +19878,11 @@ export declare const shopItemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}, {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -19356,6 +20054,7 @@ export declare const shopItemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	}>>>>;
 }, "strip", z.ZodTypeAny, {
 	type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
@@ -19378,8 +20077,8 @@ export declare const shopItemValidator: z.ZodObject<{
 	examples?: string | undefined;
 	uses?: {
 		roll?: {
-			attr: string;
 			dice: string;
+			attr: string;
 			heal?: Record<string, string | number> | undefined;
 		} | undefined;
 		heal?: {
@@ -19551,6 +20250,7 @@ export declare const shopItemValidator: z.ZodObject<{
 			not_evadable?: boolean | undefined;
 			label?: string | undefined;
 		}[] | undefined;
+		hide_default_use_button?: boolean | undefined;
 	} | null | undefined;
 }, {
 	type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
@@ -20796,12 +21496,12 @@ export declare const collectedEntityValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -21721,10 +22421,11 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -21896,10 +22597,11 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -22071,6 +22773,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -22114,8 +22817,8 @@ export declare const collectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -22287,6 +22990,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -22385,12 +23089,12 @@ export declare const collectedEntityValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -23310,10 +24014,11 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -23485,10 +24190,11 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -23660,6 +24366,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -23683,8 +24390,8 @@ export declare const collectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -23856,6 +24563,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -24127,8 +24835,8 @@ export declare const collectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -24300,6 +25008,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -24323,8 +25032,8 @@ export declare const collectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -24496,6 +25205,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -25289,6 +25999,129 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		public: z.ZodDefault<z.ZodBoolean>;
 		id: z.ZodString;
 		owner: z.ZodString;
+		computed_attributes: z.ZodNullable<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			base: z.ZodOptional<z.ZodNumber>;
+			val: z.ZodNumber;
+			reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				val: z.ZodNumber;
+				src: z.ZodString;
+				abilityId: z.ZodOptional<z.ZodString>;
+				itemId: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}, {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}>, "many">>;
+			dice: z.ZodOptional<z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}>>>>;
 	}, "strip", z.ZodTypeAny, {
 		type: "CHARACTER" | "COG";
 		id: string;
@@ -25445,6 +26278,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		};
 		public: boolean;
 		owner: string;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	}, {
 		type: "CHARACTER" | "COG";
 		id: string;
@@ -25601,6 +26460,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		};
 		owner: string;
 		public?: boolean | undefined;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	}>;
 	abilities: z.ZodArray<z.ZodObject<{
 		name: z.ZodString;
@@ -25749,12 +26634,12 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -26674,10 +27559,11 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -26849,10 +27735,11 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -27024,6 +27911,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -27071,8 +27959,8 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -27244,6 +28132,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -27343,12 +28232,12 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -28268,10 +29157,11 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -28443,10 +29333,11 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -28618,6 +29509,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -28646,8 +29538,8 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -28819,6 +29711,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -29067,6 +29960,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		};
 		public: boolean;
 		owner: string;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	};
 	abilities: {
 		id: string;
@@ -29110,8 +30029,8 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -29283,6 +30202,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -29308,8 +30228,8 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -29481,6 +30401,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -29657,6 +30578,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		};
 		owner: string;
 		public?: boolean | undefined;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	};
 	abilities: {
 		id: string;
@@ -30757,12 +31704,12 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -31682,10 +32629,11 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -31857,10 +32805,11 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -32032,6 +32981,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -32075,8 +33025,8 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -32248,6 +33198,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -32346,12 +33297,12 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -33271,10 +34222,11 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -33446,10 +34398,11 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -33621,6 +34574,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -33644,8 +34598,8 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -33817,6 +34771,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -34084,8 +35039,8 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -34257,6 +35212,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -34280,8 +35236,8 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -34453,6 +35409,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -35279,6 +36236,129 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		public: z.ZodDefault<z.ZodBoolean>;
 		id: z.ZodString;
 		owner: z.ZodString;
+		computed_attributes: z.ZodNullable<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			base: z.ZodOptional<z.ZodNumber>;
+			val: z.ZodNumber;
+			reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				val: z.ZodNumber;
+				src: z.ZodString;
+				abilityId: z.ZodOptional<z.ZodString>;
+				itemId: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}, {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}>, "many">>;
+			dice: z.ZodOptional<z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}>>>>;
 	}, "strip", z.ZodTypeAny, {
 		type: "CHARACTER" | "COG";
 		id: string;
@@ -35435,6 +36515,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		};
 		public: boolean;
 		owner: string;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	}, {
 		type: "CHARACTER" | "COG";
 		id: string;
@@ -35591,6 +36697,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		};
 		owner: string;
 		public?: boolean | undefined;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	}>;
 	abilities: z.ZodArray<z.ZodObject<{
 		name: z.ZodString;
@@ -35739,12 +36871,12 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -36664,10 +37796,11 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -36839,10 +37972,11 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -37014,6 +38148,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -37061,8 +38196,8 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -37234,6 +38369,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -37333,12 +38469,12 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -38258,10 +39394,11 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -38433,10 +39570,11 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -38608,6 +39746,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -38636,8 +39775,8 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -38809,6 +39948,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -39056,6 +40196,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		};
 		public: boolean;
 		owner: string;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	};
 	abilities: {
 		id: string;
@@ -39099,8 +40265,8 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -39272,6 +40438,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -39297,8 +40464,8 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -39470,6 +40637,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -39654,6 +40822,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		};
 		owner: string;
 		public?: boolean | undefined;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	};
 	abilities: {
 		id: string;
@@ -43429,12 +44623,12 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 					z.ZodString
 				]>>>;
 			}, "strip", z.ZodTypeAny, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}, {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			}>>;
 			heal: z.ZodOptional<z.ZodObject<{
@@ -44354,10 +45548,11 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
 		}, "strip", z.ZodTypeAny, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -44529,10 +45724,11 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}, {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -44704,6 +45900,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		}>>>>;
 		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
 		active: z.ZodBoolean;
@@ -44747,8 +45944,8 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -44920,6 +46117,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}, {
@@ -45004,8 +46202,8 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 		} | null | undefined;
 		uses?: {
 			roll?: {
-				attr: string;
 				dice: string;
+				attr: string;
 				heal?: Record<string, string | number> | undefined;
 			} | undefined;
 			heal?: {
@@ -45177,6 +46375,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				not_evadable?: boolean | undefined;
 				label?: string | undefined;
 			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
@@ -45390,18 +46589,6 @@ export interface AttackResponse {
 	hasDiamondBlock?: boolean;
 	hasNotAScratch?: boolean;
 }
-export interface ComputedAttribute {
-	base?: number;
-	val: number;
-	reason?: Array<{
-		val: number;
-		src: string;
-		abilityId?: string;
-		itemId?: string;
-	}>;
-	dice?: DiceSettings;
-}
-export type ComputedAttributes = Record<EntityAttribute, ComputedAttribute>;
 export declare const LEVEL_UPS_TO_INCREASE_ATTR = 2;
 export declare const DEFAULT_ATTRS_MAP: Record<EntityAttribute, number>;
 export interface AttrAdjustment {
@@ -45411,6 +46598,12 @@ export interface AttrAdjustment {
 export declare const DEFAULT_ADJUSTMENTS: AttrAdjustment[];
 export declare const DEFAULT_CHARACTER_ADJUSTMENTS: AttrAdjustment[];
 export declare const abilityExtendEntityAttributes: (ability: EntityAbility, attrs: ComputedAttributes) => ComputedAttributes;
+export declare const ATTRIBUTE_DAMAGES: string[];
+export declare const MIN_ZEROS: Set<string>;
+export declare const getMaxAttr: (attr: EntityAttribute) => EntityAttribute | undefined;
+export declare const getBaseAttr: (attr: EntityAttribute) => EntityAttribute | undefined;
+export declare const attrFullName: (attr: EntityAttribute) => string;
+export declare const attrShortName: (attr: EntityAttribute) => string;
 export declare const ORDER_PRE_ATTR = 10;
 export declare const ORDER_ATTR = 20;
 export declare const ORDER_XP = 30;
@@ -45427,6 +46620,8 @@ export declare const diceParseFromString: (diceStr: string, givenSettings?: Dice
 export declare const buildSettingsForAttrList: (baseSettings: DiceSettings, relatedAttrs: EntityAttribute[], attrs: ComputedAttributes) => DiceSettings;
 export declare const diceTogglesForEntity: (entity: CollectedEntity, attrs: ComputedAttributes) => DiceToggles;
 export declare const combineDiceSettings: (baseSettings: DiceSettings, newSettings: DiceSettings, attrs: ComputedAttributes) => DiceSettings;
+export declare const skimDownAbility: (ability: EntityAbility) => EntityAbility;
+export declare const skimDownItem: (item: EntityItem) => EntityItem;
 /**
  * Removes all potentially long runs of text from the entity
  * @param entity

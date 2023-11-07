@@ -300,6 +300,27 @@ export const otherAttributesValidator = z.object({
   disabled_actions: disabledActionsValidator.optional(),
 });
 
+export const computedAttributeReason = z.object({
+  val: z.number().int(),
+  src: z.string().max(CHANGELOG_MAX),
+  abilityId: idValidator.optional(),
+  itemId: idValidator.optional(),
+});
+export const computedAttributeValidator = z.object({
+  base: z.number().int().optional(),
+  val: z.number().int(),
+  reason: computedAttributeReason.array().optional(),
+  dice: diceSettingsValidator.optional(),
+});
+export const computedAttributesValidator = z.record(
+  attributeNameValidator,
+  computedAttributeValidator
+);
+
+export type ComputedAttributeReason = z.infer<typeof computedAttributeReason>;
+export type ComputedAttribute = z.infer<typeof computedAttributeValidator>;
+export type ComputedAttributes = z.infer<typeof computedAttributesValidator>;
+
 export const entityValidator = z.object({
   name: nameValidator,
   type: entityTypeValidator,
@@ -311,6 +332,7 @@ export const entityValidator = z.object({
 export const fullEntityValidator = entityValidator.extend({
   id: idValidator,
   owner: idValidator,
+  computed_attributes: computedAttributesValidator.optional().nullable(),
 });
 
 export const partialEntityValidator = fullEntityValidator
@@ -501,6 +523,7 @@ export const usesValidator = z.object({
   inputs: useInputs.optional(),
   criteria_benefits: useCriteriaBenefitResults.optional(),
   weapons: weaponFieldsWithOptionalLabel.array().optional(),
+  hide_default_use_button: z.boolean().optional(),
 });
 
 // ABILITIES
@@ -1073,17 +1096,3 @@ export interface AttackResponse {
   hasDiamondBlock?: boolean;
   hasNotAScratch?: boolean;
 }
-
-export interface ComputedAttribute {
-  base?: number;
-  val: number;
-  reason?: Array<{
-    val: number;
-    src: string;
-    abilityId?: string;
-    itemId?: string;
-  }>;
-  dice?: DiceSettings;
-}
-
-export type ComputedAttributes = Record<EntityAttribute, ComputedAttribute>;
