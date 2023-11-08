@@ -1,6 +1,5 @@
 import type { EntityAttribute, Equation } from "../types";
 
-// TODO: For v0.14 increase to 2000
 export const LEVEL_UPS_TO_INCREASE_ATTR = 2;
 
 export const DEFAULT_ATTRS_MAP: Record<EntityAttribute, number> = {

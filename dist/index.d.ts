@@ -59352,12 +59352,13 @@ export declare const ORDER_CUSTOM_ATTR = 1000;
 export declare const ORDER_LAST = 10000;
 export declare const computeAttributes: (entity: CollectedEntity) => ComputedAttributes;
 export declare const abilityPassCriteriaCheck: (criteria: UseCriteria, usesAbility: EntityAbility, checkAbility: EntityAbility | null, attrs: ComputedAttributes) => boolean;
+export declare const buildSettingsForAttrList: (baseSettings: DiceSettings, relatedAttrs: EntityAttribute[], attrs: ComputedAttributes) => DiceSettings;
+export declare const combineEnabledTogglesSettings: (settings: DiceSettings, diceToggles: DiceToggles, attrs: ComputedAttributes, relevantAttrs: EntityAttribute[], skipKey?: string) => DiceSettings;
+export declare const combineDiceSettings: (baseSettings: DiceSettings, newSettings: DiceSettings, attrs: ComputedAttributes) => DiceSettings;
 export declare const buildDice: (count: number, sides: number, adjust?: number | string, settings?: DiceSettings, comment?: string) => DiceCommands;
 export declare const defaultDice: (attrs: ComputedAttributes, attr: EntityAttribute, givenSettings?: DiceSettings, diceToggles?: DiceToggles, comment?: string, skipKey?: string) => DiceCommands;
 export declare const diceParseFromString: (diceStr: string, givenSettings?: DiceSettings, comment?: string, diceToggles?: DiceToggles, attrs?: ComputedAttributes, relevantAttrs?: EntityAttribute[]) => DiceCommands | undefined;
-export declare const buildSettingsForAttrList: (baseSettings: DiceSettings, relatedAttrs: EntityAttribute[], attrs: ComputedAttributes) => DiceSettings;
 export declare const diceTogglesForEntity: (entity: CollectedEntity, attrs: ComputedAttributes) => DiceToggles;
-export declare const combineDiceSettings: (baseSettings: DiceSettings, newSettings: DiceSettings, attrs: ComputedAttributes) => DiceSettings;
 export declare const skimDownAbility: (ability: EntityAbility) => EntityAbility;
 export declare const skimDownItem: (item: EntityItem) => EntityItem;
 /**
