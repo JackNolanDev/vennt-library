@@ -23879,7 +23879,7 @@ export declare const patchItemResponseValidator: z.ZodObject<{
 			sides?: number | undefined;
 		} | undefined;
 	}>>>>;
-	ability: z.ZodObject<{
+	item: z.ZodObject<{
 		type: z.ZodEnum<[
 			"equipment",
 			"consumable",
@@ -25629,7 +25629,7 @@ export declare const patchItemResponseValidator: z.ZodObject<{
 		comment?: string | null | undefined;
 	}>;
 }, "strip", z.ZodTypeAny, {
-	ability: {
+	item: {
 		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
 		name: string;
 		active: boolean;
@@ -25893,7 +25893,7 @@ export declare const patchItemResponseValidator: z.ZodObject<{
 		} | undefined;
 	}> | null | undefined;
 }, {
-	ability: {
+	item: {
 		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
 		name: string;
 		active: boolean;
