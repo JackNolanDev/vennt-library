@@ -59,7 +59,7 @@ export const postItemsResponseValidator =
   });
 export const patchItemResponseValidator =
   optionalComputedAttributesResponseValidator.extend({
-    ability: fullItemValidator,
+    item: fullItemValidator,
   });
 export type PostItemsResponse = z.infer<typeof postItemsResponseValidator>;
 export type PatchItemResponse = z.infer<typeof patchItemResponseValidator>;
