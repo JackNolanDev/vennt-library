@@ -181,7 +181,7 @@ export declare const builtInAttributesValidator: z.ZodObject<{
 	armor: z.ZodOptional<z.ZodNumber>;
 	burden: z.ZodOptional<z.ZodNumber>;
 	casting: z.ZodOptional<z.ZodNumber>;
-	L: z.ZodOptional<z.ZodNumber>;
+	l: z.ZodOptional<z.ZodNumber>;
 	radius: z.ZodOptional<z.ZodNumber>;
 	reach: z.ZodOptional<z.ZodNumber>;
 	shield: z.ZodOptional<z.ZodNumber>;
@@ -293,7 +293,7 @@ export declare const builtInAttributesValidator: z.ZodObject<{
 	armor?: number | undefined;
 	burden?: number | undefined;
 	casting?: number | undefined;
-	L?: number | undefined;
+	l?: number | undefined;
 	radius?: number | undefined;
 	reach?: number | undefined;
 	shield?: number | undefined;
@@ -405,7 +405,7 @@ export declare const builtInAttributesValidator: z.ZodObject<{
 	armor?: number | undefined;
 	burden?: number | undefined;
 	casting?: number | undefined;
-	L?: number | undefined;
+	l?: number | undefined;
 	radius?: number | undefined;
 	reach?: number | undefined;
 	shield?: number | undefined;
@@ -520,7 +520,7 @@ export declare const attributesValidator: z.ZodObject<{
 	armor: z.ZodOptional<z.ZodNumber>;
 	burden: z.ZodOptional<z.ZodNumber>;
 	casting: z.ZodOptional<z.ZodNumber>;
-	L: z.ZodOptional<z.ZodNumber>;
+	l: z.ZodOptional<z.ZodNumber>;
 	radius: z.ZodOptional<z.ZodNumber>;
 	reach: z.ZodOptional<z.ZodNumber>;
 	shield: z.ZodOptional<z.ZodNumber>;
@@ -632,7 +632,7 @@ export declare const attributesValidator: z.ZodObject<{
 	armor: z.ZodOptional<z.ZodNumber>;
 	burden: z.ZodOptional<z.ZodNumber>;
 	casting: z.ZodOptional<z.ZodNumber>;
-	L: z.ZodOptional<z.ZodNumber>;
+	l: z.ZodOptional<z.ZodNumber>;
 	radius: z.ZodOptional<z.ZodNumber>;
 	reach: z.ZodOptional<z.ZodNumber>;
 	shield: z.ZodOptional<z.ZodNumber>;
@@ -744,7 +744,7 @@ export declare const attributesValidator: z.ZodObject<{
 	armor: z.ZodOptional<z.ZodNumber>;
 	burden: z.ZodOptional<z.ZodNumber>;
 	casting: z.ZodOptional<z.ZodNumber>;
-	L: z.ZodOptional<z.ZodNumber>;
+	l: z.ZodOptional<z.ZodNumber>;
 	radius: z.ZodOptional<z.ZodNumber>;
 	reach: z.ZodOptional<z.ZodNumber>;
 	shield: z.ZodOptional<z.ZodNumber>;
@@ -857,7 +857,7 @@ export declare const partialAttributesValidator: z.ZodObject<{
 	armor: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	burden: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	casting: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-	L: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+	l: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	radius: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	reach: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	shield: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -969,7 +969,7 @@ export declare const partialAttributesValidator: z.ZodObject<{
 	armor: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	burden: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	casting: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-	L: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+	l: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	radius: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	reach: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	shield: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -1081,7 +1081,7 @@ export declare const partialAttributesValidator: z.ZodObject<{
 	armor: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	burden: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	casting: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-	L: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+	l: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	radius: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	reach: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 	shield: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -26007,7 +26007,7 @@ export declare const adjustAttributesValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		burden: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		casting: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-		L: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+		l: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		radius: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		reach: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		shield: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -26119,7 +26119,7 @@ export declare const adjustAttributesValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		burden: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		casting: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-		L: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+		l: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		radius: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		reach: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		shield: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -26231,7 +26231,7 @@ export declare const adjustAttributesValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		burden: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		casting: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-		L: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+		l: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		radius: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		reach: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		shield: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -26343,7 +26343,7 @@ export declare const adjustAttributesValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		burden: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		casting: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-		L: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+		l: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		radius: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		reach: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		shield: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -26455,7 +26455,7 @@ export declare const adjustAttributesValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		burden: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		casting: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
-		L: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
+		l: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		radius: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		reach: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
 		shield: z.ZodOptional<z.ZodOptional<z.ZodNumber>>;
@@ -26569,7 +26569,7 @@ export declare const adjustAttributesValidator: z.ZodObject<{
 		armor?: number | undefined;
 		burden?: number | undefined;
 		casting?: number | undefined;
-		L?: number | undefined;
+		l?: number | undefined;
 		radius?: number | undefined;
 		reach?: number | undefined;
 		shield?: number | undefined;
@@ -26686,7 +26686,7 @@ export declare const adjustAttributesValidator: z.ZodObject<{
 		armor?: number | undefined;
 		burden?: number | undefined;
 		casting?: number | undefined;
-		L?: number | undefined;
+		l?: number | undefined;
 		radius?: number | undefined;
 		reach?: number | undefined;
 		shield?: number | undefined;
@@ -27112,7 +27112,7 @@ export declare const entityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -27224,7 +27224,7 @@ export declare const entityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -27336,7 +27336,7 @@ export declare const entityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -27658,7 +27658,7 @@ export declare const entityValidator: z.ZodObject<{
 		armor?: number | undefined;
 		burden?: number | undefined;
 		casting?: number | undefined;
-		L?: number | undefined;
+		l?: number | undefined;
 		radius?: number | undefined;
 		reach?: number | undefined;
 		shield?: number | undefined;
@@ -27812,7 +27812,7 @@ export declare const entityValidator: z.ZodObject<{
 		armor?: number | undefined;
 		burden?: number | undefined;
 		casting?: number | undefined;
-		L?: number | undefined;
+		l?: number | undefined;
 		radius?: number | undefined;
 		reach?: number | undefined;
 		shield?: number | undefined;
@@ -27970,7 +27970,7 @@ export declare const fullEntityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -28082,7 +28082,7 @@ export declare const fullEntityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -28194,7 +28194,7 @@ export declare const fullEntityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -28642,7 +28642,7 @@ export declare const fullEntityValidator: z.ZodObject<{
 		armor?: number | undefined;
 		burden?: number | undefined;
 		casting?: number | undefined;
-		L?: number | undefined;
+		l?: number | undefined;
 		radius?: number | undefined;
 		reach?: number | undefined;
 		shield?: number | undefined;
@@ -28824,7 +28824,7 @@ export declare const fullEntityValidator: z.ZodObject<{
 		armor?: number | undefined;
 		burden?: number | undefined;
 		casting?: number | undefined;
-		L?: number | undefined;
+		l?: number | undefined;
 		radius?: number | undefined;
 		reach?: number | undefined;
 		shield?: number | undefined;
@@ -29132,7 +29132,7 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -29244,7 +29244,7 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -29356,7 +29356,7 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -29705,7 +29705,7 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -29884,7 +29884,7 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -30063,7 +30063,7 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -30242,7 +30242,7 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -30597,7 +30597,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -30709,7 +30709,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -30821,7 +30821,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -31143,7 +31143,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -31297,7 +31297,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -35613,7 +35613,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -35843,7 +35843,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -36010,7 +36010,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -36122,7 +36122,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -36234,7 +36234,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -36682,7 +36682,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -36864,7 +36864,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -41238,7 +41238,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -41504,7 +41504,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -45335,7 +45335,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -45447,7 +45447,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -45559,7 +45559,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -45881,7 +45881,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -46035,7 +46035,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -46729,7 +46729,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -46964,7 +46964,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -50789,7 +50789,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -50901,7 +50901,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -51013,7 +51013,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -51461,7 +51461,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -51643,7 +51643,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -52386,7 +52386,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -52660,7 +52660,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -53142,7 +53142,7 @@ export declare const campaignEntityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -53254,7 +53254,7 @@ export declare const campaignEntityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -53366,7 +53366,7 @@ export declare const campaignEntityValidator: z.ZodObject<{
 		armor: z.ZodOptional<z.ZodNumber>;
 		burden: z.ZodOptional<z.ZodNumber>;
 		casting: z.ZodOptional<z.ZodNumber>;
-		L: z.ZodOptional<z.ZodNumber>;
+		l: z.ZodOptional<z.ZodNumber>;
 		radius: z.ZodOptional<z.ZodNumber>;
 		reach: z.ZodOptional<z.ZodNumber>;
 		shield: z.ZodOptional<z.ZodNumber>;
@@ -53688,7 +53688,7 @@ export declare const campaignEntityValidator: z.ZodObject<{
 		armor?: number | undefined;
 		burden?: number | undefined;
 		casting?: number | undefined;
-		L?: number | undefined;
+		l?: number | undefined;
 		radius?: number | undefined;
 		reach?: number | undefined;
 		shield?: number | undefined;
@@ -53844,7 +53844,7 @@ export declare const campaignEntityValidator: z.ZodObject<{
 		armor?: number | undefined;
 		burden?: number | undefined;
 		casting?: number | undefined;
-		L?: number | undefined;
+		l?: number | undefined;
 		radius?: number | undefined;
 		reach?: number | undefined;
 		shield?: number | undefined;
@@ -54078,7 +54078,7 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -54190,7 +54190,7 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -54302,7 +54302,7 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 			armor: z.ZodOptional<z.ZodNumber>;
 			burden: z.ZodOptional<z.ZodNumber>;
 			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
+			l: z.ZodOptional<z.ZodNumber>;
 			radius: z.ZodOptional<z.ZodNumber>;
 			reach: z.ZodOptional<z.ZodNumber>;
 			shield: z.ZodOptional<z.ZodNumber>;
@@ -54624,7 +54624,7 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -54780,7 +54780,7 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -54953,7 +54953,7 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;
@@ -55134,7 +55134,7 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 			armor?: number | undefined;
 			burden?: number | undefined;
 			casting?: number | undefined;
-			L?: number | undefined;
+			l?: number | undefined;
 			radius?: number | undefined;
 			reach?: number | undefined;
 			shield?: number | undefined;

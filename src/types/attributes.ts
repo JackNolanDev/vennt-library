@@ -45,7 +45,7 @@ export const builtInAttributesValidator = z.object({
   armor: z.number().int().optional(),
   burden: z.number().int().optional(),
   casting: z.number().int().optional(),
-  L: z.number().int().optional(),
+  l: z.number().int().optional(),
   radius: z.number().optional(),
   reach: z.number().int().optional(),
   shield: z.number().int().optional(),

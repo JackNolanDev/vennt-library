@@ -31,22 +31,24 @@ export const replaceVariablesInEquation = (
   attrs: ComputedAttributes
 ): { cleanedEquation: string; details: { ceilResult: boolean } } => {
   let ceilResult = false;
-  const cleanedEquation = equation.replaceAll(attrsRegex(attrs), (match) => {
-    const attr = match as EntityAttribute;
-    // L always rounds up, everything else always floors
-    if (attr === "L") {
-      ceilResult = true;
-    }
-    const entityAttr = attrs[attr];
-    if (entityAttr) {
-      return numToStr(entityAttr.val);
-    }
-    const defaultAttr = DEFAULT_ATTRS_MAP[attr];
-    if (defaultAttr) {
-      return numToStr(defaultAttr);
-    }
-    return "0";
-  });
+  const cleanedEquation = equation
+    .toLowerCase()
+    .replaceAll(attrsRegex(attrs), (match) => {
+      const attr = match as EntityAttribute;
+      // L always rounds up, everything else always floors
+      if (attr === "l") {
+        ceilResult = true;
+      }
+      const entityAttr = attrs[attr];
+      if (entityAttr) {
+        return numToStr(entityAttr.val);
+      }
+      const defaultAttr = DEFAULT_ATTRS_MAP[attr];
+      if (defaultAttr) {
+        return numToStr(defaultAttr);
+      }
+      return "0";
+    });
   return { cleanedEquation, details: { ceilResult } };
 };
 
