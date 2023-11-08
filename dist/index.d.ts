@@ -38,6 +38,14 @@ export declare const CHARACTER_GIFTS: readonly [
 	"None"
 ];
 export declare const ATTRIBUTES_SET: Set<string>;
+export declare const idValidator: z.ZodString;
+export declare const optionalIdValidator: z.ZodOptional<z.ZodString>;
+export declare const nameValidator: z.ZodString;
+export declare const equationValidator: z.ZodUnion<[
+	z.ZodNumber,
+	z.ZodString
+]>;
+export type Equation = z.infer<typeof equationValidator>;
 export declare const RED_HIGHLIGHT = "red";
 export declare const DARK_RED_HIGHLIGHT = "dark_red";
 export declare const ORANGE_HIGHLIGHT = "orange";
@@ -73,14 +81,6 @@ export declare const highlightValidator: z.ZodEnum<[
 	"dark_gray"
 ]>;
 export type HighlightColor = z.infer<typeof highlightValidator>;
-export declare const idValidator: z.ZodString;
-export declare const optionalIdValidator: z.ZodOptional<z.ZodString>;
-export declare const nameValidator: z.ZodString;
-export declare const equationValidator: z.ZodUnion<[
-	z.ZodNumber,
-	z.ZodString
-]>;
-export type Equation = z.infer<typeof equationValidator>;
 export declare const diceOtherTogglesValidator: z.ZodRecord<z.ZodString, z.ZodObject<{
 	toggled: z.ZodBoolean;
 }, "strip", z.ZodTypeAny, {
@@ -1439,6 +1439,186 @@ export type ComputedAttributeReason = z.infer<typeof computedAttributeReason>;
 export type ComputedAttribute = z.infer<typeof computedAttributeValidator>;
 export type ComputedAttributes = z.infer<typeof computedAttributesValidator>;
 export type PartialEntityAttributes = z.infer<typeof partialAttributesValidator>;
+export declare const optionalComputedAttributesResponseValidator: z.ZodObject<{
+	computed_attributes: z.ZodOptional<z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>;
+}, "strip", z.ZodTypeAny, {
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}, {
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}>;
+export type OptionalComputedAttributesResponse = z.infer<typeof optionalComputedAttributesResponseValidator>;
 export declare const itemFieldsValidator: z.ZodObject<{
 	attr: z.ZodOptional<z.ZodString>;
 	category: z.ZodOptional<z.ZodString>;
@@ -11157,6 +11337,4728 @@ export type AbilityCostMapBoolean = z.infer<typeof abilityCostBooleanValidator>;
 export type AbilityCostMap = z.infer<typeof abilityCostValidator>;
 export type EntityAbilityFieldsStrings = z.infer<typeof abilityFieldsValidatorStrings>;
 export type EntityAbilityFields = z.infer<typeof abilityFieldsNameValidator>;
+export declare const postAbilitiesResponseValidator: z.ZodObject<{
+	computed_attributes: z.ZodOptional<z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>;
+	abilities: z.ZodArray<z.ZodObject<{
+		name: z.ZodString;
+		effect: z.ZodString;
+		custom_fields: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			path: z.ZodOptional<z.ZodString>;
+			range: z.ZodOptional<z.ZodString>;
+			activation: z.ZodOptional<z.ZodString>;
+			expedited: z.ZodOptional<z.ZodString>;
+			flavor: z.ZodOptional<z.ZodString>;
+			purchase: z.ZodOptional<z.ZodString>;
+			unlocks: z.ZodOptional<z.ZodString>;
+			partial_unlocks: z.ZodOptional<z.ZodString>;
+			prereq: z.ZodOptional<z.ZodString>;
+			build_dc: z.ZodOptional<z.ZodString>;
+			build_time: z.ZodOptional<z.ZodString>;
+			cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
+			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
+			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
+			not_req: z.ZodOptional<z.ZodBoolean>;
+			repeatable: z.ZodOptional<z.ZodBoolean>;
+			times_taken: z.ZodOptional<z.ZodNumber>;
+			keys: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+			stars: z.ZodOptional<z.ZodNumber>;
+			highlight: z.ZodOptional<z.ZodEnum<[
+				"red",
+				"dark_red",
+				"orange",
+				"dark_orange",
+				"green",
+				"dark_green",
+				"blue",
+				"dark_blue",
+				"gray",
+				"dark_gray"
+			]>>;
+		}, "strip", z.ZodTypeAny, {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		}, {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		}>>>;
+		uses: z.ZodCatch<z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			roll: z.ZodOptional<z.ZodObject<{
+				dice: z.ZodString;
+				attr: z.ZodString;
+				heal: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+			}, "strip", z.ZodTypeAny, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}>>;
+			heal: z.ZodOptional<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+			}, {
+				attr: Record<string, string | number>;
+			}>>;
+			optional_heal: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}>, "many">>;
+			adjust: z.ZodOptional<z.ZodObject<{
+				time: z.ZodEnum<[
+					"turn",
+					"encounter",
+					"rest",
+					"permanent"
+				]>;
+				attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+				dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>>;
+				order: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}>>;
+			adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+				adjust_cost: z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>;
+			}, "strip", z.ZodTypeAny, {
+				adjust_cost: string | number;
+			}, {
+				adjust_cost: string | number;
+			}>>;
+			check: z.ZodOptional<z.ZodObject<{
+				bonus: z.ZodOptional<z.ZodString>;
+				attr: z.ZodString;
+				dice_settings: z.ZodOptional<z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}>>;
+			expose_combat_stats: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+			inputs: z.ZodOptional<z.ZodArray<z.ZodUnion<[
+				z.ZodType<UseRadioInput, z.ZodTypeDef, UseRadioInput>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"text">;
+				}, "strip", z.ZodTypeAny, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"number">;
+					min: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					max: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					default: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+				}, "strip", z.ZodTypeAny, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}>
+			]>, "many">>;
+			criteria_benefits: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				criteria: z.ZodUnion<[
+					z.ZodObject<{
+						type: z.ZodLiteral<"comp">;
+						left: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						right: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						operator: z.ZodEnum<[
+							"equals",
+							"gte",
+							"gt",
+							"lte",
+							"lt"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}>,
+					z.ZodObject<{
+						type: z.ZodLiteral<"special">;
+						name: z.ZodEnum<[
+							"isSpell"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "special";
+						name: "isSpell";
+					}, {
+						type: "special";
+						name: "isSpell";
+					}>,
+					z.ZodType<UseCriteriaBase, z.ZodTypeDef, UseCriteriaBase>
+				]>;
+				adjust: z.ZodOptional<z.ZodObject<{
+					time: z.ZodEnum<[
+						"turn",
+						"encounter",
+						"rest",
+						"permanent"
+					]>;
+					attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>>;
+					dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>>;
+					order: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}>>;
+				adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+					adjust_cost: z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>;
+				}, "strip", z.ZodTypeAny, {
+					adjust_cost: string | number;
+				}, {
+					adjust_cost: string | number;
+				}>>;
+				check: z.ZodOptional<z.ZodObject<{
+					bonus: z.ZodOptional<z.ZodString>;
+					attr: z.ZodString;
+					dice_settings: z.ZodOptional<z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>;
+					label: z.ZodOptional<z.ZodString>;
+				}, "strip", z.ZodTypeAny, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}>>;
+			}, "strip", z.ZodTypeAny, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}>, "many">>;
+			weapons: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				dmg: z.ZodOptional<z.ZodString>;
+				attr: z.ZodOptional<z.ZodString>;
+				category: z.ZodOptional<z.ZodString>;
+				courses: z.ZodOptional<z.ZodString>;
+				range: z.ZodOptional<z.ZodString>;
+				special: z.ZodOptional<z.ZodString>;
+				weapon_type: z.ZodOptional<z.ZodString>;
+				dc_cost: z.ZodOptional<z.ZodNumber>;
+				in_storage: z.ZodOptional<z.ZodBoolean>;
+				not_evadable: z.ZodOptional<z.ZodBoolean>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}>>>>;
+		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+		active: z.ZodBoolean;
+		id: z.ZodString;
+		entity_id: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}, {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}>, "many">;
+}, "strip", z.ZodTypeAny, {
+	abilities: {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}[];
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}, {
+	abilities: {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}[];
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}>;
+export declare const patchAbilityResponseValidator: z.ZodObject<{
+	computed_attributes: z.ZodOptional<z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>;
+	ability: z.ZodObject<{
+		name: z.ZodString;
+		effect: z.ZodString;
+		custom_fields: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			path: z.ZodOptional<z.ZodString>;
+			range: z.ZodOptional<z.ZodString>;
+			activation: z.ZodOptional<z.ZodString>;
+			expedited: z.ZodOptional<z.ZodString>;
+			flavor: z.ZodOptional<z.ZodString>;
+			purchase: z.ZodOptional<z.ZodString>;
+			unlocks: z.ZodOptional<z.ZodString>;
+			partial_unlocks: z.ZodOptional<z.ZodString>;
+			prereq: z.ZodOptional<z.ZodString>;
+			build_dc: z.ZodOptional<z.ZodString>;
+			build_time: z.ZodOptional<z.ZodString>;
+			cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
+			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
+			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
+			not_req: z.ZodOptional<z.ZodBoolean>;
+			repeatable: z.ZodOptional<z.ZodBoolean>;
+			times_taken: z.ZodOptional<z.ZodNumber>;
+			keys: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+			stars: z.ZodOptional<z.ZodNumber>;
+			highlight: z.ZodOptional<z.ZodEnum<[
+				"red",
+				"dark_red",
+				"orange",
+				"dark_orange",
+				"green",
+				"dark_green",
+				"blue",
+				"dark_blue",
+				"gray",
+				"dark_gray"
+			]>>;
+		}, "strip", z.ZodTypeAny, {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		}, {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		}>>>;
+		uses: z.ZodCatch<z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			roll: z.ZodOptional<z.ZodObject<{
+				dice: z.ZodString;
+				attr: z.ZodString;
+				heal: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+			}, "strip", z.ZodTypeAny, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}>>;
+			heal: z.ZodOptional<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+			}, {
+				attr: Record<string, string | number>;
+			}>>;
+			optional_heal: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}>, "many">>;
+			adjust: z.ZodOptional<z.ZodObject<{
+				time: z.ZodEnum<[
+					"turn",
+					"encounter",
+					"rest",
+					"permanent"
+				]>;
+				attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+				dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>>;
+				order: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}>>;
+			adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+				adjust_cost: z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>;
+			}, "strip", z.ZodTypeAny, {
+				adjust_cost: string | number;
+			}, {
+				adjust_cost: string | number;
+			}>>;
+			check: z.ZodOptional<z.ZodObject<{
+				bonus: z.ZodOptional<z.ZodString>;
+				attr: z.ZodString;
+				dice_settings: z.ZodOptional<z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}>>;
+			expose_combat_stats: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+			inputs: z.ZodOptional<z.ZodArray<z.ZodUnion<[
+				z.ZodType<UseRadioInput, z.ZodTypeDef, UseRadioInput>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"text">;
+				}, "strip", z.ZodTypeAny, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"number">;
+					min: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					max: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					default: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+				}, "strip", z.ZodTypeAny, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}>
+			]>, "many">>;
+			criteria_benefits: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				criteria: z.ZodUnion<[
+					z.ZodObject<{
+						type: z.ZodLiteral<"comp">;
+						left: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						right: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						operator: z.ZodEnum<[
+							"equals",
+							"gte",
+							"gt",
+							"lte",
+							"lt"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}>,
+					z.ZodObject<{
+						type: z.ZodLiteral<"special">;
+						name: z.ZodEnum<[
+							"isSpell"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "special";
+						name: "isSpell";
+					}, {
+						type: "special";
+						name: "isSpell";
+					}>,
+					z.ZodType<UseCriteriaBase, z.ZodTypeDef, UseCriteriaBase>
+				]>;
+				adjust: z.ZodOptional<z.ZodObject<{
+					time: z.ZodEnum<[
+						"turn",
+						"encounter",
+						"rest",
+						"permanent"
+					]>;
+					attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>>;
+					dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>>;
+					order: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}>>;
+				adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+					adjust_cost: z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>;
+				}, "strip", z.ZodTypeAny, {
+					adjust_cost: string | number;
+				}, {
+					adjust_cost: string | number;
+				}>>;
+				check: z.ZodOptional<z.ZodObject<{
+					bonus: z.ZodOptional<z.ZodString>;
+					attr: z.ZodString;
+					dice_settings: z.ZodOptional<z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>;
+					label: z.ZodOptional<z.ZodString>;
+				}, "strip", z.ZodTypeAny, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}>>;
+			}, "strip", z.ZodTypeAny, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}>, "many">>;
+			weapons: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				dmg: z.ZodOptional<z.ZodString>;
+				attr: z.ZodOptional<z.ZodString>;
+				category: z.ZodOptional<z.ZodString>;
+				courses: z.ZodOptional<z.ZodString>;
+				range: z.ZodOptional<z.ZodString>;
+				special: z.ZodOptional<z.ZodString>;
+				weapon_type: z.ZodOptional<z.ZodString>;
+				dc_cost: z.ZodOptional<z.ZodNumber>;
+				in_storage: z.ZodOptional<z.ZodBoolean>;
+				not_evadable: z.ZodOptional<z.ZodBoolean>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}>>>>;
+		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+		active: z.ZodBoolean;
+		id: z.ZodString;
+		entity_id: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}, {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}>;
+}, "strip", z.ZodTypeAny, {
+	ability: {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	};
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}, {
+	ability: {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	};
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}>;
+export type PostAbilitiesResponse = z.infer<typeof postAbilitiesResponseValidator>;
+export type PatchAbilityResponse = z.infer<typeof patchAbilityResponseValidator>;
 export declare const ITEM_TYPE_EQUIPMENT = "equipment";
 export declare const ITEM_TYPE_CONSUMABLE = "consumable";
 export declare const ITEM_TYPE_CONTAINER = "container";
@@ -16665,6 +21567,4384 @@ export type UncompleteEntityItem = z.infer<typeof itemValidator>;
 export type FullEntityItem = z.infer<typeof fullItemValidator>;
 export type EntityItem = UncompleteEntityItem | FullEntityItem;
 export type PartialEntityItem = z.infer<typeof partialItemValidator>;
+export declare const postItemsResponseValidator: z.ZodObject<{
+	computed_attributes: z.ZodOptional<z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>;
+	items: z.ZodArray<z.ZodObject<{
+		type: z.ZodEnum<[
+			"equipment",
+			"consumable",
+			"container",
+			"armor",
+			"shield",
+			"weapon"
+		]>;
+		name: z.ZodString;
+		custom_fields: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			attr: z.ZodOptional<z.ZodString>;
+			category: z.ZodOptional<z.ZodString>;
+			courses: z.ZodOptional<z.ZodString>;
+			dmg: z.ZodOptional<z.ZodString>;
+			range: z.ZodOptional<z.ZodString>;
+			special: z.ZodOptional<z.ZodString>;
+			weapon_type: z.ZodOptional<z.ZodString>;
+			dc_cost: z.ZodOptional<z.ZodNumber>;
+			in_storage: z.ZodOptional<z.ZodBoolean>;
+			not_evadable: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		}, {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		}>>>;
+		uses: z.ZodCatch<z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			roll: z.ZodOptional<z.ZodObject<{
+				dice: z.ZodString;
+				attr: z.ZodString;
+				heal: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+			}, "strip", z.ZodTypeAny, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}>>;
+			heal: z.ZodOptional<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+			}, {
+				attr: Record<string, string | number>;
+			}>>;
+			optional_heal: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}>, "many">>;
+			adjust: z.ZodOptional<z.ZodObject<{
+				time: z.ZodEnum<[
+					"turn",
+					"encounter",
+					"rest",
+					"permanent"
+				]>;
+				attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+				dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>>;
+				order: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}>>;
+			adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+				adjust_cost: z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>;
+			}, "strip", z.ZodTypeAny, {
+				adjust_cost: string | number;
+			}, {
+				adjust_cost: string | number;
+			}>>;
+			check: z.ZodOptional<z.ZodObject<{
+				bonus: z.ZodOptional<z.ZodString>;
+				attr: z.ZodString;
+				dice_settings: z.ZodOptional<z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}>>;
+			expose_combat_stats: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+			inputs: z.ZodOptional<z.ZodArray<z.ZodUnion<[
+				z.ZodType<UseRadioInput, z.ZodTypeDef, UseRadioInput>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"text">;
+				}, "strip", z.ZodTypeAny, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"number">;
+					min: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					max: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					default: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+				}, "strip", z.ZodTypeAny, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}>
+			]>, "many">>;
+			criteria_benefits: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				criteria: z.ZodUnion<[
+					z.ZodObject<{
+						type: z.ZodLiteral<"comp">;
+						left: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						right: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						operator: z.ZodEnum<[
+							"equals",
+							"gte",
+							"gt",
+							"lte",
+							"lt"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}>,
+					z.ZodObject<{
+						type: z.ZodLiteral<"special">;
+						name: z.ZodEnum<[
+							"isSpell"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "special";
+						name: "isSpell";
+					}, {
+						type: "special";
+						name: "isSpell";
+					}>,
+					z.ZodType<UseCriteriaBase, z.ZodTypeDef, UseCriteriaBase>
+				]>;
+				adjust: z.ZodOptional<z.ZodObject<{
+					time: z.ZodEnum<[
+						"turn",
+						"encounter",
+						"rest",
+						"permanent"
+					]>;
+					attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>>;
+					dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>>;
+					order: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}>>;
+				adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+					adjust_cost: z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>;
+				}, "strip", z.ZodTypeAny, {
+					adjust_cost: string | number;
+				}, {
+					adjust_cost: string | number;
+				}>>;
+				check: z.ZodOptional<z.ZodObject<{
+					bonus: z.ZodOptional<z.ZodString>;
+					attr: z.ZodString;
+					dice_settings: z.ZodOptional<z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>;
+					label: z.ZodOptional<z.ZodString>;
+				}, "strip", z.ZodTypeAny, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}>>;
+			}, "strip", z.ZodTypeAny, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}>, "many">>;
+			weapons: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				dmg: z.ZodOptional<z.ZodString>;
+				attr: z.ZodOptional<z.ZodString>;
+				category: z.ZodOptional<z.ZodString>;
+				courses: z.ZodOptional<z.ZodString>;
+				range: z.ZodOptional<z.ZodString>;
+				special: z.ZodOptional<z.ZodString>;
+				weapon_type: z.ZodOptional<z.ZodString>;
+				dc_cost: z.ZodOptional<z.ZodNumber>;
+				in_storage: z.ZodOptional<z.ZodBoolean>;
+				not_evadable: z.ZodOptional<z.ZodBoolean>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}>>>>;
+		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+		active: z.ZodBoolean;
+		bulk: z.ZodNumber;
+		desc: z.ZodString;
+		id: z.ZodString;
+		entity_id: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}, {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}>, "many">;
+}, "strip", z.ZodTypeAny, {
+	items: {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}[];
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}, {
+	items: {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}[];
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}>;
+export declare const patchItemResponseValidator: z.ZodObject<{
+	computed_attributes: z.ZodOptional<z.ZodNullable<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>;
+	ability: z.ZodObject<{
+		type: z.ZodEnum<[
+			"equipment",
+			"consumable",
+			"container",
+			"armor",
+			"shield",
+			"weapon"
+		]>;
+		name: z.ZodString;
+		custom_fields: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			attr: z.ZodOptional<z.ZodString>;
+			category: z.ZodOptional<z.ZodString>;
+			courses: z.ZodOptional<z.ZodString>;
+			dmg: z.ZodOptional<z.ZodString>;
+			range: z.ZodOptional<z.ZodString>;
+			special: z.ZodOptional<z.ZodString>;
+			weapon_type: z.ZodOptional<z.ZodString>;
+			dc_cost: z.ZodOptional<z.ZodNumber>;
+			in_storage: z.ZodOptional<z.ZodBoolean>;
+			not_evadable: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		}, {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		}>>>;
+		uses: z.ZodCatch<z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			roll: z.ZodOptional<z.ZodObject<{
+				dice: z.ZodString;
+				attr: z.ZodString;
+				heal: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+			}, "strip", z.ZodTypeAny, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}>>;
+			heal: z.ZodOptional<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+			}, {
+				attr: Record<string, string | number>;
+			}>>;
+			optional_heal: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}>, "many">>;
+			adjust: z.ZodOptional<z.ZodObject<{
+				time: z.ZodEnum<[
+					"turn",
+					"encounter",
+					"rest",
+					"permanent"
+				]>;
+				attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+				dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>>;
+				order: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}>>;
+			adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+				adjust_cost: z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>;
+			}, "strip", z.ZodTypeAny, {
+				adjust_cost: string | number;
+			}, {
+				adjust_cost: string | number;
+			}>>;
+			check: z.ZodOptional<z.ZodObject<{
+				bonus: z.ZodOptional<z.ZodString>;
+				attr: z.ZodString;
+				dice_settings: z.ZodOptional<z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}>>;
+			expose_combat_stats: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+			inputs: z.ZodOptional<z.ZodArray<z.ZodUnion<[
+				z.ZodType<UseRadioInput, z.ZodTypeDef, UseRadioInput>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"text">;
+				}, "strip", z.ZodTypeAny, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"number">;
+					min: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					max: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					default: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+				}, "strip", z.ZodTypeAny, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}>
+			]>, "many">>;
+			criteria_benefits: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				criteria: z.ZodUnion<[
+					z.ZodObject<{
+						type: z.ZodLiteral<"comp">;
+						left: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						right: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						operator: z.ZodEnum<[
+							"equals",
+							"gte",
+							"gt",
+							"lte",
+							"lt"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}>,
+					z.ZodObject<{
+						type: z.ZodLiteral<"special">;
+						name: z.ZodEnum<[
+							"isSpell"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "special";
+						name: "isSpell";
+					}, {
+						type: "special";
+						name: "isSpell";
+					}>,
+					z.ZodType<UseCriteriaBase, z.ZodTypeDef, UseCriteriaBase>
+				]>;
+				adjust: z.ZodOptional<z.ZodObject<{
+					time: z.ZodEnum<[
+						"turn",
+						"encounter",
+						"rest",
+						"permanent"
+					]>;
+					attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>>;
+					dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>>;
+					order: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}>>;
+				adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+					adjust_cost: z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>;
+				}, "strip", z.ZodTypeAny, {
+					adjust_cost: string | number;
+				}, {
+					adjust_cost: string | number;
+				}>>;
+				check: z.ZodOptional<z.ZodObject<{
+					bonus: z.ZodOptional<z.ZodString>;
+					attr: z.ZodString;
+					dice_settings: z.ZodOptional<z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>;
+					label: z.ZodOptional<z.ZodString>;
+				}, "strip", z.ZodTypeAny, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}>>;
+			}, "strip", z.ZodTypeAny, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}>, "many">>;
+			weapons: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				dmg: z.ZodOptional<z.ZodString>;
+				attr: z.ZodOptional<z.ZodString>;
+				category: z.ZodOptional<z.ZodString>;
+				courses: z.ZodOptional<z.ZodString>;
+				range: z.ZodOptional<z.ZodString>;
+				special: z.ZodOptional<z.ZodString>;
+				weapon_type: z.ZodOptional<z.ZodString>;
+				dc_cost: z.ZodOptional<z.ZodNumber>;
+				in_storage: z.ZodOptional<z.ZodBoolean>;
+				not_evadable: z.ZodOptional<z.ZodBoolean>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}>>>>;
+		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+		active: z.ZodBoolean;
+		bulk: z.ZodNumber;
+		desc: z.ZodString;
+		id: z.ZodString;
+		entity_id: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}, {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}>;
+}, "strip", z.ZodTypeAny, {
+	ability: {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	};
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}, {
+	ability: {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	};
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
+}>;
+export type PostItemsResponse = z.infer<typeof postItemsResponseValidator>;
+export type PatchItemResponse = z.infer<typeof patchItemResponseValidator>;
 export declare const attributeChangelogValidator: z.ZodObject<{
 	attr: z.ZodString;
 	msg: z.ZodString;
@@ -19703,6 +28983,129 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 		"CHARACTER",
 		"COG"
 	]>>;
+	computed_attributes: z.ZodOptional<z.ZodNullable<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>>;
 	name: z.ZodOptional<z.ZodString>;
 	attributes: z.ZodOptional<z.ZodObject<{
 		agi: z.ZodDefault<z.ZodNumber>;
@@ -20248,131 +29651,34 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	}>>;
 	public: z.ZodOptional<z.ZodDefault<z.ZodBoolean>>;
 	owner: z.ZodOptional<z.ZodString>;
-	computed_attributes: z.ZodOptional<z.ZodNullable<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-		base: z.ZodOptional<z.ZodNumber>;
-		val: z.ZodNumber;
-		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
-			val: z.ZodNumber;
-			src: z.ZodString;
-			abilityId: z.ZodOptional<z.ZodString>;
-			itemId: z.ZodOptional<z.ZodString>;
-		}, "strip", z.ZodTypeAny, {
-			val: number;
-			src: string;
-			abilityId?: string | undefined;
-			itemId?: string | undefined;
-		}, {
-			val: number;
-			src: string;
-			abilityId?: string | undefined;
-			itemId?: string | undefined;
-		}>, "many">>;
-		dice: z.ZodOptional<z.ZodObject<{
-			explodes: z.ZodOptional<z.ZodBoolean>;
-			rr1s: z.ZodOptional<z.ZodBoolean>;
-			drop: z.ZodOptional<z.ZodNumber>;
-			fatigued: z.ZodOptional<z.ZodBoolean>;
-			end: z.ZodOptional<z.ZodString>;
-			flow: z.ZodOptional<z.ZodNumber>;
-			ebb: z.ZodOptional<z.ZodNumber>;
-			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-				toggled: z.ZodBoolean;
-			}, "strip", z.ZodTypeAny, {
-				toggled: boolean;
-			}, {
-				toggled: boolean;
-			}>>>;
-			adjust: z.ZodOptional<z.ZodUnion<[
-				z.ZodNumber,
-				z.ZodString
-			]>>;
-			count: z.ZodOptional<z.ZodNumber>;
-			sides: z.ZodOptional<z.ZodNumber>;
-		}, "strip", z.ZodTypeAny, {
-			explodes?: boolean | undefined;
-			rr1s?: boolean | undefined;
-			drop?: number | undefined;
-			fatigued?: boolean | undefined;
-			end?: string | undefined;
-			flow?: number | undefined;
-			ebb?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			otherToggles?: Record<string, {
-				toggled: boolean;
-			}> | undefined;
-			adjust?: string | number | undefined;
-			count?: number | undefined;
-			sides?: number | undefined;
-		}, {
-			explodes?: boolean | undefined;
-			rr1s?: boolean | undefined;
-			drop?: number | undefined;
-			fatigued?: boolean | undefined;
-			end?: string | undefined;
-			flow?: number | undefined;
-			ebb?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			otherToggles?: Record<string, {
-				toggled: boolean;
-			}> | undefined;
-			adjust?: string | number | undefined;
-			count?: number | undefined;
-			sides?: number | undefined;
-		}>>;
-	}, "strip", z.ZodTypeAny, {
-		val: number;
-		base?: number | undefined;
-		reason?: {
-			val: number;
-			src: string;
-			abilityId?: string | undefined;
-			itemId?: string | undefined;
-		}[] | undefined;
-		dice?: {
-			explodes?: boolean | undefined;
-			rr1s?: boolean | undefined;
-			drop?: number | undefined;
-			fatigued?: boolean | undefined;
-			end?: string | undefined;
-			flow?: number | undefined;
-			ebb?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			otherToggles?: Record<string, {
-				toggled: boolean;
-			}> | undefined;
-			adjust?: string | number | undefined;
-			count?: number | undefined;
-			sides?: number | undefined;
-		} | undefined;
-	}, {
-		val: number;
-		base?: number | undefined;
-		reason?: {
-			val: number;
-			src: string;
-			abilityId?: string | undefined;
-			itemId?: string | undefined;
-		}[] | undefined;
-		dice?: {
-			explodes?: boolean | undefined;
-			rr1s?: boolean | undefined;
-			drop?: number | undefined;
-			fatigued?: boolean | undefined;
-			end?: string | undefined;
-			flow?: number | undefined;
-			ebb?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			otherToggles?: Record<string, {
-				toggled: boolean;
-			}> | undefined;
-			adjust?: string | number | undefined;
-			count?: number | undefined;
-			sides?: number | undefined;
-		} | undefined;
-	}>>>>>;
 }, "strip", z.ZodTypeAny, {
 	type?: "CHARACTER" | "COG" | undefined;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 	name?: string | undefined;
 	attributes?: z.objectOutputType<{
 		agi: z.ZodDefault<z.ZodNumber>;
@@ -20524,6 +29830,8 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	} | undefined;
 	public?: boolean | undefined;
 	owner?: string | undefined;
+}, {
+	type?: "CHARACTER" | "COG" | undefined;
 	computed_attributes?: Record<string, {
 		val: number;
 		base?: number | undefined;
@@ -20550,8 +29858,6 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			sides?: number | undefined;
 		} | undefined;
 	}> | null | undefined;
-}, {
-	type?: "CHARACTER" | "COG" | undefined;
 	name?: string | undefined;
 	attributes?: z.objectInputType<{
 		agi: z.ZodDefault<z.ZodNumber>;
@@ -20703,34 +30009,34 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	} | undefined;
 	public?: boolean | undefined;
 	owner?: string | undefined;
-	computed_attributes?: Record<string, {
-		val: number;
-		base?: number | undefined;
-		reason?: {
-			val: number;
-			src: string;
-			abilityId?: string | undefined;
-			itemId?: string | undefined;
-		}[] | undefined;
-		dice?: {
-			explodes?: boolean | undefined;
-			rr1s?: boolean | undefined;
-			drop?: number | undefined;
-			fatigued?: boolean | undefined;
-			end?: string | undefined;
-			flow?: number | undefined;
-			ebb?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			otherToggles?: Record<string, {
-				toggled: boolean;
-			}> | undefined;
-			adjust?: string | number | undefined;
-			count?: number | undefined;
-			sides?: number | undefined;
-		} | undefined;
-	}> | null | undefined;
 }>, {
 	type?: "CHARACTER" | "COG" | undefined;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 	name?: string | undefined;
 	attributes?: z.objectOutputType<{
 		agi: z.ZodDefault<z.ZodNumber>;
@@ -20882,6 +30188,8 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	} | undefined;
 	public?: boolean | undefined;
 	owner?: string | undefined;
+}, {
+	type?: "CHARACTER" | "COG" | undefined;
 	computed_attributes?: Record<string, {
 		val: number;
 		base?: number | undefined;
@@ -20908,8 +30216,6 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			sides?: number | undefined;
 		} | undefined;
 	}> | null | undefined;
-}, {
-	type?: "CHARACTER" | "COG" | undefined;
 	name?: string | undefined;
 	attributes?: z.objectInputType<{
 		agi: z.ZodDefault<z.ZodNumber>;
@@ -21061,32 +30367,6 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 	} | undefined;
 	public?: boolean | undefined;
 	owner?: string | undefined;
-	computed_attributes?: Record<string, {
-		val: number;
-		base?: number | undefined;
-		reason?: {
-			val: number;
-			src: string;
-			abilityId?: string | undefined;
-			itemId?: string | undefined;
-		}[] | undefined;
-		dice?: {
-			explodes?: boolean | undefined;
-			rr1s?: boolean | undefined;
-			drop?: number | undefined;
-			fatigued?: boolean | undefined;
-			end?: string | undefined;
-			flow?: number | undefined;
-			ebb?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			otherToggles?: Record<string, {
-				toggled: boolean;
-			}> | undefined;
-			adjust?: string | number | undefined;
-			count?: number | undefined;
-			sides?: number | undefined;
-		} | undefined;
-	}> | null | undefined;
 }>;
 export type CharacterGift = z.infer<typeof giftValidator>;
 export type EntityType = z.infer<typeof entityTypeValidator>;
@@ -25815,161 +35095,6 @@ export declare const collectedEntityValidator: z.ZodObject<{
 		text: string;
 		public: boolean;
 	}[];
-	entity: {
-		type: "CHARACTER" | "COG";
-		name: string;
-		attributes: {
-			per: number;
-			tek: number;
-			agi: number;
-			dex: number;
-			int: number;
-			spi: number;
-			str: number;
-			wis: number;
-			cha: number;
-			hp: number;
-			max_hp: number;
-			mp: number;
-			max_mp: number;
-			vim: number;
-			max_vim: number;
-			init: number;
-			speed: number;
-			hero?: number | undefined;
-			max_hero?: number | undefined;
-			xp?: number | undefined;
-			sp?: number | undefined;
-			armor?: number | undefined;
-			burden?: number | undefined;
-			casting?: number | undefined;
-			L?: number | undefined;
-			radius?: number | undefined;
-			reach?: number | undefined;
-			shield?: number | undefined;
-			bluespace?: number | undefined;
-			trii?: number | undefined;
-			max_trii?: number | undefined;
-			free_hands?: number | undefined;
-			carrying_capacity?: number | undefined;
-			alerts?: number | undefined;
-			max_alerts?: number | undefined;
-			recovery_shock?: number | undefined;
-			acc?: number | undefined;
-			dmg?: number | undefined;
-			actions?: number | undefined;
-			reactions?: number | undefined;
-			actions_on_turn?: number | undefined;
-			reactions_on_turn?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			aggressive_acc?: number | undefined;
-			aggressive_dmg?: number | undefined;
-			arcane_acc?: number | undefined;
-			arcane_dmg?: number | undefined;
-			balanced_acc?: number | undefined;
-			balanced_dmg?: number | undefined;
-			blade_acc?: number | undefined;
-			blade_dmg?: number | undefined;
-			bow_acc?: number | undefined;
-			bow_dmg?: number | undefined;
-			brawling_acc?: number | undefined;
-			brawling_dmg?: number | undefined;
-			brutal_acc?: number | undefined;
-			brutal_dmg?: number | undefined;
-			cannon_acc?: number | undefined;
-			cannon_dmg?: number | undefined;
-			great_acc?: number | undefined;
-			great_dmg?: number | undefined;
-			grenade_acc?: number | undefined;
-			grenade_dmg?: number | undefined;
-			hookwhip_acc?: number | undefined;
-			hookwhip_dmg?: number | undefined;
-			improvised_acc?: number | undefined;
-			improvised_dmg?: number | undefined;
-			polearm_acc?: number | undefined;
-			polearm_dmg?: number | undefined;
-			protector_acc?: number | undefined;
-			protector_dmg?: number | undefined;
-			rifle_acc?: number | undefined;
-			rifle_dmg?: number | undefined;
-			shotgun_acc?: number | undefined;
-			shotgun_dmg?: number | undefined;
-			sidearm_acc?: number | undefined;
-			sidearm_dmg?: number | undefined;
-			thrown_acc?: number | undefined;
-			thrown_dmg?: number | undefined;
-			tinkertech_acc?: number | undefined;
-			tinkertech_dmg?: number | undefined;
-			unarmed_acc?: number | undefined;
-			unarmed_dmg?: number | undefined;
-			whip_acc?: number | undefined;
-			whip_dmg?: number | undefined;
-			fall_damage_resistance?: number | undefined;
-			vim_damage_resistance?: number | undefined;
-			burn_damage_resistance?: number | undefined;
-			bleed_damage_resistance?: number | undefined;
-			stun_damage_resistance?: number | undefined;
-			paralysis_damage_resistance?: number | undefined;
-			attribute_damage_resistance?: number | undefined;
-			galvanic_damage_resistance?: number | undefined;
-			magical_damage_resistance?: number | undefined;
-			physical_damage_resistance?: number | undefined;
-			piercing_damage_resistance?: number | undefined;
-			slashing_damage_resistance?: number | undefined;
-			bludgeoning_damage_resistance?: number | undefined;
-			burning?: number | undefined;
-			bleeding?: number | undefined;
-			paralysis?: number | undefined;
-			stun?: number | undefined;
-			agi_dmg?: number | undefined;
-			cha_dmg?: number | undefined;
-			dex_dmg?: number | undefined;
-			int_dmg?: number | undefined;
-			per_dmg?: number | undefined;
-			spi_dmg?: number | undefined;
-			str_dmg?: number | undefined;
-			tek_dmg?: number | undefined;
-			wis_dmg?: number | undefined;
-		} & {
-			[k: string]: number;
-		};
-		other_fields: {
-			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			cog_type?: string | undefined;
-			cog_creation_options?: {
-				type: string;
-				name: string;
-				desc: string;
-				level: string | number;
-				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
-				abilitySelection: Record<string, string>;
-				variableAbilityCost: Record<string, string | number>;
-			} | undefined;
-			dice_settings?: {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			} | undefined;
-			in_combat?: boolean | undefined;
-			disabled_actions?: Record<string, {
-				msg: string;
-				icon?: string | undefined;
-			}[]> | undefined;
-		};
-		public: boolean;
-	};
 	abilities: {
 		name: string;
 		effect: string;
@@ -26460,6 +35585,161 @@ export declare const collectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
+	entity: {
+		type: "CHARACTER" | "COG";
+		name: string;
+		attributes: {
+			per: number;
+			tek: number;
+			agi: number;
+			dex: number;
+			int: number;
+			spi: number;
+			str: number;
+			wis: number;
+			cha: number;
+			hp: number;
+			max_hp: number;
+			mp: number;
+			max_mp: number;
+			vim: number;
+			max_vim: number;
+			init: number;
+			speed: number;
+			hero?: number | undefined;
+			max_hero?: number | undefined;
+			xp?: number | undefined;
+			sp?: number | undefined;
+			armor?: number | undefined;
+			burden?: number | undefined;
+			casting?: number | undefined;
+			L?: number | undefined;
+			radius?: number | undefined;
+			reach?: number | undefined;
+			shield?: number | undefined;
+			bluespace?: number | undefined;
+			trii?: number | undefined;
+			max_trii?: number | undefined;
+			free_hands?: number | undefined;
+			carrying_capacity?: number | undefined;
+			alerts?: number | undefined;
+			max_alerts?: number | undefined;
+			recovery_shock?: number | undefined;
+			acc?: number | undefined;
+			dmg?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			actions_on_turn?: number | undefined;
+			reactions_on_turn?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			aggressive_acc?: number | undefined;
+			aggressive_dmg?: number | undefined;
+			arcane_acc?: number | undefined;
+			arcane_dmg?: number | undefined;
+			balanced_acc?: number | undefined;
+			balanced_dmg?: number | undefined;
+			blade_acc?: number | undefined;
+			blade_dmg?: number | undefined;
+			bow_acc?: number | undefined;
+			bow_dmg?: number | undefined;
+			brawling_acc?: number | undefined;
+			brawling_dmg?: number | undefined;
+			brutal_acc?: number | undefined;
+			brutal_dmg?: number | undefined;
+			cannon_acc?: number | undefined;
+			cannon_dmg?: number | undefined;
+			great_acc?: number | undefined;
+			great_dmg?: number | undefined;
+			grenade_acc?: number | undefined;
+			grenade_dmg?: number | undefined;
+			hookwhip_acc?: number | undefined;
+			hookwhip_dmg?: number | undefined;
+			improvised_acc?: number | undefined;
+			improvised_dmg?: number | undefined;
+			polearm_acc?: number | undefined;
+			polearm_dmg?: number | undefined;
+			protector_acc?: number | undefined;
+			protector_dmg?: number | undefined;
+			rifle_acc?: number | undefined;
+			rifle_dmg?: number | undefined;
+			shotgun_acc?: number | undefined;
+			shotgun_dmg?: number | undefined;
+			sidearm_acc?: number | undefined;
+			sidearm_dmg?: number | undefined;
+			thrown_acc?: number | undefined;
+			thrown_dmg?: number | undefined;
+			tinkertech_acc?: number | undefined;
+			tinkertech_dmg?: number | undefined;
+			unarmed_acc?: number | undefined;
+			unarmed_dmg?: number | undefined;
+			whip_acc?: number | undefined;
+			whip_dmg?: number | undefined;
+			fall_damage_resistance?: number | undefined;
+			vim_damage_resistance?: number | undefined;
+			burn_damage_resistance?: number | undefined;
+			bleed_damage_resistance?: number | undefined;
+			stun_damage_resistance?: number | undefined;
+			paralysis_damage_resistance?: number | undefined;
+			attribute_damage_resistance?: number | undefined;
+			galvanic_damage_resistance?: number | undefined;
+			magical_damage_resistance?: number | undefined;
+			physical_damage_resistance?: number | undefined;
+			piercing_damage_resistance?: number | undefined;
+			slashing_damage_resistance?: number | undefined;
+			bludgeoning_damage_resistance?: number | undefined;
+			burning?: number | undefined;
+			bleeding?: number | undefined;
+			paralysis?: number | undefined;
+			stun?: number | undefined;
+			agi_dmg?: number | undefined;
+			cha_dmg?: number | undefined;
+			dex_dmg?: number | undefined;
+			int_dmg?: number | undefined;
+			per_dmg?: number | undefined;
+			spi_dmg?: number | undefined;
+			str_dmg?: number | undefined;
+			tek_dmg?: number | undefined;
+			wis_dmg?: number | undefined;
+		} & {
+			[k: string]: number;
+		};
+		other_fields: {
+			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			cog_type?: string | undefined;
+			cog_creation_options?: {
+				type: string;
+				name: string;
+				desc: string;
+				level: string | number;
+				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
+				abilitySelection: Record<string, string>;
+				variableAbilityCost: Record<string, string | number>;
+			} | undefined;
+			dice_settings?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+			in_combat?: boolean | undefined;
+			disabled_actions?: Record<string, {
+				msg: string;
+				icon?: string | undefined;
+			}[]> | undefined;
+		};
+		public: boolean;
+	};
 	flux: {
 		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
 		text: string;
@@ -26472,6 +35752,68 @@ export declare const collectedEntityValidator: z.ZodObject<{
 		key: "NOTES" | "DESC" | "BACKSTORY";
 		text: string;
 		public?: boolean | undefined;
+	}[];
+	abilities: {
+		name: string;
+		effect: string;
+		active: boolean;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}[];
+	items: {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
 	}[];
 	entity: {
 		type: "CHARACTER" | "COG";
@@ -26628,68 +35970,6 @@ export declare const collectedEntityValidator: z.ZodObject<{
 		};
 		public?: boolean | undefined;
 	};
-	abilities: {
-		name: string;
-		effect: string;
-		active: boolean;
-		custom_fields?: {
-			path?: string | undefined;
-			range?: string | undefined;
-			activation?: string | undefined;
-			expedited?: string | undefined;
-			flavor?: string | undefined;
-			purchase?: string | undefined;
-			unlocks?: string | undefined;
-			partial_unlocks?: string | undefined;
-			prereq?: string | undefined;
-			build_dc?: string | undefined;
-			build_time?: string | undefined;
-			cost?: {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			} | undefined;
-			mp_cost?: number[] | undefined;
-			cast_dl?: number[] | undefined;
-			not_req?: boolean | undefined;
-			repeatable?: boolean | undefined;
-			times_taken?: number | undefined;
-			keys?: Record<string, string> | undefined;
-			stars?: number | undefined;
-			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}[];
-	items: {
-		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
-		name: string;
-		active: boolean;
-		bulk: number;
-		desc: string;
-		custom_fields?: {
-			attr?: string | undefined;
-			category?: string | undefined;
-			courses?: string | undefined;
-			dmg?: string | undefined;
-			range?: string | undefined;
-			special?: string | undefined;
-			weapon_type?: string | undefined;
-			dc_cost?: number | undefined;
-			in_storage?: boolean | undefined;
-			not_evadable?: boolean | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}[];
 	flux: {
 		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
 		text: string;
@@ -31435,189 +40715,6 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		entity_id: string;
 		public: boolean;
 	}[];
-	entity: {
-		type: "CHARACTER" | "COG";
-		name: string;
-		id: string;
-		attributes: {
-			per: number;
-			tek: number;
-			agi: number;
-			dex: number;
-			int: number;
-			spi: number;
-			str: number;
-			wis: number;
-			cha: number;
-			hp: number;
-			max_hp: number;
-			mp: number;
-			max_mp: number;
-			vim: number;
-			max_vim: number;
-			init: number;
-			speed: number;
-			hero?: number | undefined;
-			max_hero?: number | undefined;
-			xp?: number | undefined;
-			sp?: number | undefined;
-			armor?: number | undefined;
-			burden?: number | undefined;
-			casting?: number | undefined;
-			L?: number | undefined;
-			radius?: number | undefined;
-			reach?: number | undefined;
-			shield?: number | undefined;
-			bluespace?: number | undefined;
-			trii?: number | undefined;
-			max_trii?: number | undefined;
-			free_hands?: number | undefined;
-			carrying_capacity?: number | undefined;
-			alerts?: number | undefined;
-			max_alerts?: number | undefined;
-			recovery_shock?: number | undefined;
-			acc?: number | undefined;
-			dmg?: number | undefined;
-			actions?: number | undefined;
-			reactions?: number | undefined;
-			actions_on_turn?: number | undefined;
-			reactions_on_turn?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			aggressive_acc?: number | undefined;
-			aggressive_dmg?: number | undefined;
-			arcane_acc?: number | undefined;
-			arcane_dmg?: number | undefined;
-			balanced_acc?: number | undefined;
-			balanced_dmg?: number | undefined;
-			blade_acc?: number | undefined;
-			blade_dmg?: number | undefined;
-			bow_acc?: number | undefined;
-			bow_dmg?: number | undefined;
-			brawling_acc?: number | undefined;
-			brawling_dmg?: number | undefined;
-			brutal_acc?: number | undefined;
-			brutal_dmg?: number | undefined;
-			cannon_acc?: number | undefined;
-			cannon_dmg?: number | undefined;
-			great_acc?: number | undefined;
-			great_dmg?: number | undefined;
-			grenade_acc?: number | undefined;
-			grenade_dmg?: number | undefined;
-			hookwhip_acc?: number | undefined;
-			hookwhip_dmg?: number | undefined;
-			improvised_acc?: number | undefined;
-			improvised_dmg?: number | undefined;
-			polearm_acc?: number | undefined;
-			polearm_dmg?: number | undefined;
-			protector_acc?: number | undefined;
-			protector_dmg?: number | undefined;
-			rifle_acc?: number | undefined;
-			rifle_dmg?: number | undefined;
-			shotgun_acc?: number | undefined;
-			shotgun_dmg?: number | undefined;
-			sidearm_acc?: number | undefined;
-			sidearm_dmg?: number | undefined;
-			thrown_acc?: number | undefined;
-			thrown_dmg?: number | undefined;
-			tinkertech_acc?: number | undefined;
-			tinkertech_dmg?: number | undefined;
-			unarmed_acc?: number | undefined;
-			unarmed_dmg?: number | undefined;
-			whip_acc?: number | undefined;
-			whip_dmg?: number | undefined;
-			fall_damage_resistance?: number | undefined;
-			vim_damage_resistance?: number | undefined;
-			burn_damage_resistance?: number | undefined;
-			bleed_damage_resistance?: number | undefined;
-			stun_damage_resistance?: number | undefined;
-			paralysis_damage_resistance?: number | undefined;
-			attribute_damage_resistance?: number | undefined;
-			galvanic_damage_resistance?: number | undefined;
-			magical_damage_resistance?: number | undefined;
-			physical_damage_resistance?: number | undefined;
-			piercing_damage_resistance?: number | undefined;
-			slashing_damage_resistance?: number | undefined;
-			bludgeoning_damage_resistance?: number | undefined;
-			burning?: number | undefined;
-			bleeding?: number | undefined;
-			paralysis?: number | undefined;
-			stun?: number | undefined;
-			agi_dmg?: number | undefined;
-			cha_dmg?: number | undefined;
-			dex_dmg?: number | undefined;
-			int_dmg?: number | undefined;
-			per_dmg?: number | undefined;
-			spi_dmg?: number | undefined;
-			str_dmg?: number | undefined;
-			tek_dmg?: number | undefined;
-			wis_dmg?: number | undefined;
-		} & {
-			[k: string]: number;
-		};
-		other_fields: {
-			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			cog_type?: string | undefined;
-			cog_creation_options?: {
-				type: string;
-				name: string;
-				desc: string;
-				level: string | number;
-				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
-				abilitySelection: Record<string, string>;
-				variableAbilityCost: Record<string, string | number>;
-			} | undefined;
-			dice_settings?: {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			} | undefined;
-			in_combat?: boolean | undefined;
-			disabled_actions?: Record<string, {
-				msg: string;
-				icon?: string | undefined;
-			}[]> | undefined;
-		};
-		public: boolean;
-		owner: string;
-		computed_attributes?: Record<string, {
-			val: number;
-			base?: number | undefined;
-			reason?: {
-				val: number;
-				src: string;
-				abilityId?: string | undefined;
-				itemId?: string | undefined;
-			}[] | undefined;
-			dice?: {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			} | undefined;
-		}> | null | undefined;
-	};
 	abilities: {
 		name: string;
 		effect: string;
@@ -32112,6 +41209,189 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		} | null | undefined;
 		comment?: string | null | undefined;
 	}[];
+	entity: {
+		type: "CHARACTER" | "COG";
+		name: string;
+		id: string;
+		attributes: {
+			per: number;
+			tek: number;
+			agi: number;
+			dex: number;
+			int: number;
+			spi: number;
+			str: number;
+			wis: number;
+			cha: number;
+			hp: number;
+			max_hp: number;
+			mp: number;
+			max_mp: number;
+			vim: number;
+			max_vim: number;
+			init: number;
+			speed: number;
+			hero?: number | undefined;
+			max_hero?: number | undefined;
+			xp?: number | undefined;
+			sp?: number | undefined;
+			armor?: number | undefined;
+			burden?: number | undefined;
+			casting?: number | undefined;
+			L?: number | undefined;
+			radius?: number | undefined;
+			reach?: number | undefined;
+			shield?: number | undefined;
+			bluespace?: number | undefined;
+			trii?: number | undefined;
+			max_trii?: number | undefined;
+			free_hands?: number | undefined;
+			carrying_capacity?: number | undefined;
+			alerts?: number | undefined;
+			max_alerts?: number | undefined;
+			recovery_shock?: number | undefined;
+			acc?: number | undefined;
+			dmg?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			actions_on_turn?: number | undefined;
+			reactions_on_turn?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			aggressive_acc?: number | undefined;
+			aggressive_dmg?: number | undefined;
+			arcane_acc?: number | undefined;
+			arcane_dmg?: number | undefined;
+			balanced_acc?: number | undefined;
+			balanced_dmg?: number | undefined;
+			blade_acc?: number | undefined;
+			blade_dmg?: number | undefined;
+			bow_acc?: number | undefined;
+			bow_dmg?: number | undefined;
+			brawling_acc?: number | undefined;
+			brawling_dmg?: number | undefined;
+			brutal_acc?: number | undefined;
+			brutal_dmg?: number | undefined;
+			cannon_acc?: number | undefined;
+			cannon_dmg?: number | undefined;
+			great_acc?: number | undefined;
+			great_dmg?: number | undefined;
+			grenade_acc?: number | undefined;
+			grenade_dmg?: number | undefined;
+			hookwhip_acc?: number | undefined;
+			hookwhip_dmg?: number | undefined;
+			improvised_acc?: number | undefined;
+			improvised_dmg?: number | undefined;
+			polearm_acc?: number | undefined;
+			polearm_dmg?: number | undefined;
+			protector_acc?: number | undefined;
+			protector_dmg?: number | undefined;
+			rifle_acc?: number | undefined;
+			rifle_dmg?: number | undefined;
+			shotgun_acc?: number | undefined;
+			shotgun_dmg?: number | undefined;
+			sidearm_acc?: number | undefined;
+			sidearm_dmg?: number | undefined;
+			thrown_acc?: number | undefined;
+			thrown_dmg?: number | undefined;
+			tinkertech_acc?: number | undefined;
+			tinkertech_dmg?: number | undefined;
+			unarmed_acc?: number | undefined;
+			unarmed_dmg?: number | undefined;
+			whip_acc?: number | undefined;
+			whip_dmg?: number | undefined;
+			fall_damage_resistance?: number | undefined;
+			vim_damage_resistance?: number | undefined;
+			burn_damage_resistance?: number | undefined;
+			bleed_damage_resistance?: number | undefined;
+			stun_damage_resistance?: number | undefined;
+			paralysis_damage_resistance?: number | undefined;
+			attribute_damage_resistance?: number | undefined;
+			galvanic_damage_resistance?: number | undefined;
+			magical_damage_resistance?: number | undefined;
+			physical_damage_resistance?: number | undefined;
+			piercing_damage_resistance?: number | undefined;
+			slashing_damage_resistance?: number | undefined;
+			bludgeoning_damage_resistance?: number | undefined;
+			burning?: number | undefined;
+			bleeding?: number | undefined;
+			paralysis?: number | undefined;
+			stun?: number | undefined;
+			agi_dmg?: number | undefined;
+			cha_dmg?: number | undefined;
+			dex_dmg?: number | undefined;
+			int_dmg?: number | undefined;
+			per_dmg?: number | undefined;
+			spi_dmg?: number | undefined;
+			str_dmg?: number | undefined;
+			tek_dmg?: number | undefined;
+			wis_dmg?: number | undefined;
+		} & {
+			[k: string]: number;
+		};
+		other_fields: {
+			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			cog_type?: string | undefined;
+			cog_creation_options?: {
+				type: string;
+				name: string;
+				desc: string;
+				level: string | number;
+				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
+				abilitySelection: Record<string, string>;
+				variableAbilityCost: Record<string, string | number>;
+			} | undefined;
+			dice_settings?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+			in_combat?: boolean | undefined;
+			disabled_actions?: Record<string, {
+				msg: string;
+				icon?: string | undefined;
+			}[]> | undefined;
+		};
+		public: boolean;
+		owner: string;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
+	};
 	flux: {
 		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
 		text: string;
@@ -32128,6 +41408,72 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 		id: string;
 		entity_id: string;
 		public?: boolean | undefined;
+	}[];
+	abilities: {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}[];
+	items: {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
 	}[];
 	entity: {
 		type: "CHARACTER" | "COG";
@@ -32312,72 +41658,6 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			} | undefined;
 		}> | null | undefined;
 	};
-	abilities: {
-		name: string;
-		effect: string;
-		active: boolean;
-		id: string;
-		entity_id: string;
-		custom_fields?: {
-			path?: string | undefined;
-			range?: string | undefined;
-			activation?: string | undefined;
-			expedited?: string | undefined;
-			flavor?: string | undefined;
-			purchase?: string | undefined;
-			unlocks?: string | undefined;
-			partial_unlocks?: string | undefined;
-			prereq?: string | undefined;
-			build_dc?: string | undefined;
-			build_time?: string | undefined;
-			cost?: {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			} | undefined;
-			mp_cost?: number[] | undefined;
-			cast_dl?: number[] | undefined;
-			not_req?: boolean | undefined;
-			repeatable?: boolean | undefined;
-			times_taken?: number | undefined;
-			keys?: Record<string, string> | undefined;
-			stars?: number | undefined;
-			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}[];
-	items: {
-		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
-		name: string;
-		active: boolean;
-		id: string;
-		entity_id: string;
-		bulk: number;
-		desc: string;
-		custom_fields?: {
-			attr?: string | undefined;
-			category?: string | undefined;
-			courses?: string | undefined;
-			dmg?: string | undefined;
-			range?: string | undefined;
-			special?: string | undefined;
-			weapon_type?: string | undefined;
-			dc_cost?: number | undefined;
-			in_storage?: boolean | undefined;
-			not_evadable?: boolean | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}[];
 	flux: {
 		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
 		text: string;
@@ -32406,864 +41686,6 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		text: string;
 		public?: boolean | undefined;
 	}>, "many">;
-	entity: z.ZodObject<{
-		name: z.ZodString;
-		type: z.ZodEnum<[
-			"CHARACTER",
-			"COG"
-		]>;
-		attributes: z.ZodObject<{
-			agi: z.ZodDefault<z.ZodNumber>;
-			cha: z.ZodDefault<z.ZodNumber>;
-			dex: z.ZodDefault<z.ZodNumber>;
-			int: z.ZodDefault<z.ZodNumber>;
-			per: z.ZodDefault<z.ZodNumber>;
-			spi: z.ZodDefault<z.ZodNumber>;
-			str: z.ZodDefault<z.ZodNumber>;
-			tek: z.ZodDefault<z.ZodNumber>;
-			wis: z.ZodDefault<z.ZodNumber>;
-			hp: z.ZodNumber;
-			max_hp: z.ZodNumber;
-			mp: z.ZodNumber;
-			max_mp: z.ZodNumber;
-			vim: z.ZodNumber;
-			max_vim: z.ZodNumber;
-			hero: z.ZodOptional<z.ZodNumber>;
-			max_hero: z.ZodOptional<z.ZodNumber>;
-			init: z.ZodNumber;
-			speed: z.ZodNumber;
-			xp: z.ZodOptional<z.ZodNumber>;
-			sp: z.ZodOptional<z.ZodNumber>;
-			armor: z.ZodOptional<z.ZodNumber>;
-			burden: z.ZodOptional<z.ZodNumber>;
-			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
-			radius: z.ZodOptional<z.ZodNumber>;
-			reach: z.ZodOptional<z.ZodNumber>;
-			shield: z.ZodOptional<z.ZodNumber>;
-			bluespace: z.ZodOptional<z.ZodNumber>;
-			trii: z.ZodOptional<z.ZodNumber>;
-			max_trii: z.ZodOptional<z.ZodNumber>;
-			free_hands: z.ZodOptional<z.ZodNumber>;
-			carrying_capacity: z.ZodOptional<z.ZodNumber>;
-			alerts: z.ZodOptional<z.ZodNumber>;
-			max_alerts: z.ZodOptional<z.ZodNumber>;
-			recovery_shock: z.ZodOptional<z.ZodNumber>;
-			acc: z.ZodOptional<z.ZodNumber>;
-			dmg: z.ZodOptional<z.ZodNumber>;
-			actions: z.ZodOptional<z.ZodNumber>;
-			reactions: z.ZodOptional<z.ZodNumber>;
-			actions_on_turn: z.ZodOptional<z.ZodNumber>;
-			reactions_on_turn: z.ZodOptional<z.ZodNumber>;
-			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-			aggressive_acc: z.ZodOptional<z.ZodNumber>;
-			aggressive_dmg: z.ZodOptional<z.ZodNumber>;
-			arcane_acc: z.ZodOptional<z.ZodNumber>;
-			arcane_dmg: z.ZodOptional<z.ZodNumber>;
-			balanced_acc: z.ZodOptional<z.ZodNumber>;
-			balanced_dmg: z.ZodOptional<z.ZodNumber>;
-			blade_acc: z.ZodOptional<z.ZodNumber>;
-			blade_dmg: z.ZodOptional<z.ZodNumber>;
-			bow_acc: z.ZodOptional<z.ZodNumber>;
-			bow_dmg: z.ZodOptional<z.ZodNumber>;
-			brawling_acc: z.ZodOptional<z.ZodNumber>;
-			brawling_dmg: z.ZodOptional<z.ZodNumber>;
-			brutal_acc: z.ZodOptional<z.ZodNumber>;
-			brutal_dmg: z.ZodOptional<z.ZodNumber>;
-			cannon_acc: z.ZodOptional<z.ZodNumber>;
-			cannon_dmg: z.ZodOptional<z.ZodNumber>;
-			great_acc: z.ZodOptional<z.ZodNumber>;
-			great_dmg: z.ZodOptional<z.ZodNumber>;
-			grenade_acc: z.ZodOptional<z.ZodNumber>;
-			grenade_dmg: z.ZodOptional<z.ZodNumber>;
-			hookwhip_acc: z.ZodOptional<z.ZodNumber>;
-			hookwhip_dmg: z.ZodOptional<z.ZodNumber>;
-			improvised_acc: z.ZodOptional<z.ZodNumber>;
-			improvised_dmg: z.ZodOptional<z.ZodNumber>;
-			polearm_acc: z.ZodOptional<z.ZodNumber>;
-			polearm_dmg: z.ZodOptional<z.ZodNumber>;
-			protector_acc: z.ZodOptional<z.ZodNumber>;
-			protector_dmg: z.ZodOptional<z.ZodNumber>;
-			rifle_acc: z.ZodOptional<z.ZodNumber>;
-			rifle_dmg: z.ZodOptional<z.ZodNumber>;
-			shotgun_acc: z.ZodOptional<z.ZodNumber>;
-			shotgun_dmg: z.ZodOptional<z.ZodNumber>;
-			sidearm_acc: z.ZodOptional<z.ZodNumber>;
-			sidearm_dmg: z.ZodOptional<z.ZodNumber>;
-			thrown_acc: z.ZodOptional<z.ZodNumber>;
-			thrown_dmg: z.ZodOptional<z.ZodNumber>;
-			tinkertech_acc: z.ZodOptional<z.ZodNumber>;
-			tinkertech_dmg: z.ZodOptional<z.ZodNumber>;
-			unarmed_acc: z.ZodOptional<z.ZodNumber>;
-			unarmed_dmg: z.ZodOptional<z.ZodNumber>;
-			whip_acc: z.ZodOptional<z.ZodNumber>;
-			whip_dmg: z.ZodOptional<z.ZodNumber>;
-			fall_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			vim_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			burn_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			bleed_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			stun_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			paralysis_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			attribute_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			galvanic_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			magical_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			physical_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			piercing_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			slashing_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			bludgeoning_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			burning: z.ZodOptional<z.ZodNumber>;
-			bleeding: z.ZodOptional<z.ZodNumber>;
-			paralysis: z.ZodOptional<z.ZodNumber>;
-			stun: z.ZodOptional<z.ZodNumber>;
-			agi_dmg: z.ZodOptional<z.ZodNumber>;
-			cha_dmg: z.ZodOptional<z.ZodNumber>;
-			dex_dmg: z.ZodOptional<z.ZodNumber>;
-			int_dmg: z.ZodOptional<z.ZodNumber>;
-			per_dmg: z.ZodOptional<z.ZodNumber>;
-			spi_dmg: z.ZodOptional<z.ZodNumber>;
-			str_dmg: z.ZodOptional<z.ZodNumber>;
-			tek_dmg: z.ZodOptional<z.ZodNumber>;
-			wis_dmg: z.ZodOptional<z.ZodNumber>;
-		}, "strip", z.ZodNumber, z.objectOutputType<{
-			agi: z.ZodDefault<z.ZodNumber>;
-			cha: z.ZodDefault<z.ZodNumber>;
-			dex: z.ZodDefault<z.ZodNumber>;
-			int: z.ZodDefault<z.ZodNumber>;
-			per: z.ZodDefault<z.ZodNumber>;
-			spi: z.ZodDefault<z.ZodNumber>;
-			str: z.ZodDefault<z.ZodNumber>;
-			tek: z.ZodDefault<z.ZodNumber>;
-			wis: z.ZodDefault<z.ZodNumber>;
-			hp: z.ZodNumber;
-			max_hp: z.ZodNumber;
-			mp: z.ZodNumber;
-			max_mp: z.ZodNumber;
-			vim: z.ZodNumber;
-			max_vim: z.ZodNumber;
-			hero: z.ZodOptional<z.ZodNumber>;
-			max_hero: z.ZodOptional<z.ZodNumber>;
-			init: z.ZodNumber;
-			speed: z.ZodNumber;
-			xp: z.ZodOptional<z.ZodNumber>;
-			sp: z.ZodOptional<z.ZodNumber>;
-			armor: z.ZodOptional<z.ZodNumber>;
-			burden: z.ZodOptional<z.ZodNumber>;
-			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
-			radius: z.ZodOptional<z.ZodNumber>;
-			reach: z.ZodOptional<z.ZodNumber>;
-			shield: z.ZodOptional<z.ZodNumber>;
-			bluespace: z.ZodOptional<z.ZodNumber>;
-			trii: z.ZodOptional<z.ZodNumber>;
-			max_trii: z.ZodOptional<z.ZodNumber>;
-			free_hands: z.ZodOptional<z.ZodNumber>;
-			carrying_capacity: z.ZodOptional<z.ZodNumber>;
-			alerts: z.ZodOptional<z.ZodNumber>;
-			max_alerts: z.ZodOptional<z.ZodNumber>;
-			recovery_shock: z.ZodOptional<z.ZodNumber>;
-			acc: z.ZodOptional<z.ZodNumber>;
-			dmg: z.ZodOptional<z.ZodNumber>;
-			actions: z.ZodOptional<z.ZodNumber>;
-			reactions: z.ZodOptional<z.ZodNumber>;
-			actions_on_turn: z.ZodOptional<z.ZodNumber>;
-			reactions_on_turn: z.ZodOptional<z.ZodNumber>;
-			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-			aggressive_acc: z.ZodOptional<z.ZodNumber>;
-			aggressive_dmg: z.ZodOptional<z.ZodNumber>;
-			arcane_acc: z.ZodOptional<z.ZodNumber>;
-			arcane_dmg: z.ZodOptional<z.ZodNumber>;
-			balanced_acc: z.ZodOptional<z.ZodNumber>;
-			balanced_dmg: z.ZodOptional<z.ZodNumber>;
-			blade_acc: z.ZodOptional<z.ZodNumber>;
-			blade_dmg: z.ZodOptional<z.ZodNumber>;
-			bow_acc: z.ZodOptional<z.ZodNumber>;
-			bow_dmg: z.ZodOptional<z.ZodNumber>;
-			brawling_acc: z.ZodOptional<z.ZodNumber>;
-			brawling_dmg: z.ZodOptional<z.ZodNumber>;
-			brutal_acc: z.ZodOptional<z.ZodNumber>;
-			brutal_dmg: z.ZodOptional<z.ZodNumber>;
-			cannon_acc: z.ZodOptional<z.ZodNumber>;
-			cannon_dmg: z.ZodOptional<z.ZodNumber>;
-			great_acc: z.ZodOptional<z.ZodNumber>;
-			great_dmg: z.ZodOptional<z.ZodNumber>;
-			grenade_acc: z.ZodOptional<z.ZodNumber>;
-			grenade_dmg: z.ZodOptional<z.ZodNumber>;
-			hookwhip_acc: z.ZodOptional<z.ZodNumber>;
-			hookwhip_dmg: z.ZodOptional<z.ZodNumber>;
-			improvised_acc: z.ZodOptional<z.ZodNumber>;
-			improvised_dmg: z.ZodOptional<z.ZodNumber>;
-			polearm_acc: z.ZodOptional<z.ZodNumber>;
-			polearm_dmg: z.ZodOptional<z.ZodNumber>;
-			protector_acc: z.ZodOptional<z.ZodNumber>;
-			protector_dmg: z.ZodOptional<z.ZodNumber>;
-			rifle_acc: z.ZodOptional<z.ZodNumber>;
-			rifle_dmg: z.ZodOptional<z.ZodNumber>;
-			shotgun_acc: z.ZodOptional<z.ZodNumber>;
-			shotgun_dmg: z.ZodOptional<z.ZodNumber>;
-			sidearm_acc: z.ZodOptional<z.ZodNumber>;
-			sidearm_dmg: z.ZodOptional<z.ZodNumber>;
-			thrown_acc: z.ZodOptional<z.ZodNumber>;
-			thrown_dmg: z.ZodOptional<z.ZodNumber>;
-			tinkertech_acc: z.ZodOptional<z.ZodNumber>;
-			tinkertech_dmg: z.ZodOptional<z.ZodNumber>;
-			unarmed_acc: z.ZodOptional<z.ZodNumber>;
-			unarmed_dmg: z.ZodOptional<z.ZodNumber>;
-			whip_acc: z.ZodOptional<z.ZodNumber>;
-			whip_dmg: z.ZodOptional<z.ZodNumber>;
-			fall_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			vim_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			burn_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			bleed_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			stun_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			paralysis_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			attribute_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			galvanic_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			magical_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			physical_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			piercing_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			slashing_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			bludgeoning_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			burning: z.ZodOptional<z.ZodNumber>;
-			bleeding: z.ZodOptional<z.ZodNumber>;
-			paralysis: z.ZodOptional<z.ZodNumber>;
-			stun: z.ZodOptional<z.ZodNumber>;
-			agi_dmg: z.ZodOptional<z.ZodNumber>;
-			cha_dmg: z.ZodOptional<z.ZodNumber>;
-			dex_dmg: z.ZodOptional<z.ZodNumber>;
-			int_dmg: z.ZodOptional<z.ZodNumber>;
-			per_dmg: z.ZodOptional<z.ZodNumber>;
-			spi_dmg: z.ZodOptional<z.ZodNumber>;
-			str_dmg: z.ZodOptional<z.ZodNumber>;
-			tek_dmg: z.ZodOptional<z.ZodNumber>;
-			wis_dmg: z.ZodOptional<z.ZodNumber>;
-		}, z.ZodNumber, "strip">, z.objectInputType<{
-			agi: z.ZodDefault<z.ZodNumber>;
-			cha: z.ZodDefault<z.ZodNumber>;
-			dex: z.ZodDefault<z.ZodNumber>;
-			int: z.ZodDefault<z.ZodNumber>;
-			per: z.ZodDefault<z.ZodNumber>;
-			spi: z.ZodDefault<z.ZodNumber>;
-			str: z.ZodDefault<z.ZodNumber>;
-			tek: z.ZodDefault<z.ZodNumber>;
-			wis: z.ZodDefault<z.ZodNumber>;
-			hp: z.ZodNumber;
-			max_hp: z.ZodNumber;
-			mp: z.ZodNumber;
-			max_mp: z.ZodNumber;
-			vim: z.ZodNumber;
-			max_vim: z.ZodNumber;
-			hero: z.ZodOptional<z.ZodNumber>;
-			max_hero: z.ZodOptional<z.ZodNumber>;
-			init: z.ZodNumber;
-			speed: z.ZodNumber;
-			xp: z.ZodOptional<z.ZodNumber>;
-			sp: z.ZodOptional<z.ZodNumber>;
-			armor: z.ZodOptional<z.ZodNumber>;
-			burden: z.ZodOptional<z.ZodNumber>;
-			casting: z.ZodOptional<z.ZodNumber>;
-			L: z.ZodOptional<z.ZodNumber>;
-			radius: z.ZodOptional<z.ZodNumber>;
-			reach: z.ZodOptional<z.ZodNumber>;
-			shield: z.ZodOptional<z.ZodNumber>;
-			bluespace: z.ZodOptional<z.ZodNumber>;
-			trii: z.ZodOptional<z.ZodNumber>;
-			max_trii: z.ZodOptional<z.ZodNumber>;
-			free_hands: z.ZodOptional<z.ZodNumber>;
-			carrying_capacity: z.ZodOptional<z.ZodNumber>;
-			alerts: z.ZodOptional<z.ZodNumber>;
-			max_alerts: z.ZodOptional<z.ZodNumber>;
-			recovery_shock: z.ZodOptional<z.ZodNumber>;
-			acc: z.ZodOptional<z.ZodNumber>;
-			dmg: z.ZodOptional<z.ZodNumber>;
-			actions: z.ZodOptional<z.ZodNumber>;
-			reactions: z.ZodOptional<z.ZodNumber>;
-			actions_on_turn: z.ZodOptional<z.ZodNumber>;
-			reactions_on_turn: z.ZodOptional<z.ZodNumber>;
-			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-			aggressive_acc: z.ZodOptional<z.ZodNumber>;
-			aggressive_dmg: z.ZodOptional<z.ZodNumber>;
-			arcane_acc: z.ZodOptional<z.ZodNumber>;
-			arcane_dmg: z.ZodOptional<z.ZodNumber>;
-			balanced_acc: z.ZodOptional<z.ZodNumber>;
-			balanced_dmg: z.ZodOptional<z.ZodNumber>;
-			blade_acc: z.ZodOptional<z.ZodNumber>;
-			blade_dmg: z.ZodOptional<z.ZodNumber>;
-			bow_acc: z.ZodOptional<z.ZodNumber>;
-			bow_dmg: z.ZodOptional<z.ZodNumber>;
-			brawling_acc: z.ZodOptional<z.ZodNumber>;
-			brawling_dmg: z.ZodOptional<z.ZodNumber>;
-			brutal_acc: z.ZodOptional<z.ZodNumber>;
-			brutal_dmg: z.ZodOptional<z.ZodNumber>;
-			cannon_acc: z.ZodOptional<z.ZodNumber>;
-			cannon_dmg: z.ZodOptional<z.ZodNumber>;
-			great_acc: z.ZodOptional<z.ZodNumber>;
-			great_dmg: z.ZodOptional<z.ZodNumber>;
-			grenade_acc: z.ZodOptional<z.ZodNumber>;
-			grenade_dmg: z.ZodOptional<z.ZodNumber>;
-			hookwhip_acc: z.ZodOptional<z.ZodNumber>;
-			hookwhip_dmg: z.ZodOptional<z.ZodNumber>;
-			improvised_acc: z.ZodOptional<z.ZodNumber>;
-			improvised_dmg: z.ZodOptional<z.ZodNumber>;
-			polearm_acc: z.ZodOptional<z.ZodNumber>;
-			polearm_dmg: z.ZodOptional<z.ZodNumber>;
-			protector_acc: z.ZodOptional<z.ZodNumber>;
-			protector_dmg: z.ZodOptional<z.ZodNumber>;
-			rifle_acc: z.ZodOptional<z.ZodNumber>;
-			rifle_dmg: z.ZodOptional<z.ZodNumber>;
-			shotgun_acc: z.ZodOptional<z.ZodNumber>;
-			shotgun_dmg: z.ZodOptional<z.ZodNumber>;
-			sidearm_acc: z.ZodOptional<z.ZodNumber>;
-			sidearm_dmg: z.ZodOptional<z.ZodNumber>;
-			thrown_acc: z.ZodOptional<z.ZodNumber>;
-			thrown_dmg: z.ZodOptional<z.ZodNumber>;
-			tinkertech_acc: z.ZodOptional<z.ZodNumber>;
-			tinkertech_dmg: z.ZodOptional<z.ZodNumber>;
-			unarmed_acc: z.ZodOptional<z.ZodNumber>;
-			unarmed_dmg: z.ZodOptional<z.ZodNumber>;
-			whip_acc: z.ZodOptional<z.ZodNumber>;
-			whip_dmg: z.ZodOptional<z.ZodNumber>;
-			fall_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			vim_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			burn_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			bleed_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			stun_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			paralysis_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			attribute_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			galvanic_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			magical_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			physical_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			piercing_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			slashing_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			bludgeoning_damage_resistance: z.ZodOptional<z.ZodNumber>;
-			burning: z.ZodOptional<z.ZodNumber>;
-			bleeding: z.ZodOptional<z.ZodNumber>;
-			paralysis: z.ZodOptional<z.ZodNumber>;
-			stun: z.ZodOptional<z.ZodNumber>;
-			agi_dmg: z.ZodOptional<z.ZodNumber>;
-			cha_dmg: z.ZodOptional<z.ZodNumber>;
-			dex_dmg: z.ZodOptional<z.ZodNumber>;
-			int_dmg: z.ZodOptional<z.ZodNumber>;
-			per_dmg: z.ZodOptional<z.ZodNumber>;
-			spi_dmg: z.ZodOptional<z.ZodNumber>;
-			str_dmg: z.ZodOptional<z.ZodNumber>;
-			tek_dmg: z.ZodOptional<z.ZodNumber>;
-			wis_dmg: z.ZodOptional<z.ZodNumber>;
-		}, z.ZodNumber, "strip">>;
-		other_fields: z.ZodObject<{
-			gift: z.ZodOptional<z.ZodEnum<[
-				"Alertness",
-				"Craft",
-				"Alacrity",
-				"Finesse",
-				"Mind",
-				"Magic",
-				"Rage",
-				"Science",
-				"Charm",
-				"None"
-			]>>;
-			second_gift: z.ZodOptional<z.ZodEnum<[
-				"Alertness",
-				"Craft",
-				"Alacrity",
-				"Finesse",
-				"Mind",
-				"Magic",
-				"Rage",
-				"Science",
-				"Charm",
-				"None"
-			]>>;
-			cog_type: z.ZodOptional<z.ZodString>;
-			cog_creation_options: z.ZodOptional<z.ZodObject<{
-				name: z.ZodString;
-				level: z.ZodUnion<[
-					z.ZodString,
-					z.ZodNumber
-				]>;
-				type: z.ZodString;
-				desc: z.ZodString;
-				attrOverrides: z.ZodRecord<z.ZodEnum<[
-					"per",
-					"tek",
-					"agi",
-					"dex",
-					"int",
-					"spi",
-					"str",
-					"wis",
-					"cha"
-				]>, z.ZodEnum<[
-					"weak",
-					"moderate",
-					"strong",
-					"exceptional"
-				]>>;
-				abilitySelection: z.ZodRecord<z.ZodString, z.ZodString>;
-				variableAbilityCost: z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodString,
-					z.ZodNumber
-				]>>;
-			}, "strip", z.ZodTypeAny, {
-				type: string;
-				name: string;
-				desc: string;
-				level: string | number;
-				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
-				abilitySelection: Record<string, string>;
-				variableAbilityCost: Record<string, string | number>;
-			}, {
-				type: string;
-				name: string;
-				desc: string;
-				level: string | number;
-				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
-				abilitySelection: Record<string, string>;
-				variableAbilityCost: Record<string, string | number>;
-			}>>;
-			dice_settings: z.ZodOptional<z.ZodObject<{
-				explodes: z.ZodOptional<z.ZodBoolean>;
-				rr1s: z.ZodOptional<z.ZodBoolean>;
-				drop: z.ZodOptional<z.ZodNumber>;
-				fatigued: z.ZodOptional<z.ZodBoolean>;
-				end: z.ZodOptional<z.ZodString>;
-				flow: z.ZodOptional<z.ZodNumber>;
-				ebb: z.ZodOptional<z.ZodNumber>;
-				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-					toggled: z.ZodBoolean;
-				}, "strip", z.ZodTypeAny, {
-					toggled: boolean;
-				}, {
-					toggled: boolean;
-				}>>>;
-				adjust: z.ZodOptional<z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>;
-				count: z.ZodOptional<z.ZodNumber>;
-				sides: z.ZodOptional<z.ZodNumber>;
-			}, "strip", z.ZodTypeAny, {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			}, {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			}>>;
-			in_combat: z.ZodOptional<z.ZodBoolean>;
-			disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
-				msg: z.ZodString;
-				icon: z.ZodOptional<z.ZodString>;
-			}, "strip", z.ZodTypeAny, {
-				msg: string;
-				icon?: string | undefined;
-			}, {
-				msg: string;
-				icon?: string | undefined;
-			}>, "many">>>;
-		}, "strip", z.ZodTypeAny, {
-			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			cog_type?: string | undefined;
-			cog_creation_options?: {
-				type: string;
-				name: string;
-				desc: string;
-				level: string | number;
-				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
-				abilitySelection: Record<string, string>;
-				variableAbilityCost: Record<string, string | number>;
-			} | undefined;
-			dice_settings?: {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			} | undefined;
-			in_combat?: boolean | undefined;
-			disabled_actions?: Record<string, {
-				msg: string;
-				icon?: string | undefined;
-			}[]> | undefined;
-		}, {
-			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			cog_type?: string | undefined;
-			cog_creation_options?: {
-				type: string;
-				name: string;
-				desc: string;
-				level: string | number;
-				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
-				abilitySelection: Record<string, string>;
-				variableAbilityCost: Record<string, string | number>;
-			} | undefined;
-			dice_settings?: {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			} | undefined;
-			in_combat?: boolean | undefined;
-			disabled_actions?: Record<string, {
-				msg: string;
-				icon?: string | undefined;
-			}[]> | undefined;
-		}>;
-		public: z.ZodDefault<z.ZodBoolean>;
-	}, "strip", z.ZodTypeAny, {
-		type: "CHARACTER" | "COG";
-		name: string;
-		attributes: {
-			per: number;
-			tek: number;
-			agi: number;
-			dex: number;
-			int: number;
-			spi: number;
-			str: number;
-			wis: number;
-			cha: number;
-			hp: number;
-			max_hp: number;
-			mp: number;
-			max_mp: number;
-			vim: number;
-			max_vim: number;
-			init: number;
-			speed: number;
-			hero?: number | undefined;
-			max_hero?: number | undefined;
-			xp?: number | undefined;
-			sp?: number | undefined;
-			armor?: number | undefined;
-			burden?: number | undefined;
-			casting?: number | undefined;
-			L?: number | undefined;
-			radius?: number | undefined;
-			reach?: number | undefined;
-			shield?: number | undefined;
-			bluespace?: number | undefined;
-			trii?: number | undefined;
-			max_trii?: number | undefined;
-			free_hands?: number | undefined;
-			carrying_capacity?: number | undefined;
-			alerts?: number | undefined;
-			max_alerts?: number | undefined;
-			recovery_shock?: number | undefined;
-			acc?: number | undefined;
-			dmg?: number | undefined;
-			actions?: number | undefined;
-			reactions?: number | undefined;
-			actions_on_turn?: number | undefined;
-			reactions_on_turn?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			aggressive_acc?: number | undefined;
-			aggressive_dmg?: number | undefined;
-			arcane_acc?: number | undefined;
-			arcane_dmg?: number | undefined;
-			balanced_acc?: number | undefined;
-			balanced_dmg?: number | undefined;
-			blade_acc?: number | undefined;
-			blade_dmg?: number | undefined;
-			bow_acc?: number | undefined;
-			bow_dmg?: number | undefined;
-			brawling_acc?: number | undefined;
-			brawling_dmg?: number | undefined;
-			brutal_acc?: number | undefined;
-			brutal_dmg?: number | undefined;
-			cannon_acc?: number | undefined;
-			cannon_dmg?: number | undefined;
-			great_acc?: number | undefined;
-			great_dmg?: number | undefined;
-			grenade_acc?: number | undefined;
-			grenade_dmg?: number | undefined;
-			hookwhip_acc?: number | undefined;
-			hookwhip_dmg?: number | undefined;
-			improvised_acc?: number | undefined;
-			improvised_dmg?: number | undefined;
-			polearm_acc?: number | undefined;
-			polearm_dmg?: number | undefined;
-			protector_acc?: number | undefined;
-			protector_dmg?: number | undefined;
-			rifle_acc?: number | undefined;
-			rifle_dmg?: number | undefined;
-			shotgun_acc?: number | undefined;
-			shotgun_dmg?: number | undefined;
-			sidearm_acc?: number | undefined;
-			sidearm_dmg?: number | undefined;
-			thrown_acc?: number | undefined;
-			thrown_dmg?: number | undefined;
-			tinkertech_acc?: number | undefined;
-			tinkertech_dmg?: number | undefined;
-			unarmed_acc?: number | undefined;
-			unarmed_dmg?: number | undefined;
-			whip_acc?: number | undefined;
-			whip_dmg?: number | undefined;
-			fall_damage_resistance?: number | undefined;
-			vim_damage_resistance?: number | undefined;
-			burn_damage_resistance?: number | undefined;
-			bleed_damage_resistance?: number | undefined;
-			stun_damage_resistance?: number | undefined;
-			paralysis_damage_resistance?: number | undefined;
-			attribute_damage_resistance?: number | undefined;
-			galvanic_damage_resistance?: number | undefined;
-			magical_damage_resistance?: number | undefined;
-			physical_damage_resistance?: number | undefined;
-			piercing_damage_resistance?: number | undefined;
-			slashing_damage_resistance?: number | undefined;
-			bludgeoning_damage_resistance?: number | undefined;
-			burning?: number | undefined;
-			bleeding?: number | undefined;
-			paralysis?: number | undefined;
-			stun?: number | undefined;
-			agi_dmg?: number | undefined;
-			cha_dmg?: number | undefined;
-			dex_dmg?: number | undefined;
-			int_dmg?: number | undefined;
-			per_dmg?: number | undefined;
-			spi_dmg?: number | undefined;
-			str_dmg?: number | undefined;
-			tek_dmg?: number | undefined;
-			wis_dmg?: number | undefined;
-		} & {
-			[k: string]: number;
-		};
-		other_fields: {
-			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			cog_type?: string | undefined;
-			cog_creation_options?: {
-				type: string;
-				name: string;
-				desc: string;
-				level: string | number;
-				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
-				abilitySelection: Record<string, string>;
-				variableAbilityCost: Record<string, string | number>;
-			} | undefined;
-			dice_settings?: {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			} | undefined;
-			in_combat?: boolean | undefined;
-			disabled_actions?: Record<string, {
-				msg: string;
-				icon?: string | undefined;
-			}[]> | undefined;
-		};
-		public: boolean;
-	}, {
-		type: "CHARACTER" | "COG";
-		name: string;
-		attributes: {
-			hp: number;
-			max_hp: number;
-			mp: number;
-			max_mp: number;
-			vim: number;
-			max_vim: number;
-			init: number;
-			speed: number;
-			agi?: number | undefined;
-			cha?: number | undefined;
-			dex?: number | undefined;
-			int?: number | undefined;
-			per?: number | undefined;
-			spi?: number | undefined;
-			str?: number | undefined;
-			tek?: number | undefined;
-			wis?: number | undefined;
-			hero?: number | undefined;
-			max_hero?: number | undefined;
-			xp?: number | undefined;
-			sp?: number | undefined;
-			armor?: number | undefined;
-			burden?: number | undefined;
-			casting?: number | undefined;
-			L?: number | undefined;
-			radius?: number | undefined;
-			reach?: number | undefined;
-			shield?: number | undefined;
-			bluespace?: number | undefined;
-			trii?: number | undefined;
-			max_trii?: number | undefined;
-			free_hands?: number | undefined;
-			carrying_capacity?: number | undefined;
-			alerts?: number | undefined;
-			max_alerts?: number | undefined;
-			recovery_shock?: number | undefined;
-			acc?: number | undefined;
-			dmg?: number | undefined;
-			actions?: number | undefined;
-			reactions?: number | undefined;
-			actions_on_turn?: number | undefined;
-			reactions_on_turn?: number | undefined;
-			heroic_creativity_bonus?: number | undefined;
-			aggressive_acc?: number | undefined;
-			aggressive_dmg?: number | undefined;
-			arcane_acc?: number | undefined;
-			arcane_dmg?: number | undefined;
-			balanced_acc?: number | undefined;
-			balanced_dmg?: number | undefined;
-			blade_acc?: number | undefined;
-			blade_dmg?: number | undefined;
-			bow_acc?: number | undefined;
-			bow_dmg?: number | undefined;
-			brawling_acc?: number | undefined;
-			brawling_dmg?: number | undefined;
-			brutal_acc?: number | undefined;
-			brutal_dmg?: number | undefined;
-			cannon_acc?: number | undefined;
-			cannon_dmg?: number | undefined;
-			great_acc?: number | undefined;
-			great_dmg?: number | undefined;
-			grenade_acc?: number | undefined;
-			grenade_dmg?: number | undefined;
-			hookwhip_acc?: number | undefined;
-			hookwhip_dmg?: number | undefined;
-			improvised_acc?: number | undefined;
-			improvised_dmg?: number | undefined;
-			polearm_acc?: number | undefined;
-			polearm_dmg?: number | undefined;
-			protector_acc?: number | undefined;
-			protector_dmg?: number | undefined;
-			rifle_acc?: number | undefined;
-			rifle_dmg?: number | undefined;
-			shotgun_acc?: number | undefined;
-			shotgun_dmg?: number | undefined;
-			sidearm_acc?: number | undefined;
-			sidearm_dmg?: number | undefined;
-			thrown_acc?: number | undefined;
-			thrown_dmg?: number | undefined;
-			tinkertech_acc?: number | undefined;
-			tinkertech_dmg?: number | undefined;
-			unarmed_acc?: number | undefined;
-			unarmed_dmg?: number | undefined;
-			whip_acc?: number | undefined;
-			whip_dmg?: number | undefined;
-			fall_damage_resistance?: number | undefined;
-			vim_damage_resistance?: number | undefined;
-			burn_damage_resistance?: number | undefined;
-			bleed_damage_resistance?: number | undefined;
-			stun_damage_resistance?: number | undefined;
-			paralysis_damage_resistance?: number | undefined;
-			attribute_damage_resistance?: number | undefined;
-			galvanic_damage_resistance?: number | undefined;
-			magical_damage_resistance?: number | undefined;
-			physical_damage_resistance?: number | undefined;
-			piercing_damage_resistance?: number | undefined;
-			slashing_damage_resistance?: number | undefined;
-			bludgeoning_damage_resistance?: number | undefined;
-			burning?: number | undefined;
-			bleeding?: number | undefined;
-			paralysis?: number | undefined;
-			stun?: number | undefined;
-			agi_dmg?: number | undefined;
-			cha_dmg?: number | undefined;
-			dex_dmg?: number | undefined;
-			int_dmg?: number | undefined;
-			per_dmg?: number | undefined;
-			spi_dmg?: number | undefined;
-			str_dmg?: number | undefined;
-			tek_dmg?: number | undefined;
-			wis_dmg?: number | undefined;
-		} & {
-			[k: string]: number;
-		};
-		other_fields: {
-			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
-			cog_type?: string | undefined;
-			cog_creation_options?: {
-				type: string;
-				name: string;
-				desc: string;
-				level: string | number;
-				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
-				abilitySelection: Record<string, string>;
-				variableAbilityCost: Record<string, string | number>;
-			} | undefined;
-			dice_settings?: {
-				explodes?: boolean | undefined;
-				rr1s?: boolean | undefined;
-				drop?: number | undefined;
-				fatigued?: boolean | undefined;
-				end?: string | undefined;
-				flow?: number | undefined;
-				ebb?: number | undefined;
-				heroic_creativity_bonus?: number | undefined;
-				otherToggles?: Record<string, {
-					toggled: boolean;
-				}> | undefined;
-				adjust?: string | number | undefined;
-				count?: number | undefined;
-				sides?: number | undefined;
-			} | undefined;
-			in_combat?: boolean | undefined;
-			disabled_actions?: Record<string, {
-				msg: string;
-				icon?: string | undefined;
-			}[]> | undefined;
-		};
-		public?: boolean | undefined;
-	}>;
 	abilities: z.ZodArray<z.ZodObject<{
 		name: z.ZodString;
 		effect: z.ZodString;
@@ -36882,6 +45304,864 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		uses?: unknown;
 		comment?: string | null | undefined;
 	}>, "many">;
+	entity: z.ZodObject<{
+		name: z.ZodString;
+		type: z.ZodEnum<[
+			"CHARACTER",
+			"COG"
+		]>;
+		attributes: z.ZodObject<{
+			agi: z.ZodDefault<z.ZodNumber>;
+			cha: z.ZodDefault<z.ZodNumber>;
+			dex: z.ZodDefault<z.ZodNumber>;
+			int: z.ZodDefault<z.ZodNumber>;
+			per: z.ZodDefault<z.ZodNumber>;
+			spi: z.ZodDefault<z.ZodNumber>;
+			str: z.ZodDefault<z.ZodNumber>;
+			tek: z.ZodDefault<z.ZodNumber>;
+			wis: z.ZodDefault<z.ZodNumber>;
+			hp: z.ZodNumber;
+			max_hp: z.ZodNumber;
+			mp: z.ZodNumber;
+			max_mp: z.ZodNumber;
+			vim: z.ZodNumber;
+			max_vim: z.ZodNumber;
+			hero: z.ZodOptional<z.ZodNumber>;
+			max_hero: z.ZodOptional<z.ZodNumber>;
+			init: z.ZodNumber;
+			speed: z.ZodNumber;
+			xp: z.ZodOptional<z.ZodNumber>;
+			sp: z.ZodOptional<z.ZodNumber>;
+			armor: z.ZodOptional<z.ZodNumber>;
+			burden: z.ZodOptional<z.ZodNumber>;
+			casting: z.ZodOptional<z.ZodNumber>;
+			L: z.ZodOptional<z.ZodNumber>;
+			radius: z.ZodOptional<z.ZodNumber>;
+			reach: z.ZodOptional<z.ZodNumber>;
+			shield: z.ZodOptional<z.ZodNumber>;
+			bluespace: z.ZodOptional<z.ZodNumber>;
+			trii: z.ZodOptional<z.ZodNumber>;
+			max_trii: z.ZodOptional<z.ZodNumber>;
+			free_hands: z.ZodOptional<z.ZodNumber>;
+			carrying_capacity: z.ZodOptional<z.ZodNumber>;
+			alerts: z.ZodOptional<z.ZodNumber>;
+			max_alerts: z.ZodOptional<z.ZodNumber>;
+			recovery_shock: z.ZodOptional<z.ZodNumber>;
+			acc: z.ZodOptional<z.ZodNumber>;
+			dmg: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			actions_on_turn: z.ZodOptional<z.ZodNumber>;
+			reactions_on_turn: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			aggressive_acc: z.ZodOptional<z.ZodNumber>;
+			aggressive_dmg: z.ZodOptional<z.ZodNumber>;
+			arcane_acc: z.ZodOptional<z.ZodNumber>;
+			arcane_dmg: z.ZodOptional<z.ZodNumber>;
+			balanced_acc: z.ZodOptional<z.ZodNumber>;
+			balanced_dmg: z.ZodOptional<z.ZodNumber>;
+			blade_acc: z.ZodOptional<z.ZodNumber>;
+			blade_dmg: z.ZodOptional<z.ZodNumber>;
+			bow_acc: z.ZodOptional<z.ZodNumber>;
+			bow_dmg: z.ZodOptional<z.ZodNumber>;
+			brawling_acc: z.ZodOptional<z.ZodNumber>;
+			brawling_dmg: z.ZodOptional<z.ZodNumber>;
+			brutal_acc: z.ZodOptional<z.ZodNumber>;
+			brutal_dmg: z.ZodOptional<z.ZodNumber>;
+			cannon_acc: z.ZodOptional<z.ZodNumber>;
+			cannon_dmg: z.ZodOptional<z.ZodNumber>;
+			great_acc: z.ZodOptional<z.ZodNumber>;
+			great_dmg: z.ZodOptional<z.ZodNumber>;
+			grenade_acc: z.ZodOptional<z.ZodNumber>;
+			grenade_dmg: z.ZodOptional<z.ZodNumber>;
+			hookwhip_acc: z.ZodOptional<z.ZodNumber>;
+			hookwhip_dmg: z.ZodOptional<z.ZodNumber>;
+			improvised_acc: z.ZodOptional<z.ZodNumber>;
+			improvised_dmg: z.ZodOptional<z.ZodNumber>;
+			polearm_acc: z.ZodOptional<z.ZodNumber>;
+			polearm_dmg: z.ZodOptional<z.ZodNumber>;
+			protector_acc: z.ZodOptional<z.ZodNumber>;
+			protector_dmg: z.ZodOptional<z.ZodNumber>;
+			rifle_acc: z.ZodOptional<z.ZodNumber>;
+			rifle_dmg: z.ZodOptional<z.ZodNumber>;
+			shotgun_acc: z.ZodOptional<z.ZodNumber>;
+			shotgun_dmg: z.ZodOptional<z.ZodNumber>;
+			sidearm_acc: z.ZodOptional<z.ZodNumber>;
+			sidearm_dmg: z.ZodOptional<z.ZodNumber>;
+			thrown_acc: z.ZodOptional<z.ZodNumber>;
+			thrown_dmg: z.ZodOptional<z.ZodNumber>;
+			tinkertech_acc: z.ZodOptional<z.ZodNumber>;
+			tinkertech_dmg: z.ZodOptional<z.ZodNumber>;
+			unarmed_acc: z.ZodOptional<z.ZodNumber>;
+			unarmed_dmg: z.ZodOptional<z.ZodNumber>;
+			whip_acc: z.ZodOptional<z.ZodNumber>;
+			whip_dmg: z.ZodOptional<z.ZodNumber>;
+			fall_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			vim_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			burn_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			bleed_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			stun_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			paralysis_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			attribute_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			galvanic_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			magical_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			physical_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			piercing_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			slashing_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			bludgeoning_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			burning: z.ZodOptional<z.ZodNumber>;
+			bleeding: z.ZodOptional<z.ZodNumber>;
+			paralysis: z.ZodOptional<z.ZodNumber>;
+			stun: z.ZodOptional<z.ZodNumber>;
+			agi_dmg: z.ZodOptional<z.ZodNumber>;
+			cha_dmg: z.ZodOptional<z.ZodNumber>;
+			dex_dmg: z.ZodOptional<z.ZodNumber>;
+			int_dmg: z.ZodOptional<z.ZodNumber>;
+			per_dmg: z.ZodOptional<z.ZodNumber>;
+			spi_dmg: z.ZodOptional<z.ZodNumber>;
+			str_dmg: z.ZodOptional<z.ZodNumber>;
+			tek_dmg: z.ZodOptional<z.ZodNumber>;
+			wis_dmg: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodNumber, z.objectOutputType<{
+			agi: z.ZodDefault<z.ZodNumber>;
+			cha: z.ZodDefault<z.ZodNumber>;
+			dex: z.ZodDefault<z.ZodNumber>;
+			int: z.ZodDefault<z.ZodNumber>;
+			per: z.ZodDefault<z.ZodNumber>;
+			spi: z.ZodDefault<z.ZodNumber>;
+			str: z.ZodDefault<z.ZodNumber>;
+			tek: z.ZodDefault<z.ZodNumber>;
+			wis: z.ZodDefault<z.ZodNumber>;
+			hp: z.ZodNumber;
+			max_hp: z.ZodNumber;
+			mp: z.ZodNumber;
+			max_mp: z.ZodNumber;
+			vim: z.ZodNumber;
+			max_vim: z.ZodNumber;
+			hero: z.ZodOptional<z.ZodNumber>;
+			max_hero: z.ZodOptional<z.ZodNumber>;
+			init: z.ZodNumber;
+			speed: z.ZodNumber;
+			xp: z.ZodOptional<z.ZodNumber>;
+			sp: z.ZodOptional<z.ZodNumber>;
+			armor: z.ZodOptional<z.ZodNumber>;
+			burden: z.ZodOptional<z.ZodNumber>;
+			casting: z.ZodOptional<z.ZodNumber>;
+			L: z.ZodOptional<z.ZodNumber>;
+			radius: z.ZodOptional<z.ZodNumber>;
+			reach: z.ZodOptional<z.ZodNumber>;
+			shield: z.ZodOptional<z.ZodNumber>;
+			bluespace: z.ZodOptional<z.ZodNumber>;
+			trii: z.ZodOptional<z.ZodNumber>;
+			max_trii: z.ZodOptional<z.ZodNumber>;
+			free_hands: z.ZodOptional<z.ZodNumber>;
+			carrying_capacity: z.ZodOptional<z.ZodNumber>;
+			alerts: z.ZodOptional<z.ZodNumber>;
+			max_alerts: z.ZodOptional<z.ZodNumber>;
+			recovery_shock: z.ZodOptional<z.ZodNumber>;
+			acc: z.ZodOptional<z.ZodNumber>;
+			dmg: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			actions_on_turn: z.ZodOptional<z.ZodNumber>;
+			reactions_on_turn: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			aggressive_acc: z.ZodOptional<z.ZodNumber>;
+			aggressive_dmg: z.ZodOptional<z.ZodNumber>;
+			arcane_acc: z.ZodOptional<z.ZodNumber>;
+			arcane_dmg: z.ZodOptional<z.ZodNumber>;
+			balanced_acc: z.ZodOptional<z.ZodNumber>;
+			balanced_dmg: z.ZodOptional<z.ZodNumber>;
+			blade_acc: z.ZodOptional<z.ZodNumber>;
+			blade_dmg: z.ZodOptional<z.ZodNumber>;
+			bow_acc: z.ZodOptional<z.ZodNumber>;
+			bow_dmg: z.ZodOptional<z.ZodNumber>;
+			brawling_acc: z.ZodOptional<z.ZodNumber>;
+			brawling_dmg: z.ZodOptional<z.ZodNumber>;
+			brutal_acc: z.ZodOptional<z.ZodNumber>;
+			brutal_dmg: z.ZodOptional<z.ZodNumber>;
+			cannon_acc: z.ZodOptional<z.ZodNumber>;
+			cannon_dmg: z.ZodOptional<z.ZodNumber>;
+			great_acc: z.ZodOptional<z.ZodNumber>;
+			great_dmg: z.ZodOptional<z.ZodNumber>;
+			grenade_acc: z.ZodOptional<z.ZodNumber>;
+			grenade_dmg: z.ZodOptional<z.ZodNumber>;
+			hookwhip_acc: z.ZodOptional<z.ZodNumber>;
+			hookwhip_dmg: z.ZodOptional<z.ZodNumber>;
+			improvised_acc: z.ZodOptional<z.ZodNumber>;
+			improvised_dmg: z.ZodOptional<z.ZodNumber>;
+			polearm_acc: z.ZodOptional<z.ZodNumber>;
+			polearm_dmg: z.ZodOptional<z.ZodNumber>;
+			protector_acc: z.ZodOptional<z.ZodNumber>;
+			protector_dmg: z.ZodOptional<z.ZodNumber>;
+			rifle_acc: z.ZodOptional<z.ZodNumber>;
+			rifle_dmg: z.ZodOptional<z.ZodNumber>;
+			shotgun_acc: z.ZodOptional<z.ZodNumber>;
+			shotgun_dmg: z.ZodOptional<z.ZodNumber>;
+			sidearm_acc: z.ZodOptional<z.ZodNumber>;
+			sidearm_dmg: z.ZodOptional<z.ZodNumber>;
+			thrown_acc: z.ZodOptional<z.ZodNumber>;
+			thrown_dmg: z.ZodOptional<z.ZodNumber>;
+			tinkertech_acc: z.ZodOptional<z.ZodNumber>;
+			tinkertech_dmg: z.ZodOptional<z.ZodNumber>;
+			unarmed_acc: z.ZodOptional<z.ZodNumber>;
+			unarmed_dmg: z.ZodOptional<z.ZodNumber>;
+			whip_acc: z.ZodOptional<z.ZodNumber>;
+			whip_dmg: z.ZodOptional<z.ZodNumber>;
+			fall_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			vim_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			burn_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			bleed_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			stun_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			paralysis_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			attribute_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			galvanic_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			magical_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			physical_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			piercing_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			slashing_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			bludgeoning_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			burning: z.ZodOptional<z.ZodNumber>;
+			bleeding: z.ZodOptional<z.ZodNumber>;
+			paralysis: z.ZodOptional<z.ZodNumber>;
+			stun: z.ZodOptional<z.ZodNumber>;
+			agi_dmg: z.ZodOptional<z.ZodNumber>;
+			cha_dmg: z.ZodOptional<z.ZodNumber>;
+			dex_dmg: z.ZodOptional<z.ZodNumber>;
+			int_dmg: z.ZodOptional<z.ZodNumber>;
+			per_dmg: z.ZodOptional<z.ZodNumber>;
+			spi_dmg: z.ZodOptional<z.ZodNumber>;
+			str_dmg: z.ZodOptional<z.ZodNumber>;
+			tek_dmg: z.ZodOptional<z.ZodNumber>;
+			wis_dmg: z.ZodOptional<z.ZodNumber>;
+		}, z.ZodNumber, "strip">, z.objectInputType<{
+			agi: z.ZodDefault<z.ZodNumber>;
+			cha: z.ZodDefault<z.ZodNumber>;
+			dex: z.ZodDefault<z.ZodNumber>;
+			int: z.ZodDefault<z.ZodNumber>;
+			per: z.ZodDefault<z.ZodNumber>;
+			spi: z.ZodDefault<z.ZodNumber>;
+			str: z.ZodDefault<z.ZodNumber>;
+			tek: z.ZodDefault<z.ZodNumber>;
+			wis: z.ZodDefault<z.ZodNumber>;
+			hp: z.ZodNumber;
+			max_hp: z.ZodNumber;
+			mp: z.ZodNumber;
+			max_mp: z.ZodNumber;
+			vim: z.ZodNumber;
+			max_vim: z.ZodNumber;
+			hero: z.ZodOptional<z.ZodNumber>;
+			max_hero: z.ZodOptional<z.ZodNumber>;
+			init: z.ZodNumber;
+			speed: z.ZodNumber;
+			xp: z.ZodOptional<z.ZodNumber>;
+			sp: z.ZodOptional<z.ZodNumber>;
+			armor: z.ZodOptional<z.ZodNumber>;
+			burden: z.ZodOptional<z.ZodNumber>;
+			casting: z.ZodOptional<z.ZodNumber>;
+			L: z.ZodOptional<z.ZodNumber>;
+			radius: z.ZodOptional<z.ZodNumber>;
+			reach: z.ZodOptional<z.ZodNumber>;
+			shield: z.ZodOptional<z.ZodNumber>;
+			bluespace: z.ZodOptional<z.ZodNumber>;
+			trii: z.ZodOptional<z.ZodNumber>;
+			max_trii: z.ZodOptional<z.ZodNumber>;
+			free_hands: z.ZodOptional<z.ZodNumber>;
+			carrying_capacity: z.ZodOptional<z.ZodNumber>;
+			alerts: z.ZodOptional<z.ZodNumber>;
+			max_alerts: z.ZodOptional<z.ZodNumber>;
+			recovery_shock: z.ZodOptional<z.ZodNumber>;
+			acc: z.ZodOptional<z.ZodNumber>;
+			dmg: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			actions_on_turn: z.ZodOptional<z.ZodNumber>;
+			reactions_on_turn: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			aggressive_acc: z.ZodOptional<z.ZodNumber>;
+			aggressive_dmg: z.ZodOptional<z.ZodNumber>;
+			arcane_acc: z.ZodOptional<z.ZodNumber>;
+			arcane_dmg: z.ZodOptional<z.ZodNumber>;
+			balanced_acc: z.ZodOptional<z.ZodNumber>;
+			balanced_dmg: z.ZodOptional<z.ZodNumber>;
+			blade_acc: z.ZodOptional<z.ZodNumber>;
+			blade_dmg: z.ZodOptional<z.ZodNumber>;
+			bow_acc: z.ZodOptional<z.ZodNumber>;
+			bow_dmg: z.ZodOptional<z.ZodNumber>;
+			brawling_acc: z.ZodOptional<z.ZodNumber>;
+			brawling_dmg: z.ZodOptional<z.ZodNumber>;
+			brutal_acc: z.ZodOptional<z.ZodNumber>;
+			brutal_dmg: z.ZodOptional<z.ZodNumber>;
+			cannon_acc: z.ZodOptional<z.ZodNumber>;
+			cannon_dmg: z.ZodOptional<z.ZodNumber>;
+			great_acc: z.ZodOptional<z.ZodNumber>;
+			great_dmg: z.ZodOptional<z.ZodNumber>;
+			grenade_acc: z.ZodOptional<z.ZodNumber>;
+			grenade_dmg: z.ZodOptional<z.ZodNumber>;
+			hookwhip_acc: z.ZodOptional<z.ZodNumber>;
+			hookwhip_dmg: z.ZodOptional<z.ZodNumber>;
+			improvised_acc: z.ZodOptional<z.ZodNumber>;
+			improvised_dmg: z.ZodOptional<z.ZodNumber>;
+			polearm_acc: z.ZodOptional<z.ZodNumber>;
+			polearm_dmg: z.ZodOptional<z.ZodNumber>;
+			protector_acc: z.ZodOptional<z.ZodNumber>;
+			protector_dmg: z.ZodOptional<z.ZodNumber>;
+			rifle_acc: z.ZodOptional<z.ZodNumber>;
+			rifle_dmg: z.ZodOptional<z.ZodNumber>;
+			shotgun_acc: z.ZodOptional<z.ZodNumber>;
+			shotgun_dmg: z.ZodOptional<z.ZodNumber>;
+			sidearm_acc: z.ZodOptional<z.ZodNumber>;
+			sidearm_dmg: z.ZodOptional<z.ZodNumber>;
+			thrown_acc: z.ZodOptional<z.ZodNumber>;
+			thrown_dmg: z.ZodOptional<z.ZodNumber>;
+			tinkertech_acc: z.ZodOptional<z.ZodNumber>;
+			tinkertech_dmg: z.ZodOptional<z.ZodNumber>;
+			unarmed_acc: z.ZodOptional<z.ZodNumber>;
+			unarmed_dmg: z.ZodOptional<z.ZodNumber>;
+			whip_acc: z.ZodOptional<z.ZodNumber>;
+			whip_dmg: z.ZodOptional<z.ZodNumber>;
+			fall_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			vim_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			burn_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			bleed_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			stun_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			paralysis_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			attribute_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			galvanic_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			magical_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			physical_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			piercing_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			slashing_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			bludgeoning_damage_resistance: z.ZodOptional<z.ZodNumber>;
+			burning: z.ZodOptional<z.ZodNumber>;
+			bleeding: z.ZodOptional<z.ZodNumber>;
+			paralysis: z.ZodOptional<z.ZodNumber>;
+			stun: z.ZodOptional<z.ZodNumber>;
+			agi_dmg: z.ZodOptional<z.ZodNumber>;
+			cha_dmg: z.ZodOptional<z.ZodNumber>;
+			dex_dmg: z.ZodOptional<z.ZodNumber>;
+			int_dmg: z.ZodOptional<z.ZodNumber>;
+			per_dmg: z.ZodOptional<z.ZodNumber>;
+			spi_dmg: z.ZodOptional<z.ZodNumber>;
+			str_dmg: z.ZodOptional<z.ZodNumber>;
+			tek_dmg: z.ZodOptional<z.ZodNumber>;
+			wis_dmg: z.ZodOptional<z.ZodNumber>;
+		}, z.ZodNumber, "strip">>;
+		other_fields: z.ZodObject<{
+			gift: z.ZodOptional<z.ZodEnum<[
+				"Alertness",
+				"Craft",
+				"Alacrity",
+				"Finesse",
+				"Mind",
+				"Magic",
+				"Rage",
+				"Science",
+				"Charm",
+				"None"
+			]>>;
+			second_gift: z.ZodOptional<z.ZodEnum<[
+				"Alertness",
+				"Craft",
+				"Alacrity",
+				"Finesse",
+				"Mind",
+				"Magic",
+				"Rage",
+				"Science",
+				"Charm",
+				"None"
+			]>>;
+			cog_type: z.ZodOptional<z.ZodString>;
+			cog_creation_options: z.ZodOptional<z.ZodObject<{
+				name: z.ZodString;
+				level: z.ZodUnion<[
+					z.ZodString,
+					z.ZodNumber
+				]>;
+				type: z.ZodString;
+				desc: z.ZodString;
+				attrOverrides: z.ZodRecord<z.ZodEnum<[
+					"per",
+					"tek",
+					"agi",
+					"dex",
+					"int",
+					"spi",
+					"str",
+					"wis",
+					"cha"
+				]>, z.ZodEnum<[
+					"weak",
+					"moderate",
+					"strong",
+					"exceptional"
+				]>>;
+				abilitySelection: z.ZodRecord<z.ZodString, z.ZodString>;
+				variableAbilityCost: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodString,
+					z.ZodNumber
+				]>>;
+			}, "strip", z.ZodTypeAny, {
+				type: string;
+				name: string;
+				desc: string;
+				level: string | number;
+				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
+				abilitySelection: Record<string, string>;
+				variableAbilityCost: Record<string, string | number>;
+			}, {
+				type: string;
+				name: string;
+				desc: string;
+				level: string | number;
+				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
+				abilitySelection: Record<string, string>;
+				variableAbilityCost: Record<string, string | number>;
+			}>>;
+			dice_settings: z.ZodOptional<z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>;
+			in_combat: z.ZodOptional<z.ZodBoolean>;
+			disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
+				msg: z.ZodString;
+				icon: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				msg: string;
+				icon?: string | undefined;
+			}, {
+				msg: string;
+				icon?: string | undefined;
+			}>, "many">>>;
+		}, "strip", z.ZodTypeAny, {
+			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			cog_type?: string | undefined;
+			cog_creation_options?: {
+				type: string;
+				name: string;
+				desc: string;
+				level: string | number;
+				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
+				abilitySelection: Record<string, string>;
+				variableAbilityCost: Record<string, string | number>;
+			} | undefined;
+			dice_settings?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+			in_combat?: boolean | undefined;
+			disabled_actions?: Record<string, {
+				msg: string;
+				icon?: string | undefined;
+			}[]> | undefined;
+		}, {
+			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			cog_type?: string | undefined;
+			cog_creation_options?: {
+				type: string;
+				name: string;
+				desc: string;
+				level: string | number;
+				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
+				abilitySelection: Record<string, string>;
+				variableAbilityCost: Record<string, string | number>;
+			} | undefined;
+			dice_settings?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+			in_combat?: boolean | undefined;
+			disabled_actions?: Record<string, {
+				msg: string;
+				icon?: string | undefined;
+			}[]> | undefined;
+		}>;
+		public: z.ZodDefault<z.ZodBoolean>;
+	}, "strip", z.ZodTypeAny, {
+		type: "CHARACTER" | "COG";
+		name: string;
+		attributes: {
+			per: number;
+			tek: number;
+			agi: number;
+			dex: number;
+			int: number;
+			spi: number;
+			str: number;
+			wis: number;
+			cha: number;
+			hp: number;
+			max_hp: number;
+			mp: number;
+			max_mp: number;
+			vim: number;
+			max_vim: number;
+			init: number;
+			speed: number;
+			hero?: number | undefined;
+			max_hero?: number | undefined;
+			xp?: number | undefined;
+			sp?: number | undefined;
+			armor?: number | undefined;
+			burden?: number | undefined;
+			casting?: number | undefined;
+			L?: number | undefined;
+			radius?: number | undefined;
+			reach?: number | undefined;
+			shield?: number | undefined;
+			bluespace?: number | undefined;
+			trii?: number | undefined;
+			max_trii?: number | undefined;
+			free_hands?: number | undefined;
+			carrying_capacity?: number | undefined;
+			alerts?: number | undefined;
+			max_alerts?: number | undefined;
+			recovery_shock?: number | undefined;
+			acc?: number | undefined;
+			dmg?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			actions_on_turn?: number | undefined;
+			reactions_on_turn?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			aggressive_acc?: number | undefined;
+			aggressive_dmg?: number | undefined;
+			arcane_acc?: number | undefined;
+			arcane_dmg?: number | undefined;
+			balanced_acc?: number | undefined;
+			balanced_dmg?: number | undefined;
+			blade_acc?: number | undefined;
+			blade_dmg?: number | undefined;
+			bow_acc?: number | undefined;
+			bow_dmg?: number | undefined;
+			brawling_acc?: number | undefined;
+			brawling_dmg?: number | undefined;
+			brutal_acc?: number | undefined;
+			brutal_dmg?: number | undefined;
+			cannon_acc?: number | undefined;
+			cannon_dmg?: number | undefined;
+			great_acc?: number | undefined;
+			great_dmg?: number | undefined;
+			grenade_acc?: number | undefined;
+			grenade_dmg?: number | undefined;
+			hookwhip_acc?: number | undefined;
+			hookwhip_dmg?: number | undefined;
+			improvised_acc?: number | undefined;
+			improvised_dmg?: number | undefined;
+			polearm_acc?: number | undefined;
+			polearm_dmg?: number | undefined;
+			protector_acc?: number | undefined;
+			protector_dmg?: number | undefined;
+			rifle_acc?: number | undefined;
+			rifle_dmg?: number | undefined;
+			shotgun_acc?: number | undefined;
+			shotgun_dmg?: number | undefined;
+			sidearm_acc?: number | undefined;
+			sidearm_dmg?: number | undefined;
+			thrown_acc?: number | undefined;
+			thrown_dmg?: number | undefined;
+			tinkertech_acc?: number | undefined;
+			tinkertech_dmg?: number | undefined;
+			unarmed_acc?: number | undefined;
+			unarmed_dmg?: number | undefined;
+			whip_acc?: number | undefined;
+			whip_dmg?: number | undefined;
+			fall_damage_resistance?: number | undefined;
+			vim_damage_resistance?: number | undefined;
+			burn_damage_resistance?: number | undefined;
+			bleed_damage_resistance?: number | undefined;
+			stun_damage_resistance?: number | undefined;
+			paralysis_damage_resistance?: number | undefined;
+			attribute_damage_resistance?: number | undefined;
+			galvanic_damage_resistance?: number | undefined;
+			magical_damage_resistance?: number | undefined;
+			physical_damage_resistance?: number | undefined;
+			piercing_damage_resistance?: number | undefined;
+			slashing_damage_resistance?: number | undefined;
+			bludgeoning_damage_resistance?: number | undefined;
+			burning?: number | undefined;
+			bleeding?: number | undefined;
+			paralysis?: number | undefined;
+			stun?: number | undefined;
+			agi_dmg?: number | undefined;
+			cha_dmg?: number | undefined;
+			dex_dmg?: number | undefined;
+			int_dmg?: number | undefined;
+			per_dmg?: number | undefined;
+			spi_dmg?: number | undefined;
+			str_dmg?: number | undefined;
+			tek_dmg?: number | undefined;
+			wis_dmg?: number | undefined;
+		} & {
+			[k: string]: number;
+		};
+		other_fields: {
+			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			cog_type?: string | undefined;
+			cog_creation_options?: {
+				type: string;
+				name: string;
+				desc: string;
+				level: string | number;
+				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
+				abilitySelection: Record<string, string>;
+				variableAbilityCost: Record<string, string | number>;
+			} | undefined;
+			dice_settings?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+			in_combat?: boolean | undefined;
+			disabled_actions?: Record<string, {
+				msg: string;
+				icon?: string | undefined;
+			}[]> | undefined;
+		};
+		public: boolean;
+	}, {
+		type: "CHARACTER" | "COG";
+		name: string;
+		attributes: {
+			hp: number;
+			max_hp: number;
+			mp: number;
+			max_mp: number;
+			vim: number;
+			max_vim: number;
+			init: number;
+			speed: number;
+			agi?: number | undefined;
+			cha?: number | undefined;
+			dex?: number | undefined;
+			int?: number | undefined;
+			per?: number | undefined;
+			spi?: number | undefined;
+			str?: number | undefined;
+			tek?: number | undefined;
+			wis?: number | undefined;
+			hero?: number | undefined;
+			max_hero?: number | undefined;
+			xp?: number | undefined;
+			sp?: number | undefined;
+			armor?: number | undefined;
+			burden?: number | undefined;
+			casting?: number | undefined;
+			L?: number | undefined;
+			radius?: number | undefined;
+			reach?: number | undefined;
+			shield?: number | undefined;
+			bluespace?: number | undefined;
+			trii?: number | undefined;
+			max_trii?: number | undefined;
+			free_hands?: number | undefined;
+			carrying_capacity?: number | undefined;
+			alerts?: number | undefined;
+			max_alerts?: number | undefined;
+			recovery_shock?: number | undefined;
+			acc?: number | undefined;
+			dmg?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			actions_on_turn?: number | undefined;
+			reactions_on_turn?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			aggressive_acc?: number | undefined;
+			aggressive_dmg?: number | undefined;
+			arcane_acc?: number | undefined;
+			arcane_dmg?: number | undefined;
+			balanced_acc?: number | undefined;
+			balanced_dmg?: number | undefined;
+			blade_acc?: number | undefined;
+			blade_dmg?: number | undefined;
+			bow_acc?: number | undefined;
+			bow_dmg?: number | undefined;
+			brawling_acc?: number | undefined;
+			brawling_dmg?: number | undefined;
+			brutal_acc?: number | undefined;
+			brutal_dmg?: number | undefined;
+			cannon_acc?: number | undefined;
+			cannon_dmg?: number | undefined;
+			great_acc?: number | undefined;
+			great_dmg?: number | undefined;
+			grenade_acc?: number | undefined;
+			grenade_dmg?: number | undefined;
+			hookwhip_acc?: number | undefined;
+			hookwhip_dmg?: number | undefined;
+			improvised_acc?: number | undefined;
+			improvised_dmg?: number | undefined;
+			polearm_acc?: number | undefined;
+			polearm_dmg?: number | undefined;
+			protector_acc?: number | undefined;
+			protector_dmg?: number | undefined;
+			rifle_acc?: number | undefined;
+			rifle_dmg?: number | undefined;
+			shotgun_acc?: number | undefined;
+			shotgun_dmg?: number | undefined;
+			sidearm_acc?: number | undefined;
+			sidearm_dmg?: number | undefined;
+			thrown_acc?: number | undefined;
+			thrown_dmg?: number | undefined;
+			tinkertech_acc?: number | undefined;
+			tinkertech_dmg?: number | undefined;
+			unarmed_acc?: number | undefined;
+			unarmed_dmg?: number | undefined;
+			whip_acc?: number | undefined;
+			whip_dmg?: number | undefined;
+			fall_damage_resistance?: number | undefined;
+			vim_damage_resistance?: number | undefined;
+			burn_damage_resistance?: number | undefined;
+			bleed_damage_resistance?: number | undefined;
+			stun_damage_resistance?: number | undefined;
+			paralysis_damage_resistance?: number | undefined;
+			attribute_damage_resistance?: number | undefined;
+			galvanic_damage_resistance?: number | undefined;
+			magical_damage_resistance?: number | undefined;
+			physical_damage_resistance?: number | undefined;
+			piercing_damage_resistance?: number | undefined;
+			slashing_damage_resistance?: number | undefined;
+			bludgeoning_damage_resistance?: number | undefined;
+			burning?: number | undefined;
+			bleeding?: number | undefined;
+			paralysis?: number | undefined;
+			stun?: number | undefined;
+			agi_dmg?: number | undefined;
+			cha_dmg?: number | undefined;
+			dex_dmg?: number | undefined;
+			int_dmg?: number | undefined;
+			per_dmg?: number | undefined;
+			spi_dmg?: number | undefined;
+			str_dmg?: number | undefined;
+			tek_dmg?: number | undefined;
+			wis_dmg?: number | undefined;
+		} & {
+			[k: string]: number;
+		};
+		other_fields: {
+			gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			second_gift?: "Alertness" | "Craft" | "Alacrity" | "Finesse" | "Mind" | "Magic" | "Rage" | "Science" | "Charm" | "None" | undefined;
+			cog_type?: string | undefined;
+			cog_creation_options?: {
+				type: string;
+				name: string;
+				desc: string;
+				level: string | number;
+				attrOverrides: Partial<Record<"per" | "tek" | "agi" | "dex" | "int" | "spi" | "str" | "wis" | "cha", "weak" | "moderate" | "strong" | "exceptional">>;
+				abilitySelection: Record<string, string>;
+				variableAbilityCost: Record<string, string | number>;
+			} | undefined;
+			dice_settings?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+			in_combat?: boolean | undefined;
+			disabled_actions?: Record<string, {
+				msg: string;
+				icon?: string | undefined;
+			}[]> | undefined;
+		};
+		public?: boolean | undefined;
+	}>;
 	flux: z.ZodArray<z.ZodObject<{
 		type: z.ZodEnum<[
 			"QUEST",
@@ -36930,6 +46210,496 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		key: "NOTES" | "DESC" | "BACKSTORY";
 		text: string;
 		public: boolean;
+	}[];
+	abilities: {
+		name: string;
+		effect: string;
+		active: boolean;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}[];
+	items: {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
 	}[];
 	entity: {
 		type: "CHARACTER" | "COG";
@@ -37086,6 +46856,24 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		};
 		public: boolean;
 	};
+	flux: {
+		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
+		text: string;
+		metadata?: {
+			effect?: string | undefined;
+		} | null | undefined;
+	}[];
+	changelog: {
+		attr: string;
+		msg: string;
+		prev?: number | null | undefined;
+	}[];
+}, {
+	text: {
+		key: "NOTES" | "DESC" | "BACKSTORY";
+		text: string;
+		public?: boolean | undefined;
+	}[];
 	abilities: {
 		name: string;
 		effect: string;
@@ -37124,221 +46912,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			stars?: number | undefined;
 			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
 		} | null | undefined;
-		uses?: {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		} | null | undefined;
+		uses?: unknown;
 		comment?: string | null | undefined;
 	}[];
 	items: {
@@ -37359,240 +46933,8 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			in_storage?: boolean | undefined;
 			not_evadable?: boolean | undefined;
 		} | null | undefined;
-		uses?: {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		} | null | undefined;
+		uses?: unknown;
 		comment?: string | null | undefined;
-	}[];
-	flux: {
-		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
-		text: string;
-		metadata?: {
-			effect?: string | undefined;
-		} | null | undefined;
-	}[];
-	changelog: {
-		attr: string;
-		msg: string;
-		prev?: number | null | undefined;
-	}[];
-}, {
-	text: {
-		key: "NOTES" | "DESC" | "BACKSTORY";
-		text: string;
-		public?: boolean | undefined;
 	}[];
 	entity: {
 		type: "CHARACTER" | "COG";
@@ -37749,68 +47091,6 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 		};
 		public?: boolean | undefined;
 	};
-	abilities: {
-		name: string;
-		effect: string;
-		active: boolean;
-		custom_fields?: {
-			path?: string | undefined;
-			range?: string | undefined;
-			activation?: string | undefined;
-			expedited?: string | undefined;
-			flavor?: string | undefined;
-			purchase?: string | undefined;
-			unlocks?: string | undefined;
-			partial_unlocks?: string | undefined;
-			prereq?: string | undefined;
-			build_dc?: string | undefined;
-			build_time?: string | undefined;
-			cost?: {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			} | undefined;
-			mp_cost?: number[] | undefined;
-			cast_dl?: number[] | undefined;
-			not_req?: boolean | undefined;
-			repeatable?: boolean | undefined;
-			times_taken?: number | undefined;
-			keys?: Record<string, string> | undefined;
-			stars?: number | undefined;
-			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}[];
-	items: {
-		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
-		name: string;
-		active: boolean;
-		bulk: number;
-		desc: string;
-		custom_fields?: {
-			attr?: string | undefined;
-			category?: string | undefined;
-			courses?: string | undefined;
-			dmg?: string | undefined;
-			range?: string | undefined;
-			special?: string | undefined;
-			weapon_type?: string | undefined;
-			dc_cost?: number | undefined;
-			in_storage?: boolean | undefined;
-			not_evadable?: boolean | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}[];
 	flux: {
 		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
 		text: string;
@@ -37847,6 +47127,3636 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		id: string;
 		entity_id: string;
 		public?: boolean | undefined;
+	}>, "many">;
+	abilities: z.ZodArray<z.ZodObject<{
+		name: z.ZodString;
+		effect: z.ZodString;
+		custom_fields: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			path: z.ZodOptional<z.ZodString>;
+			range: z.ZodOptional<z.ZodString>;
+			activation: z.ZodOptional<z.ZodString>;
+			expedited: z.ZodOptional<z.ZodString>;
+			flavor: z.ZodOptional<z.ZodString>;
+			purchase: z.ZodOptional<z.ZodString>;
+			unlocks: z.ZodOptional<z.ZodString>;
+			partial_unlocks: z.ZodOptional<z.ZodString>;
+			prereq: z.ZodOptional<z.ZodString>;
+			build_dc: z.ZodOptional<z.ZodString>;
+			build_time: z.ZodOptional<z.ZodString>;
+			cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
+			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
+			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
+			not_req: z.ZodOptional<z.ZodBoolean>;
+			repeatable: z.ZodOptional<z.ZodBoolean>;
+			times_taken: z.ZodOptional<z.ZodNumber>;
+			keys: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+			stars: z.ZodOptional<z.ZodNumber>;
+			highlight: z.ZodOptional<z.ZodEnum<[
+				"red",
+				"dark_red",
+				"orange",
+				"dark_orange",
+				"green",
+				"dark_green",
+				"blue",
+				"dark_blue",
+				"gray",
+				"dark_gray"
+			]>>;
+		}, "strip", z.ZodTypeAny, {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		}, {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		}>>>;
+		uses: z.ZodCatch<z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			roll: z.ZodOptional<z.ZodObject<{
+				dice: z.ZodString;
+				attr: z.ZodString;
+				heal: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+			}, "strip", z.ZodTypeAny, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}>>;
+			heal: z.ZodOptional<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+			}, {
+				attr: Record<string, string | number>;
+			}>>;
+			optional_heal: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}>, "many">>;
+			adjust: z.ZodOptional<z.ZodObject<{
+				time: z.ZodEnum<[
+					"turn",
+					"encounter",
+					"rest",
+					"permanent"
+				]>;
+				attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+				dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>>;
+				order: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}>>;
+			adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+				adjust_cost: z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>;
+			}, "strip", z.ZodTypeAny, {
+				adjust_cost: string | number;
+			}, {
+				adjust_cost: string | number;
+			}>>;
+			check: z.ZodOptional<z.ZodObject<{
+				bonus: z.ZodOptional<z.ZodString>;
+				attr: z.ZodString;
+				dice_settings: z.ZodOptional<z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}>>;
+			expose_combat_stats: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+			inputs: z.ZodOptional<z.ZodArray<z.ZodUnion<[
+				z.ZodType<UseRadioInput, z.ZodTypeDef, UseRadioInput>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"text">;
+				}, "strip", z.ZodTypeAny, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"number">;
+					min: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					max: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					default: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+				}, "strip", z.ZodTypeAny, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}>
+			]>, "many">>;
+			criteria_benefits: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				criteria: z.ZodUnion<[
+					z.ZodObject<{
+						type: z.ZodLiteral<"comp">;
+						left: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						right: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						operator: z.ZodEnum<[
+							"equals",
+							"gte",
+							"gt",
+							"lte",
+							"lt"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}>,
+					z.ZodObject<{
+						type: z.ZodLiteral<"special">;
+						name: z.ZodEnum<[
+							"isSpell"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "special";
+						name: "isSpell";
+					}, {
+						type: "special";
+						name: "isSpell";
+					}>,
+					z.ZodType<UseCriteriaBase, z.ZodTypeDef, UseCriteriaBase>
+				]>;
+				adjust: z.ZodOptional<z.ZodObject<{
+					time: z.ZodEnum<[
+						"turn",
+						"encounter",
+						"rest",
+						"permanent"
+					]>;
+					attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>>;
+					dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>>;
+					order: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}>>;
+				adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+					adjust_cost: z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>;
+				}, "strip", z.ZodTypeAny, {
+					adjust_cost: string | number;
+				}, {
+					adjust_cost: string | number;
+				}>>;
+				check: z.ZodOptional<z.ZodObject<{
+					bonus: z.ZodOptional<z.ZodString>;
+					attr: z.ZodString;
+					dice_settings: z.ZodOptional<z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>;
+					label: z.ZodOptional<z.ZodString>;
+				}, "strip", z.ZodTypeAny, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}>>;
+			}, "strip", z.ZodTypeAny, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}>, "many">>;
+			weapons: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				dmg: z.ZodOptional<z.ZodString>;
+				attr: z.ZodOptional<z.ZodString>;
+				category: z.ZodOptional<z.ZodString>;
+				courses: z.ZodOptional<z.ZodString>;
+				range: z.ZodOptional<z.ZodString>;
+				special: z.ZodOptional<z.ZodString>;
+				weapon_type: z.ZodOptional<z.ZodString>;
+				dc_cost: z.ZodOptional<z.ZodNumber>;
+				in_storage: z.ZodOptional<z.ZodBoolean>;
+				not_evadable: z.ZodOptional<z.ZodBoolean>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}>>>>;
+		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+		active: z.ZodBoolean;
+		id: z.ZodString;
+		entity_id: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}, {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
+	}>, "many">;
+	items: z.ZodArray<z.ZodObject<{
+		type: z.ZodEnum<[
+			"equipment",
+			"consumable",
+			"container",
+			"armor",
+			"shield",
+			"weapon"
+		]>;
+		name: z.ZodString;
+		custom_fields: z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			attr: z.ZodOptional<z.ZodString>;
+			category: z.ZodOptional<z.ZodString>;
+			courses: z.ZodOptional<z.ZodString>;
+			dmg: z.ZodOptional<z.ZodString>;
+			range: z.ZodOptional<z.ZodString>;
+			special: z.ZodOptional<z.ZodString>;
+			weapon_type: z.ZodOptional<z.ZodString>;
+			dc_cost: z.ZodOptional<z.ZodNumber>;
+			in_storage: z.ZodOptional<z.ZodBoolean>;
+			not_evadable: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		}, {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		}>>>;
+		uses: z.ZodCatch<z.ZodNullable<z.ZodOptional<z.ZodObject<{
+			roll: z.ZodOptional<z.ZodObject<{
+				dice: z.ZodString;
+				attr: z.ZodString;
+				heal: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+			}, "strip", z.ZodTypeAny, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}, {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			}>>;
+			heal: z.ZodOptional<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+			}, {
+				attr: Record<string, string | number>;
+			}>>;
+			optional_heal: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}, {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}>, "many">>;
+			adjust: z.ZodOptional<z.ZodObject<{
+				time: z.ZodEnum<[
+					"turn",
+					"encounter",
+					"rest",
+					"permanent"
+				]>;
+				attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>>;
+				dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>>;
+				order: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}, {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			}>>;
+			adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+				adjust_cost: z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>;
+			}, "strip", z.ZodTypeAny, {
+				adjust_cost: string | number;
+			}, {
+				adjust_cost: string | number;
+			}>>;
+			check: z.ZodOptional<z.ZodObject<{
+				bonus: z.ZodOptional<z.ZodString>;
+				attr: z.ZodString;
+				dice_settings: z.ZodOptional<z.ZodObject<{
+					explodes: z.ZodOptional<z.ZodBoolean>;
+					rr1s: z.ZodOptional<z.ZodBoolean>;
+					drop: z.ZodOptional<z.ZodNumber>;
+					fatigued: z.ZodOptional<z.ZodBoolean>;
+					end: z.ZodOptional<z.ZodString>;
+					flow: z.ZodOptional<z.ZodNumber>;
+					ebb: z.ZodOptional<z.ZodNumber>;
+					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						toggled: z.ZodBoolean;
+					}, "strip", z.ZodTypeAny, {
+						toggled: boolean;
+					}, {
+						toggled: boolean;
+					}>>>;
+					adjust: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					count: z.ZodOptional<z.ZodNumber>;
+					sides: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}>>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}, {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			}>>;
+			expose_combat_stats: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+			inputs: z.ZodOptional<z.ZodArray<z.ZodUnion<[
+				z.ZodType<UseRadioInput, z.ZodTypeDef, UseRadioInput>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"text">;
+				}, "strip", z.ZodTypeAny, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}, {
+					type: "text";
+					key: string;
+					label?: string | undefined;
+				}>,
+				z.ZodObject<{
+					label: z.ZodOptional<z.ZodString>;
+					key: z.ZodString;
+					type: z.ZodLiteral<"number">;
+					min: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					max: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+					default: z.ZodOptional<z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>;
+				}, "strip", z.ZodTypeAny, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}, {
+					type: "number";
+					key: string;
+					label?: string | undefined;
+					min?: string | number | undefined;
+					max?: string | number | undefined;
+					default?: string | number | undefined;
+				}>
+			]>, "many">>;
+			criteria_benefits: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				criteria: z.ZodUnion<[
+					z.ZodObject<{
+						type: z.ZodLiteral<"comp">;
+						left: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						right: z.ZodUnion<[
+							z.ZodObject<{
+								type: z.ZodLiteral<"attr">;
+								attr: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "attr";
+								attr: string;
+							}, {
+								type: "attr";
+								attr: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"ability_field">;
+								path: z.ZodArray<z.ZodString, "many">;
+							}, "strip", z.ZodTypeAny, {
+								path: string[];
+								type: "ability_field";
+							}, {
+								path: string[];
+								type: "ability_field";
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"key">;
+								key: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "key";
+								key: string;
+							}, {
+								type: "key";
+								key: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"const">;
+								const: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "const";
+								const: string;
+							}, {
+								type: "const";
+								const: string;
+							}>,
+							z.ZodObject<{
+								type: z.ZodLiteral<"equation">;
+								equation: z.ZodString;
+							}, "strip", z.ZodTypeAny, {
+								type: "equation";
+								equation: string;
+							}, {
+								type: "equation";
+								equation: string;
+							}>
+						]>;
+						operator: z.ZodEnum<[
+							"equals",
+							"gte",
+							"gt",
+							"lte",
+							"lt"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}, {
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					}>,
+					z.ZodObject<{
+						type: z.ZodLiteral<"special">;
+						name: z.ZodEnum<[
+							"isSpell"
+						]>;
+					}, "strip", z.ZodTypeAny, {
+						type: "special";
+						name: "isSpell";
+					}, {
+						type: "special";
+						name: "isSpell";
+					}>,
+					z.ZodType<UseCriteriaBase, z.ZodTypeDef, UseCriteriaBase>
+				]>;
+				adjust: z.ZodOptional<z.ZodObject<{
+					time: z.ZodEnum<[
+						"turn",
+						"encounter",
+						"rest",
+						"permanent"
+					]>;
+					attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>>>;
+					dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>>;
+					order: z.ZodOptional<z.ZodNumber>;
+				}, "strip", z.ZodTypeAny, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}, {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				}>>;
+				adjust_ability_cost: z.ZodOptional<z.ZodObject<{
+					adjust_cost: z.ZodUnion<[
+						z.ZodNumber,
+						z.ZodString
+					]>;
+				}, "strip", z.ZodTypeAny, {
+					adjust_cost: string | number;
+				}, {
+					adjust_cost: string | number;
+				}>>;
+				check: z.ZodOptional<z.ZodObject<{
+					bonus: z.ZodOptional<z.ZodString>;
+					attr: z.ZodString;
+					dice_settings: z.ZodOptional<z.ZodObject<{
+						explodes: z.ZodOptional<z.ZodBoolean>;
+						rr1s: z.ZodOptional<z.ZodBoolean>;
+						drop: z.ZodOptional<z.ZodNumber>;
+						fatigued: z.ZodOptional<z.ZodBoolean>;
+						end: z.ZodOptional<z.ZodString>;
+						flow: z.ZodOptional<z.ZodNumber>;
+						ebb: z.ZodOptional<z.ZodNumber>;
+						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+							toggled: z.ZodBoolean;
+						}, "strip", z.ZodTypeAny, {
+							toggled: boolean;
+						}, {
+							toggled: boolean;
+						}>>>;
+						adjust: z.ZodOptional<z.ZodUnion<[
+							z.ZodNumber,
+							z.ZodString
+						]>>;
+						count: z.ZodOptional<z.ZodNumber>;
+						sides: z.ZodOptional<z.ZodNumber>;
+					}, "strip", z.ZodTypeAny, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}>>;
+					label: z.ZodOptional<z.ZodString>;
+				}, "strip", z.ZodTypeAny, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}, {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				}>>;
+			}, "strip", z.ZodTypeAny, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}, {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}>, "many">>;
+			weapons: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				dmg: z.ZodOptional<z.ZodString>;
+				attr: z.ZodOptional<z.ZodString>;
+				category: z.ZodOptional<z.ZodString>;
+				courses: z.ZodOptional<z.ZodString>;
+				range: z.ZodOptional<z.ZodString>;
+				special: z.ZodOptional<z.ZodString>;
+				weapon_type: z.ZodOptional<z.ZodString>;
+				dc_cost: z.ZodOptional<z.ZodNumber>;
+				in_storage: z.ZodOptional<z.ZodBoolean>;
+				not_evadable: z.ZodOptional<z.ZodBoolean>;
+				label: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}, {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}>, "many">>;
+			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}, {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		}>>>>;
+		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+		active: z.ZodBoolean;
+		bulk: z.ZodNumber;
+		desc: z.ZodString;
+		id: z.ZodString;
+		entity_id: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}, {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: unknown;
+		comment?: string | null | undefined;
 	}>, "many">;
 	entity: z.ZodObject<{
 		type: z.ZodEnum<[
@@ -38887,3636 +51797,6 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			} | undefined;
 		}> | null | undefined;
 	}>;
-	abilities: z.ZodArray<z.ZodObject<{
-		name: z.ZodString;
-		effect: z.ZodString;
-		custom_fields: z.ZodNullable<z.ZodOptional<z.ZodObject<{
-			path: z.ZodOptional<z.ZodString>;
-			range: z.ZodOptional<z.ZodString>;
-			activation: z.ZodOptional<z.ZodString>;
-			expedited: z.ZodOptional<z.ZodString>;
-			flavor: z.ZodOptional<z.ZodString>;
-			purchase: z.ZodOptional<z.ZodString>;
-			unlocks: z.ZodOptional<z.ZodString>;
-			partial_unlocks: z.ZodOptional<z.ZodString>;
-			prereq: z.ZodOptional<z.ZodString>;
-			build_dc: z.ZodOptional<z.ZodString>;
-			build_time: z.ZodOptional<z.ZodString>;
-			cost: z.ZodOptional<z.ZodObject<{
-				hp: z.ZodOptional<z.ZodNumber>;
-				mp: z.ZodOptional<z.ZodNumber>;
-				vim: z.ZodOptional<z.ZodNumber>;
-				hero: z.ZodOptional<z.ZodNumber>;
-				actions: z.ZodOptional<z.ZodNumber>;
-				reactions: z.ZodOptional<z.ZodNumber>;
-				attack: z.ZodOptional<z.ZodBoolean>;
-				passive: z.ZodOptional<z.ZodBoolean>;
-				respite: z.ZodOptional<z.ZodBoolean>;
-				rest: z.ZodOptional<z.ZodBoolean>;
-				intermission: z.ZodOptional<z.ZodBoolean>;
-			}, "strip", z.ZodTypeAny, {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			}, {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			}>>;
-			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
-			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
-			not_req: z.ZodOptional<z.ZodBoolean>;
-			repeatable: z.ZodOptional<z.ZodBoolean>;
-			times_taken: z.ZodOptional<z.ZodNumber>;
-			keys: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
-			stars: z.ZodOptional<z.ZodNumber>;
-			highlight: z.ZodOptional<z.ZodEnum<[
-				"red",
-				"dark_red",
-				"orange",
-				"dark_orange",
-				"green",
-				"dark_green",
-				"blue",
-				"dark_blue",
-				"gray",
-				"dark_gray"
-			]>>;
-		}, "strip", z.ZodTypeAny, {
-			path?: string | undefined;
-			range?: string | undefined;
-			activation?: string | undefined;
-			expedited?: string | undefined;
-			flavor?: string | undefined;
-			purchase?: string | undefined;
-			unlocks?: string | undefined;
-			partial_unlocks?: string | undefined;
-			prereq?: string | undefined;
-			build_dc?: string | undefined;
-			build_time?: string | undefined;
-			cost?: {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			} | undefined;
-			mp_cost?: number[] | undefined;
-			cast_dl?: number[] | undefined;
-			not_req?: boolean | undefined;
-			repeatable?: boolean | undefined;
-			times_taken?: number | undefined;
-			keys?: Record<string, string> | undefined;
-			stars?: number | undefined;
-			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
-		}, {
-			path?: string | undefined;
-			range?: string | undefined;
-			activation?: string | undefined;
-			expedited?: string | undefined;
-			flavor?: string | undefined;
-			purchase?: string | undefined;
-			unlocks?: string | undefined;
-			partial_unlocks?: string | undefined;
-			prereq?: string | undefined;
-			build_dc?: string | undefined;
-			build_time?: string | undefined;
-			cost?: {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			} | undefined;
-			mp_cost?: number[] | undefined;
-			cast_dl?: number[] | undefined;
-			not_req?: boolean | undefined;
-			repeatable?: boolean | undefined;
-			times_taken?: number | undefined;
-			keys?: Record<string, string> | undefined;
-			stars?: number | undefined;
-			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
-		}>>>;
-		uses: z.ZodCatch<z.ZodNullable<z.ZodOptional<z.ZodObject<{
-			roll: z.ZodOptional<z.ZodObject<{
-				dice: z.ZodString;
-				attr: z.ZodString;
-				heal: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>>;
-			}, "strip", z.ZodTypeAny, {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			}, {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			}>>;
-			heal: z.ZodOptional<z.ZodObject<{
-				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>;
-			}, "strip", z.ZodTypeAny, {
-				attr: Record<string, string | number>;
-			}, {
-				attr: Record<string, string | number>;
-			}>>;
-			optional_heal: z.ZodOptional<z.ZodArray<z.ZodObject<{
-				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>;
-				label: z.ZodOptional<z.ZodString>;
-			}, "strip", z.ZodTypeAny, {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}, {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}>, "many">>;
-			adjust: z.ZodOptional<z.ZodObject<{
-				time: z.ZodEnum<[
-					"turn",
-					"encounter",
-					"rest",
-					"permanent"
-				]>;
-				attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>>;
-				dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-					explodes: z.ZodOptional<z.ZodBoolean>;
-					rr1s: z.ZodOptional<z.ZodBoolean>;
-					drop: z.ZodOptional<z.ZodNumber>;
-					fatigued: z.ZodOptional<z.ZodBoolean>;
-					end: z.ZodOptional<z.ZodString>;
-					flow: z.ZodOptional<z.ZodNumber>;
-					ebb: z.ZodOptional<z.ZodNumber>;
-					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-						toggled: z.ZodBoolean;
-					}, "strip", z.ZodTypeAny, {
-						toggled: boolean;
-					}, {
-						toggled: boolean;
-					}>>>;
-					adjust: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-					count: z.ZodOptional<z.ZodNumber>;
-					sides: z.ZodOptional<z.ZodNumber>;
-				}, "strip", z.ZodTypeAny, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}>>>;
-				order: z.ZodOptional<z.ZodNumber>;
-			}, "strip", z.ZodTypeAny, {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			}, {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			}>>;
-			adjust_ability_cost: z.ZodOptional<z.ZodObject<{
-				adjust_cost: z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>;
-			}, "strip", z.ZodTypeAny, {
-				adjust_cost: string | number;
-			}, {
-				adjust_cost: string | number;
-			}>>;
-			check: z.ZodOptional<z.ZodObject<{
-				bonus: z.ZodOptional<z.ZodString>;
-				attr: z.ZodString;
-				dice_settings: z.ZodOptional<z.ZodObject<{
-					explodes: z.ZodOptional<z.ZodBoolean>;
-					rr1s: z.ZodOptional<z.ZodBoolean>;
-					drop: z.ZodOptional<z.ZodNumber>;
-					fatigued: z.ZodOptional<z.ZodBoolean>;
-					end: z.ZodOptional<z.ZodString>;
-					flow: z.ZodOptional<z.ZodNumber>;
-					ebb: z.ZodOptional<z.ZodNumber>;
-					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-						toggled: z.ZodBoolean;
-					}, "strip", z.ZodTypeAny, {
-						toggled: boolean;
-					}, {
-						toggled: boolean;
-					}>>>;
-					adjust: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-					count: z.ZodOptional<z.ZodNumber>;
-					sides: z.ZodOptional<z.ZodNumber>;
-				}, "strip", z.ZodTypeAny, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}>>;
-				label: z.ZodOptional<z.ZodString>;
-			}, "strip", z.ZodTypeAny, {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			}, {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			}>>;
-			expose_combat_stats: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-			inputs: z.ZodOptional<z.ZodArray<z.ZodUnion<[
-				z.ZodType<UseRadioInput, z.ZodTypeDef, UseRadioInput>,
-				z.ZodObject<{
-					label: z.ZodOptional<z.ZodString>;
-					key: z.ZodString;
-					type: z.ZodLiteral<"text">;
-				}, "strip", z.ZodTypeAny, {
-					type: "text";
-					key: string;
-					label?: string | undefined;
-				}, {
-					type: "text";
-					key: string;
-					label?: string | undefined;
-				}>,
-				z.ZodObject<{
-					label: z.ZodOptional<z.ZodString>;
-					key: z.ZodString;
-					type: z.ZodLiteral<"number">;
-					min: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-					max: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-					default: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-				}, "strip", z.ZodTypeAny, {
-					type: "number";
-					key: string;
-					label?: string | undefined;
-					min?: string | number | undefined;
-					max?: string | number | undefined;
-					default?: string | number | undefined;
-				}, {
-					type: "number";
-					key: string;
-					label?: string | undefined;
-					min?: string | number | undefined;
-					max?: string | number | undefined;
-					default?: string | number | undefined;
-				}>
-			]>, "many">>;
-			criteria_benefits: z.ZodOptional<z.ZodArray<z.ZodObject<{
-				criteria: z.ZodUnion<[
-					z.ZodObject<{
-						type: z.ZodLiteral<"comp">;
-						left: z.ZodUnion<[
-							z.ZodObject<{
-								type: z.ZodLiteral<"attr">;
-								attr: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "attr";
-								attr: string;
-							}, {
-								type: "attr";
-								attr: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"ability_field">;
-								path: z.ZodArray<z.ZodString, "many">;
-							}, "strip", z.ZodTypeAny, {
-								path: string[];
-								type: "ability_field";
-							}, {
-								path: string[];
-								type: "ability_field";
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"key">;
-								key: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "key";
-								key: string;
-							}, {
-								type: "key";
-								key: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"const">;
-								const: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "const";
-								const: string;
-							}, {
-								type: "const";
-								const: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"equation">;
-								equation: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "equation";
-								equation: string;
-							}, {
-								type: "equation";
-								equation: string;
-							}>
-						]>;
-						right: z.ZodUnion<[
-							z.ZodObject<{
-								type: z.ZodLiteral<"attr">;
-								attr: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "attr";
-								attr: string;
-							}, {
-								type: "attr";
-								attr: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"ability_field">;
-								path: z.ZodArray<z.ZodString, "many">;
-							}, "strip", z.ZodTypeAny, {
-								path: string[];
-								type: "ability_field";
-							}, {
-								path: string[];
-								type: "ability_field";
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"key">;
-								key: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "key";
-								key: string;
-							}, {
-								type: "key";
-								key: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"const">;
-								const: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "const";
-								const: string;
-							}, {
-								type: "const";
-								const: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"equation">;
-								equation: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "equation";
-								equation: string;
-							}, {
-								type: "equation";
-								equation: string;
-							}>
-						]>;
-						operator: z.ZodEnum<[
-							"equals",
-							"gte",
-							"gt",
-							"lte",
-							"lt"
-						]>;
-					}, "strip", z.ZodTypeAny, {
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					}, {
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					}>,
-					z.ZodObject<{
-						type: z.ZodLiteral<"special">;
-						name: z.ZodEnum<[
-							"isSpell"
-						]>;
-					}, "strip", z.ZodTypeAny, {
-						type: "special";
-						name: "isSpell";
-					}, {
-						type: "special";
-						name: "isSpell";
-					}>,
-					z.ZodType<UseCriteriaBase, z.ZodTypeDef, UseCriteriaBase>
-				]>;
-				adjust: z.ZodOptional<z.ZodObject<{
-					time: z.ZodEnum<[
-						"turn",
-						"encounter",
-						"rest",
-						"permanent"
-					]>;
-					attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>>;
-					dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-						explodes: z.ZodOptional<z.ZodBoolean>;
-						rr1s: z.ZodOptional<z.ZodBoolean>;
-						drop: z.ZodOptional<z.ZodNumber>;
-						fatigued: z.ZodOptional<z.ZodBoolean>;
-						end: z.ZodOptional<z.ZodString>;
-						flow: z.ZodOptional<z.ZodNumber>;
-						ebb: z.ZodOptional<z.ZodNumber>;
-						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-							toggled: z.ZodBoolean;
-						}, "strip", z.ZodTypeAny, {
-							toggled: boolean;
-						}, {
-							toggled: boolean;
-						}>>>;
-						adjust: z.ZodOptional<z.ZodUnion<[
-							z.ZodNumber,
-							z.ZodString
-						]>>;
-						count: z.ZodOptional<z.ZodNumber>;
-						sides: z.ZodOptional<z.ZodNumber>;
-					}, "strip", z.ZodTypeAny, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}>>>;
-					order: z.ZodOptional<z.ZodNumber>;
-				}, "strip", z.ZodTypeAny, {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				}, {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				}>>;
-				adjust_ability_cost: z.ZodOptional<z.ZodObject<{
-					adjust_cost: z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>;
-				}, "strip", z.ZodTypeAny, {
-					adjust_cost: string | number;
-				}, {
-					adjust_cost: string | number;
-				}>>;
-				check: z.ZodOptional<z.ZodObject<{
-					bonus: z.ZodOptional<z.ZodString>;
-					attr: z.ZodString;
-					dice_settings: z.ZodOptional<z.ZodObject<{
-						explodes: z.ZodOptional<z.ZodBoolean>;
-						rr1s: z.ZodOptional<z.ZodBoolean>;
-						drop: z.ZodOptional<z.ZodNumber>;
-						fatigued: z.ZodOptional<z.ZodBoolean>;
-						end: z.ZodOptional<z.ZodString>;
-						flow: z.ZodOptional<z.ZodNumber>;
-						ebb: z.ZodOptional<z.ZodNumber>;
-						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-							toggled: z.ZodBoolean;
-						}, "strip", z.ZodTypeAny, {
-							toggled: boolean;
-						}, {
-							toggled: boolean;
-						}>>>;
-						adjust: z.ZodOptional<z.ZodUnion<[
-							z.ZodNumber,
-							z.ZodString
-						]>>;
-						count: z.ZodOptional<z.ZodNumber>;
-						sides: z.ZodOptional<z.ZodNumber>;
-					}, "strip", z.ZodTypeAny, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}>>;
-					label: z.ZodOptional<z.ZodString>;
-				}, "strip", z.ZodTypeAny, {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				}, {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				}>>;
-			}, "strip", z.ZodTypeAny, {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}, {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}>, "many">>;
-			weapons: z.ZodOptional<z.ZodArray<z.ZodObject<{
-				dmg: z.ZodOptional<z.ZodString>;
-				attr: z.ZodOptional<z.ZodString>;
-				category: z.ZodOptional<z.ZodString>;
-				courses: z.ZodOptional<z.ZodString>;
-				range: z.ZodOptional<z.ZodString>;
-				special: z.ZodOptional<z.ZodString>;
-				weapon_type: z.ZodOptional<z.ZodString>;
-				dc_cost: z.ZodOptional<z.ZodNumber>;
-				in_storage: z.ZodOptional<z.ZodBoolean>;
-				not_evadable: z.ZodOptional<z.ZodBoolean>;
-				label: z.ZodOptional<z.ZodString>;
-			}, "strip", z.ZodTypeAny, {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}, {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}>, "many">>;
-			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
-		}, "strip", z.ZodTypeAny, {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		}, {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		}>>>>;
-		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
-		active: z.ZodBoolean;
-		id: z.ZodString;
-		entity_id: z.ZodString;
-	}, "strip", z.ZodTypeAny, {
-		name: string;
-		effect: string;
-		active: boolean;
-		id: string;
-		entity_id: string;
-		custom_fields?: {
-			path?: string | undefined;
-			range?: string | undefined;
-			activation?: string | undefined;
-			expedited?: string | undefined;
-			flavor?: string | undefined;
-			purchase?: string | undefined;
-			unlocks?: string | undefined;
-			partial_unlocks?: string | undefined;
-			prereq?: string | undefined;
-			build_dc?: string | undefined;
-			build_time?: string | undefined;
-			cost?: {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			} | undefined;
-			mp_cost?: number[] | undefined;
-			cast_dl?: number[] | undefined;
-			not_req?: boolean | undefined;
-			repeatable?: boolean | undefined;
-			times_taken?: number | undefined;
-			keys?: Record<string, string> | undefined;
-			stars?: number | undefined;
-			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
-		} | null | undefined;
-		uses?: {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		} | null | undefined;
-		comment?: string | null | undefined;
-	}, {
-		name: string;
-		effect: string;
-		active: boolean;
-		id: string;
-		entity_id: string;
-		custom_fields?: {
-			path?: string | undefined;
-			range?: string | undefined;
-			activation?: string | undefined;
-			expedited?: string | undefined;
-			flavor?: string | undefined;
-			purchase?: string | undefined;
-			unlocks?: string | undefined;
-			partial_unlocks?: string | undefined;
-			prereq?: string | undefined;
-			build_dc?: string | undefined;
-			build_time?: string | undefined;
-			cost?: {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			} | undefined;
-			mp_cost?: number[] | undefined;
-			cast_dl?: number[] | undefined;
-			not_req?: boolean | undefined;
-			repeatable?: boolean | undefined;
-			times_taken?: number | undefined;
-			keys?: Record<string, string> | undefined;
-			stars?: number | undefined;
-			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}>, "many">;
-	items: z.ZodArray<z.ZodObject<{
-		type: z.ZodEnum<[
-			"equipment",
-			"consumable",
-			"container",
-			"armor",
-			"shield",
-			"weapon"
-		]>;
-		name: z.ZodString;
-		custom_fields: z.ZodNullable<z.ZodOptional<z.ZodObject<{
-			attr: z.ZodOptional<z.ZodString>;
-			category: z.ZodOptional<z.ZodString>;
-			courses: z.ZodOptional<z.ZodString>;
-			dmg: z.ZodOptional<z.ZodString>;
-			range: z.ZodOptional<z.ZodString>;
-			special: z.ZodOptional<z.ZodString>;
-			weapon_type: z.ZodOptional<z.ZodString>;
-			dc_cost: z.ZodOptional<z.ZodNumber>;
-			in_storage: z.ZodOptional<z.ZodBoolean>;
-			not_evadable: z.ZodOptional<z.ZodBoolean>;
-		}, "strip", z.ZodTypeAny, {
-			attr?: string | undefined;
-			category?: string | undefined;
-			courses?: string | undefined;
-			dmg?: string | undefined;
-			range?: string | undefined;
-			special?: string | undefined;
-			weapon_type?: string | undefined;
-			dc_cost?: number | undefined;
-			in_storage?: boolean | undefined;
-			not_evadable?: boolean | undefined;
-		}, {
-			attr?: string | undefined;
-			category?: string | undefined;
-			courses?: string | undefined;
-			dmg?: string | undefined;
-			range?: string | undefined;
-			special?: string | undefined;
-			weapon_type?: string | undefined;
-			dc_cost?: number | undefined;
-			in_storage?: boolean | undefined;
-			not_evadable?: boolean | undefined;
-		}>>>;
-		uses: z.ZodCatch<z.ZodNullable<z.ZodOptional<z.ZodObject<{
-			roll: z.ZodOptional<z.ZodObject<{
-				dice: z.ZodString;
-				attr: z.ZodString;
-				heal: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>>;
-			}, "strip", z.ZodTypeAny, {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			}, {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			}>>;
-			heal: z.ZodOptional<z.ZodObject<{
-				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>;
-			}, "strip", z.ZodTypeAny, {
-				attr: Record<string, string | number>;
-			}, {
-				attr: Record<string, string | number>;
-			}>>;
-			optional_heal: z.ZodOptional<z.ZodArray<z.ZodObject<{
-				attr: z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>;
-				label: z.ZodOptional<z.ZodString>;
-			}, "strip", z.ZodTypeAny, {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}, {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}>, "many">>;
-			adjust: z.ZodOptional<z.ZodObject<{
-				time: z.ZodEnum<[
-					"turn",
-					"encounter",
-					"rest",
-					"permanent"
-				]>;
-				attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>>>;
-				dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-					explodes: z.ZodOptional<z.ZodBoolean>;
-					rr1s: z.ZodOptional<z.ZodBoolean>;
-					drop: z.ZodOptional<z.ZodNumber>;
-					fatigued: z.ZodOptional<z.ZodBoolean>;
-					end: z.ZodOptional<z.ZodString>;
-					flow: z.ZodOptional<z.ZodNumber>;
-					ebb: z.ZodOptional<z.ZodNumber>;
-					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-						toggled: z.ZodBoolean;
-					}, "strip", z.ZodTypeAny, {
-						toggled: boolean;
-					}, {
-						toggled: boolean;
-					}>>>;
-					adjust: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-					count: z.ZodOptional<z.ZodNumber>;
-					sides: z.ZodOptional<z.ZodNumber>;
-				}, "strip", z.ZodTypeAny, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}>>>;
-				order: z.ZodOptional<z.ZodNumber>;
-			}, "strip", z.ZodTypeAny, {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			}, {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			}>>;
-			adjust_ability_cost: z.ZodOptional<z.ZodObject<{
-				adjust_cost: z.ZodUnion<[
-					z.ZodNumber,
-					z.ZodString
-				]>;
-			}, "strip", z.ZodTypeAny, {
-				adjust_cost: string | number;
-			}, {
-				adjust_cost: string | number;
-			}>>;
-			check: z.ZodOptional<z.ZodObject<{
-				bonus: z.ZodOptional<z.ZodString>;
-				attr: z.ZodString;
-				dice_settings: z.ZodOptional<z.ZodObject<{
-					explodes: z.ZodOptional<z.ZodBoolean>;
-					rr1s: z.ZodOptional<z.ZodBoolean>;
-					drop: z.ZodOptional<z.ZodNumber>;
-					fatigued: z.ZodOptional<z.ZodBoolean>;
-					end: z.ZodOptional<z.ZodString>;
-					flow: z.ZodOptional<z.ZodNumber>;
-					ebb: z.ZodOptional<z.ZodNumber>;
-					heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-					otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-						toggled: z.ZodBoolean;
-					}, "strip", z.ZodTypeAny, {
-						toggled: boolean;
-					}, {
-						toggled: boolean;
-					}>>>;
-					adjust: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-					count: z.ZodOptional<z.ZodNumber>;
-					sides: z.ZodOptional<z.ZodNumber>;
-				}, "strip", z.ZodTypeAny, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}>>;
-				label: z.ZodOptional<z.ZodString>;
-			}, "strip", z.ZodTypeAny, {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			}, {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			}>>;
-			expose_combat_stats: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-			inputs: z.ZodOptional<z.ZodArray<z.ZodUnion<[
-				z.ZodType<UseRadioInput, z.ZodTypeDef, UseRadioInput>,
-				z.ZodObject<{
-					label: z.ZodOptional<z.ZodString>;
-					key: z.ZodString;
-					type: z.ZodLiteral<"text">;
-				}, "strip", z.ZodTypeAny, {
-					type: "text";
-					key: string;
-					label?: string | undefined;
-				}, {
-					type: "text";
-					key: string;
-					label?: string | undefined;
-				}>,
-				z.ZodObject<{
-					label: z.ZodOptional<z.ZodString>;
-					key: z.ZodString;
-					type: z.ZodLiteral<"number">;
-					min: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-					max: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-					default: z.ZodOptional<z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>;
-				}, "strip", z.ZodTypeAny, {
-					type: "number";
-					key: string;
-					label?: string | undefined;
-					min?: string | number | undefined;
-					max?: string | number | undefined;
-					default?: string | number | undefined;
-				}, {
-					type: "number";
-					key: string;
-					label?: string | undefined;
-					min?: string | number | undefined;
-					max?: string | number | undefined;
-					default?: string | number | undefined;
-				}>
-			]>, "many">>;
-			criteria_benefits: z.ZodOptional<z.ZodArray<z.ZodObject<{
-				criteria: z.ZodUnion<[
-					z.ZodObject<{
-						type: z.ZodLiteral<"comp">;
-						left: z.ZodUnion<[
-							z.ZodObject<{
-								type: z.ZodLiteral<"attr">;
-								attr: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "attr";
-								attr: string;
-							}, {
-								type: "attr";
-								attr: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"ability_field">;
-								path: z.ZodArray<z.ZodString, "many">;
-							}, "strip", z.ZodTypeAny, {
-								path: string[];
-								type: "ability_field";
-							}, {
-								path: string[];
-								type: "ability_field";
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"key">;
-								key: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "key";
-								key: string;
-							}, {
-								type: "key";
-								key: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"const">;
-								const: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "const";
-								const: string;
-							}, {
-								type: "const";
-								const: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"equation">;
-								equation: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "equation";
-								equation: string;
-							}, {
-								type: "equation";
-								equation: string;
-							}>
-						]>;
-						right: z.ZodUnion<[
-							z.ZodObject<{
-								type: z.ZodLiteral<"attr">;
-								attr: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "attr";
-								attr: string;
-							}, {
-								type: "attr";
-								attr: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"ability_field">;
-								path: z.ZodArray<z.ZodString, "many">;
-							}, "strip", z.ZodTypeAny, {
-								path: string[];
-								type: "ability_field";
-							}, {
-								path: string[];
-								type: "ability_field";
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"key">;
-								key: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "key";
-								key: string;
-							}, {
-								type: "key";
-								key: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"const">;
-								const: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "const";
-								const: string;
-							}, {
-								type: "const";
-								const: string;
-							}>,
-							z.ZodObject<{
-								type: z.ZodLiteral<"equation">;
-								equation: z.ZodString;
-							}, "strip", z.ZodTypeAny, {
-								type: "equation";
-								equation: string;
-							}, {
-								type: "equation";
-								equation: string;
-							}>
-						]>;
-						operator: z.ZodEnum<[
-							"equals",
-							"gte",
-							"gt",
-							"lte",
-							"lt"
-						]>;
-					}, "strip", z.ZodTypeAny, {
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					}, {
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					}>,
-					z.ZodObject<{
-						type: z.ZodLiteral<"special">;
-						name: z.ZodEnum<[
-							"isSpell"
-						]>;
-					}, "strip", z.ZodTypeAny, {
-						type: "special";
-						name: "isSpell";
-					}, {
-						type: "special";
-						name: "isSpell";
-					}>,
-					z.ZodType<UseCriteriaBase, z.ZodTypeDef, UseCriteriaBase>
-				]>;
-				adjust: z.ZodOptional<z.ZodObject<{
-					time: z.ZodEnum<[
-						"turn",
-						"encounter",
-						"rest",
-						"permanent"
-					]>;
-					attr: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>>>;
-					dice: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-						explodes: z.ZodOptional<z.ZodBoolean>;
-						rr1s: z.ZodOptional<z.ZodBoolean>;
-						drop: z.ZodOptional<z.ZodNumber>;
-						fatigued: z.ZodOptional<z.ZodBoolean>;
-						end: z.ZodOptional<z.ZodString>;
-						flow: z.ZodOptional<z.ZodNumber>;
-						ebb: z.ZodOptional<z.ZodNumber>;
-						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-							toggled: z.ZodBoolean;
-						}, "strip", z.ZodTypeAny, {
-							toggled: boolean;
-						}, {
-							toggled: boolean;
-						}>>>;
-						adjust: z.ZodOptional<z.ZodUnion<[
-							z.ZodNumber,
-							z.ZodString
-						]>>;
-						count: z.ZodOptional<z.ZodNumber>;
-						sides: z.ZodOptional<z.ZodNumber>;
-					}, "strip", z.ZodTypeAny, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}>>>;
-					order: z.ZodOptional<z.ZodNumber>;
-				}, "strip", z.ZodTypeAny, {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				}, {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				}>>;
-				adjust_ability_cost: z.ZodOptional<z.ZodObject<{
-					adjust_cost: z.ZodUnion<[
-						z.ZodNumber,
-						z.ZodString
-					]>;
-				}, "strip", z.ZodTypeAny, {
-					adjust_cost: string | number;
-				}, {
-					adjust_cost: string | number;
-				}>>;
-				check: z.ZodOptional<z.ZodObject<{
-					bonus: z.ZodOptional<z.ZodString>;
-					attr: z.ZodString;
-					dice_settings: z.ZodOptional<z.ZodObject<{
-						explodes: z.ZodOptional<z.ZodBoolean>;
-						rr1s: z.ZodOptional<z.ZodBoolean>;
-						drop: z.ZodOptional<z.ZodNumber>;
-						fatigued: z.ZodOptional<z.ZodBoolean>;
-						end: z.ZodOptional<z.ZodString>;
-						flow: z.ZodOptional<z.ZodNumber>;
-						ebb: z.ZodOptional<z.ZodNumber>;
-						heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
-						otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
-							toggled: z.ZodBoolean;
-						}, "strip", z.ZodTypeAny, {
-							toggled: boolean;
-						}, {
-							toggled: boolean;
-						}>>>;
-						adjust: z.ZodOptional<z.ZodUnion<[
-							z.ZodNumber,
-							z.ZodString
-						]>>;
-						count: z.ZodOptional<z.ZodNumber>;
-						sides: z.ZodOptional<z.ZodNumber>;
-					}, "strip", z.ZodTypeAny, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}>>;
-					label: z.ZodOptional<z.ZodString>;
-				}, "strip", z.ZodTypeAny, {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				}, {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				}>>;
-			}, "strip", z.ZodTypeAny, {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}, {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}>, "many">>;
-			weapons: z.ZodOptional<z.ZodArray<z.ZodObject<{
-				dmg: z.ZodOptional<z.ZodString>;
-				attr: z.ZodOptional<z.ZodString>;
-				category: z.ZodOptional<z.ZodString>;
-				courses: z.ZodOptional<z.ZodString>;
-				range: z.ZodOptional<z.ZodString>;
-				special: z.ZodOptional<z.ZodString>;
-				weapon_type: z.ZodOptional<z.ZodString>;
-				dc_cost: z.ZodOptional<z.ZodNumber>;
-				in_storage: z.ZodOptional<z.ZodBoolean>;
-				not_evadable: z.ZodOptional<z.ZodBoolean>;
-				label: z.ZodOptional<z.ZodString>;
-			}, "strip", z.ZodTypeAny, {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}, {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}>, "many">>;
-			hide_default_use_button: z.ZodOptional<z.ZodBoolean>;
-		}, "strip", z.ZodTypeAny, {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		}, {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		}>>>>;
-		comment: z.ZodNullable<z.ZodOptional<z.ZodString>>;
-		active: z.ZodBoolean;
-		bulk: z.ZodNumber;
-		desc: z.ZodString;
-		id: z.ZodString;
-		entity_id: z.ZodString;
-	}, "strip", z.ZodTypeAny, {
-		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
-		name: string;
-		active: boolean;
-		id: string;
-		entity_id: string;
-		bulk: number;
-		desc: string;
-		custom_fields?: {
-			attr?: string | undefined;
-			category?: string | undefined;
-			courses?: string | undefined;
-			dmg?: string | undefined;
-			range?: string | undefined;
-			special?: string | undefined;
-			weapon_type?: string | undefined;
-			dc_cost?: number | undefined;
-			in_storage?: boolean | undefined;
-			not_evadable?: boolean | undefined;
-		} | null | undefined;
-		uses?: {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		} | null | undefined;
-		comment?: string | null | undefined;
-	}, {
-		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
-		name: string;
-		active: boolean;
-		id: string;
-		entity_id: string;
-		bulk: number;
-		desc: string;
-		custom_fields?: {
-			attr?: string | undefined;
-			category?: string | undefined;
-			courses?: string | undefined;
-			dmg?: string | undefined;
-			range?: string | undefined;
-			special?: string | undefined;
-			weapon_type?: string | undefined;
-			dc_cost?: number | undefined;
-			in_storage?: boolean | undefined;
-			not_evadable?: boolean | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}>, "many">;
 	flux: z.ZodArray<z.ZodObject<{
 		type: z.ZodEnum<[
 			"QUEST",
@@ -42582,6 +51862,500 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 		id: string;
 		entity_id: string;
 		public: boolean;
+	}[];
+	abilities: {
+		name: string;
+		effect: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		custom_fields?: {
+			path?: string | undefined;
+			range?: string | undefined;
+			activation?: string | undefined;
+			expedited?: string | undefined;
+			flavor?: string | undefined;
+			purchase?: string | undefined;
+			unlocks?: string | undefined;
+			partial_unlocks?: string | undefined;
+			prereq?: string | undefined;
+			build_dc?: string | undefined;
+			build_time?: string | undefined;
+			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			mp_cost?: number[] | undefined;
+			cast_dl?: number[] | undefined;
+			not_req?: boolean | undefined;
+			repeatable?: boolean | undefined;
+			times_taken?: number | undefined;
+			keys?: Record<string, string> | undefined;
+			stars?: number | undefined;
+			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
+	}[];
+	items: {
+		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
+		name: string;
+		active: boolean;
+		id: string;
+		entity_id: string;
+		bulk: number;
+		desc: string;
+		custom_fields?: {
+			attr?: string | undefined;
+			category?: string | undefined;
+			courses?: string | undefined;
+			dmg?: string | undefined;
+			range?: string | undefined;
+			special?: string | undefined;
+			weapon_type?: string | undefined;
+			dc_cost?: number | undefined;
+			in_storage?: boolean | undefined;
+			not_evadable?: boolean | undefined;
+		} | null | undefined;
+		uses?: {
+			roll?: {
+				dice: string;
+				attr: string;
+				heal?: Record<string, string | number> | undefined;
+			} | undefined;
+			heal?: {
+				attr: Record<string, string | number>;
+			} | undefined;
+			optional_heal?: {
+				attr: Record<string, string | number>;
+				label?: string | undefined;
+			}[] | undefined;
+			adjust?: {
+				time: "turn" | "encounter" | "rest" | "permanent";
+				attr?: Record<string, string | number> | undefined;
+				dice?: Record<string, {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				}> | undefined;
+				order?: number | undefined;
+			} | undefined;
+			adjust_ability_cost?: {
+				adjust_cost: string | number;
+			} | undefined;
+			check?: {
+				attr: string;
+				bonus?: string | undefined;
+				dice_settings?: {
+					explodes?: boolean | undefined;
+					rr1s?: boolean | undefined;
+					drop?: number | undefined;
+					fatigued?: boolean | undefined;
+					end?: string | undefined;
+					flow?: number | undefined;
+					ebb?: number | undefined;
+					heroic_creativity_bonus?: number | undefined;
+					otherToggles?: Record<string, {
+						toggled: boolean;
+					}> | undefined;
+					adjust?: string | number | undefined;
+					count?: number | undefined;
+					sides?: number | undefined;
+				} | undefined;
+				label?: string | undefined;
+			} | undefined;
+			expose_combat_stats?: string[] | undefined;
+			inputs?: (UseRadioInput | {
+				type: "text";
+				key: string;
+				label?: string | undefined;
+			} | {
+				type: "number";
+				key: string;
+				label?: string | undefined;
+				min?: string | number | undefined;
+				max?: string | number | undefined;
+				default?: string | number | undefined;
+			})[] | undefined;
+			criteria_benefits?: {
+				criteria: {
+					type: "comp";
+					left: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					right: {
+						type: "attr";
+						attr: string;
+					} | {
+						path: string[];
+						type: "ability_field";
+					} | {
+						type: "key";
+						key: string;
+					} | {
+						type: "const";
+						const: string;
+					} | {
+						type: "equation";
+						equation: string;
+					};
+					operator: "equals" | "gte" | "gt" | "lte" | "lt";
+				} | {
+					type: "special";
+					name: "isSpell";
+				} | ({
+					type: "base";
+					operator: "every" | "some";
+				} & {
+					tests: ({
+						type: "comp";
+						left: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						right: {
+							type: "attr";
+							attr: string;
+						} | {
+							path: string[];
+							type: "ability_field";
+						} | {
+							type: "key";
+							key: string;
+						} | {
+							type: "const";
+							const: string;
+						} | {
+							type: "equation";
+							equation: string;
+						};
+						operator: "equals" | "gte" | "gt" | "lte" | "lt";
+					} | {
+						type: "special";
+						name: "isSpell";
+					} | UseCriteriaBase)[];
+				});
+				adjust?: {
+					time: "turn" | "encounter" | "rest" | "permanent";
+					attr?: Record<string, string | number> | undefined;
+					dice?: Record<string, {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					}> | undefined;
+					order?: number | undefined;
+				} | undefined;
+				adjust_ability_cost?: {
+					adjust_cost: string | number;
+				} | undefined;
+				check?: {
+					attr: string;
+					bonus?: string | undefined;
+					dice_settings?: {
+						explodes?: boolean | undefined;
+						rr1s?: boolean | undefined;
+						drop?: number | undefined;
+						fatigued?: boolean | undefined;
+						end?: string | undefined;
+						flow?: number | undefined;
+						ebb?: number | undefined;
+						heroic_creativity_bonus?: number | undefined;
+						otherToggles?: Record<string, {
+							toggled: boolean;
+						}> | undefined;
+						adjust?: string | number | undefined;
+						count?: number | undefined;
+						sides?: number | undefined;
+					} | undefined;
+					label?: string | undefined;
+				} | undefined;
+			}[] | undefined;
+			weapons?: {
+				dmg?: string | undefined;
+				attr?: string | undefined;
+				category?: string | undefined;
+				courses?: string | undefined;
+				range?: string | undefined;
+				special?: string | undefined;
+				weapon_type?: string | undefined;
+				dc_cost?: number | undefined;
+				in_storage?: boolean | undefined;
+				not_evadable?: boolean | undefined;
+				label?: string | undefined;
+			}[] | undefined;
+			hide_default_use_button?: boolean | undefined;
+		} | null | undefined;
+		comment?: string | null | undefined;
 	}[];
 	entity: {
 		type: "CHARACTER" | "COG";
@@ -42766,6 +52540,31 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			} | undefined;
 		}> | null | undefined;
 	};
+	flux: {
+		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
+		text: string;
+		id: string;
+		entity_id: string;
+		metadata?: {
+			effect?: string | undefined;
+		} | null | undefined;
+	}[];
+	changelog: {
+		attr: string;
+		time: string;
+		id: string;
+		entity_id: string;
+		msg: string;
+		prev?: number | null | undefined;
+	}[];
+}, {
+	text: {
+		key: "NOTES" | "DESC" | "BACKSTORY";
+		text: string;
+		id: string;
+		entity_id: string;
+		public?: boolean | undefined;
+	}[];
 	abilities: {
 		name: string;
 		effect: string;
@@ -42806,221 +52605,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			stars?: number | undefined;
 			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
 		} | null | undefined;
-		uses?: {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		} | null | undefined;
+		uses?: unknown;
 		comment?: string | null | undefined;
 	}[];
 	items: {
@@ -43043,247 +52628,8 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			in_storage?: boolean | undefined;
 			not_evadable?: boolean | undefined;
 		} | null | undefined;
-		uses?: {
-			roll?: {
-				dice: string;
-				attr: string;
-				heal?: Record<string, string | number> | undefined;
-			} | undefined;
-			heal?: {
-				attr: Record<string, string | number>;
-			} | undefined;
-			optional_heal?: {
-				attr: Record<string, string | number>;
-				label?: string | undefined;
-			}[] | undefined;
-			adjust?: {
-				time: "turn" | "encounter" | "rest" | "permanent";
-				attr?: Record<string, string | number> | undefined;
-				dice?: Record<string, {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				}> | undefined;
-				order?: number | undefined;
-			} | undefined;
-			adjust_ability_cost?: {
-				adjust_cost: string | number;
-			} | undefined;
-			check?: {
-				attr: string;
-				bonus?: string | undefined;
-				dice_settings?: {
-					explodes?: boolean | undefined;
-					rr1s?: boolean | undefined;
-					drop?: number | undefined;
-					fatigued?: boolean | undefined;
-					end?: string | undefined;
-					flow?: number | undefined;
-					ebb?: number | undefined;
-					heroic_creativity_bonus?: number | undefined;
-					otherToggles?: Record<string, {
-						toggled: boolean;
-					}> | undefined;
-					adjust?: string | number | undefined;
-					count?: number | undefined;
-					sides?: number | undefined;
-				} | undefined;
-				label?: string | undefined;
-			} | undefined;
-			expose_combat_stats?: string[] | undefined;
-			inputs?: (UseRadioInput | {
-				type: "text";
-				key: string;
-				label?: string | undefined;
-			} | {
-				type: "number";
-				key: string;
-				label?: string | undefined;
-				min?: string | number | undefined;
-				max?: string | number | undefined;
-				default?: string | number | undefined;
-			})[] | undefined;
-			criteria_benefits?: {
-				criteria: {
-					type: "comp";
-					left: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					right: {
-						type: "attr";
-						attr: string;
-					} | {
-						path: string[];
-						type: "ability_field";
-					} | {
-						type: "key";
-						key: string;
-					} | {
-						type: "const";
-						const: string;
-					} | {
-						type: "equation";
-						equation: string;
-					};
-					operator: "equals" | "gte" | "gt" | "lte" | "lt";
-				} | {
-					type: "special";
-					name: "isSpell";
-				} | ({
-					type: "base";
-					operator: "every" | "some";
-				} & {
-					tests: ({
-						type: "comp";
-						left: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						right: {
-							type: "attr";
-							attr: string;
-						} | {
-							path: string[];
-							type: "ability_field";
-						} | {
-							type: "key";
-							key: string;
-						} | {
-							type: "const";
-							const: string;
-						} | {
-							type: "equation";
-							equation: string;
-						};
-						operator: "equals" | "gte" | "gt" | "lte" | "lt";
-					} | {
-						type: "special";
-						name: "isSpell";
-					} | UseCriteriaBase)[];
-				});
-				adjust?: {
-					time: "turn" | "encounter" | "rest" | "permanent";
-					attr?: Record<string, string | number> | undefined;
-					dice?: Record<string, {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					}> | undefined;
-					order?: number | undefined;
-				} | undefined;
-				adjust_ability_cost?: {
-					adjust_cost: string | number;
-				} | undefined;
-				check?: {
-					attr: string;
-					bonus?: string | undefined;
-					dice_settings?: {
-						explodes?: boolean | undefined;
-						rr1s?: boolean | undefined;
-						drop?: number | undefined;
-						fatigued?: boolean | undefined;
-						end?: string | undefined;
-						flow?: number | undefined;
-						ebb?: number | undefined;
-						heroic_creativity_bonus?: number | undefined;
-						otherToggles?: Record<string, {
-							toggled: boolean;
-						}> | undefined;
-						adjust?: string | number | undefined;
-						count?: number | undefined;
-						sides?: number | undefined;
-					} | undefined;
-					label?: string | undefined;
-				} | undefined;
-			}[] | undefined;
-			weapons?: {
-				dmg?: string | undefined;
-				attr?: string | undefined;
-				category?: string | undefined;
-				courses?: string | undefined;
-				range?: string | undefined;
-				special?: string | undefined;
-				weapon_type?: string | undefined;
-				dc_cost?: number | undefined;
-				in_storage?: boolean | undefined;
-				not_evadable?: boolean | undefined;
-				label?: string | undefined;
-			}[] | undefined;
-			hide_default_use_button?: boolean | undefined;
-		} | null | undefined;
+		uses?: unknown;
 		comment?: string | null | undefined;
-	}[];
-	flux: {
-		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
-		text: string;
-		id: string;
-		entity_id: string;
-		metadata?: {
-			effect?: string | undefined;
-		} | null | undefined;
-	}[];
-	changelog: {
-		attr: string;
-		time: string;
-		id: string;
-		entity_id: string;
-		msg: string;
-		prev?: number | null | undefined;
-	}[];
-}, {
-	text: {
-		key: "NOTES" | "DESC" | "BACKSTORY";
-		text: string;
-		id: string;
-		entity_id: string;
-		public?: boolean | undefined;
 	}[];
 	entity: {
 		type: "CHARACTER" | "COG";
@@ -43468,72 +52814,6 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			} | undefined;
 		}> | null | undefined;
 	};
-	abilities: {
-		name: string;
-		effect: string;
-		active: boolean;
-		id: string;
-		entity_id: string;
-		custom_fields?: {
-			path?: string | undefined;
-			range?: string | undefined;
-			activation?: string | undefined;
-			expedited?: string | undefined;
-			flavor?: string | undefined;
-			purchase?: string | undefined;
-			unlocks?: string | undefined;
-			partial_unlocks?: string | undefined;
-			prereq?: string | undefined;
-			build_dc?: string | undefined;
-			build_time?: string | undefined;
-			cost?: {
-				hp?: number | undefined;
-				mp?: number | undefined;
-				vim?: number | undefined;
-				hero?: number | undefined;
-				actions?: number | undefined;
-				reactions?: number | undefined;
-				attack?: boolean | undefined;
-				passive?: boolean | undefined;
-				respite?: boolean | undefined;
-				rest?: boolean | undefined;
-				intermission?: boolean | undefined;
-			} | undefined;
-			mp_cost?: number[] | undefined;
-			cast_dl?: number[] | undefined;
-			not_req?: boolean | undefined;
-			repeatable?: boolean | undefined;
-			times_taken?: number | undefined;
-			keys?: Record<string, string> | undefined;
-			stars?: number | undefined;
-			highlight?: "red" | "dark_red" | "orange" | "dark_orange" | "green" | "dark_green" | "blue" | "dark_blue" | "gray" | "dark_gray" | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}[];
-	items: {
-		type: "armor" | "shield" | "equipment" | "consumable" | "container" | "weapon";
-		name: string;
-		active: boolean;
-		id: string;
-		entity_id: string;
-		bulk: number;
-		desc: string;
-		custom_fields?: {
-			attr?: string | undefined;
-			category?: string | undefined;
-			courses?: string | undefined;
-			dmg?: string | undefined;
-			range?: string | undefined;
-			special?: string | undefined;
-			weapon_type?: string | undefined;
-			dc_cost?: number | undefined;
-			in_storage?: boolean | undefined;
-			not_evadable?: boolean | undefined;
-		} | null | undefined;
-		uses?: unknown;
-		comment?: string | null | undefined;
-	}[];
 	flux: {
 		type: "QUEST" | "TIDE" | "GRATE" | "DAM" | "EFFLUENT" | "DELTA";
 		text: string;

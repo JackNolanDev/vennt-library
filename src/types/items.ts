@@ -6,6 +6,7 @@ import {
   nameValidator,
   usesValidator,
   itemFieldsValidator,
+  optionalComputedAttributesResponseValidator,
 } from ".";
 
 export const ITEM_TYPE_EQUIPMENT = "equipment";
@@ -51,3 +52,14 @@ export type UncompleteEntityItem = z.infer<typeof itemValidator>;
 export type FullEntityItem = z.infer<typeof fullItemValidator>;
 export type EntityItem = UncompleteEntityItem | FullEntityItem;
 export type PartialEntityItem = z.infer<typeof partialItemValidator>;
+
+export const postItemsResponseValidator =
+  optionalComputedAttributesResponseValidator.extend({
+    items: fullItemValidator.array(),
+  });
+export const patchItemResponseValidator =
+  optionalComputedAttributesResponseValidator.extend({
+    ability: fullItemValidator,
+  });
+export type PostItemsResponse = z.infer<typeof postItemsResponseValidator>;
+export type PatchItemResponse = z.infer<typeof patchItemResponseValidator>;

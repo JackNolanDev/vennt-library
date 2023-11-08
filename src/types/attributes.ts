@@ -179,3 +179,10 @@ export type ComputedAttributes = z.infer<typeof computedAttributesValidator>;
 export type PartialEntityAttributes = z.infer<
   typeof partialAttributesValidator
 >;
+
+export const optionalComputedAttributesResponseValidator = z.object({
+  computed_attributes: computedAttributesValidator.nullable().optional(),
+});
+export type OptionalComputedAttributesResponse = z.infer<
+  typeof optionalComputedAttributesResponseValidator
+>;

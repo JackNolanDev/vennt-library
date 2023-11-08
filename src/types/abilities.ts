@@ -8,6 +8,7 @@ import {
   usesValidator,
   COMMENT_MAX,
   idValidator,
+  optionalComputedAttributesResponseValidator,
 } from ".";
 
 export const abilityCostNumberValidator = z.object({
@@ -90,3 +91,18 @@ export type EntityAbilityFieldsStrings = z.infer<
   typeof abilityFieldsValidatorStrings
 >;
 export type EntityAbilityFields = z.infer<typeof abilityFieldsNameValidator>;
+
+export const postAbilitiesResponseValidator =
+  optionalComputedAttributesResponseValidator.extend({
+    abilities: fullAbilityValidator.array(),
+  });
+export const patchAbilityResponseValidator =
+  optionalComputedAttributesResponseValidator.extend({
+    ability: fullAbilityValidator,
+  });
+export type PostAbilitiesResponse = z.infer<
+  typeof postAbilitiesResponseValidator
+>;
+export type PatchAbilityResponse = z.infer<
+  typeof patchAbilityResponseValidator
+>;

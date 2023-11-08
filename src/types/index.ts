@@ -1,12 +1,14 @@
 // EXPORT ORDER MATTERS HERE :(
 export * from "./typeConfig";
-export * from "./highlights";
 export * from "./general";
+export * from "./highlights";
 
 export * from "./diceSettings";
 export * from "./attributes";
+
 export * from "./itemFields";
 export * from "./uses";
+
 export * from "./abilities";
 export * from "./items";
 
