@@ -14,6 +14,7 @@ export declare const ATTRIBUTE_MIN = -15;
 export declare const ATTRIBUTE_MAX = 15;
 export declare const ENTITY_TEXT_MAX = 10000;
 export declare const ENTITY_FLUX_MAX = 500;
+export declare const CHAT_MAX = 1000;
 export declare const ATTRIBUTES: readonly [
 	"per",
 	"tek",
@@ -55283,6 +55284,302 @@ export type PostCampaignEntity = z.infer<typeof postCampaignEntityValidator>;
 export type CampaignMember = z.infer<typeof campaignMemberValidator>;
 export type CampaignEntity = z.infer<typeof campaignEntityValidator>;
 export type FullCampaignDetails = z.infer<typeof fullCampaignDetailsValidator>;
+export declare const CONNECTION_AUTHORIZED_MSG = "ok";
+export declare const CHAT_TYPE = "c";
+export declare const SEND_CHAT_TYPE = "cs";
+export declare const REQUEST_CHAT_TYPE = "cr";
+export declare const OLD_CHAT_TYPE = "co";
+export declare const REQUEST_UPDATE_CHAT_TYPE = "cru";
+export declare const UPDATE_CHAT_TYPE = "cu";
+export declare const DELETE_CHAT_TYPE = "cd";
+export declare const sendChatMessageValidator: z.ZodObject<{
+	t: z.ZodLiteral<"cs">;
+	m: z.ZodString;
+	s: z.ZodString;
+	f: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+	t: "cs";
+	m: string;
+	s: string;
+	f?: string | undefined;
+}, {
+	t: "cs";
+	m: string;
+	s: string;
+	f?: string | undefined;
+}>;
+export declare const chatMessageValidator: z.ZodObject<{
+	m: z.ZodString;
+	s: z.ZodString;
+	f: z.ZodOptional<z.ZodString>;
+	t: z.ZodLiteral<"c">;
+	id: z.ZodString;
+	d: z.ZodString;
+	u: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+	id: string;
+	t: "c";
+	m: string;
+	s: string;
+	d: string;
+	f?: string | undefined;
+	u?: string | undefined;
+}, {
+	id: string;
+	t: "c";
+	m: string;
+	s: string;
+	d: string;
+	f?: string | undefined;
+	u?: string | undefined;
+}>;
+export declare const requestOldChatMessagesValidator: z.ZodObject<{
+	t: z.ZodLiteral<"cr">;
+	c: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+	c: string;
+	t: "cr";
+}, {
+	c: string;
+	t: "cr";
+}>;
+export declare const oldChatMessagesValidator: z.ZodObject<{
+	t: z.ZodLiteral<"co">;
+	m: z.ZodArray<z.ZodObject<{
+		m: z.ZodString;
+		s: z.ZodString;
+		f: z.ZodOptional<z.ZodString>;
+		t: z.ZodLiteral<"c">;
+		id: z.ZodString;
+		d: z.ZodString;
+		u: z.ZodOptional<z.ZodString>;
+	}, "strip", z.ZodTypeAny, {
+		id: string;
+		t: "c";
+		m: string;
+		s: string;
+		d: string;
+		f?: string | undefined;
+		u?: string | undefined;
+	}, {
+		id: string;
+		t: "c";
+		m: string;
+		s: string;
+		d: string;
+		f?: string | undefined;
+		u?: string | undefined;
+	}>, "many">;
+	c: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+	t: "co";
+	m: {
+		id: string;
+		t: "c";
+		m: string;
+		s: string;
+		d: string;
+		f?: string | undefined;
+		u?: string | undefined;
+	}[];
+	c?: string | undefined;
+}, {
+	t: "co";
+	m: {
+		id: string;
+		t: "c";
+		m: string;
+		s: string;
+		d: string;
+		f?: string | undefined;
+		u?: string | undefined;
+	}[];
+	c?: string | undefined;
+}>;
+export declare const requestUpdateChatMessageValidator: z.ZodObject<{
+	t: z.ZodLiteral<"cru">;
+	id: z.ZodString;
+	m: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+	id: string;
+	t: "cru";
+	m: string;
+}, {
+	id: string;
+	t: "cru";
+	m: string;
+}>;
+export declare const updatedChatMessageValidator: z.ZodObject<{
+	t: z.ZodLiteral<"cu">;
+	id: z.ZodString;
+	m: z.ZodString;
+	u: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+	id: string;
+	t: "cu";
+	m: string;
+	u: string;
+}, {
+	id: string;
+	t: "cu";
+	m: string;
+	u: string;
+}>;
+export declare const deleteChatMessageValidator: z.ZodObject<{
+	t: z.ZodLiteral<"cd">;
+	id: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+	id: string;
+	t: "cd";
+}, {
+	id: string;
+	t: "cd";
+}>;
+export declare const campaignWSMessage: z.ZodUnion<[
+	z.ZodObject<{
+		t: z.ZodLiteral<"cs">;
+		m: z.ZodString;
+		s: z.ZodString;
+		f: z.ZodOptional<z.ZodString>;
+	}, "strip", z.ZodTypeAny, {
+		t: "cs";
+		m: string;
+		s: string;
+		f?: string | undefined;
+	}, {
+		t: "cs";
+		m: string;
+		s: string;
+		f?: string | undefined;
+	}>,
+	z.ZodObject<{
+		m: z.ZodString;
+		s: z.ZodString;
+		f: z.ZodOptional<z.ZodString>;
+		t: z.ZodLiteral<"c">;
+		id: z.ZodString;
+		d: z.ZodString;
+		u: z.ZodOptional<z.ZodString>;
+	}, "strip", z.ZodTypeAny, {
+		id: string;
+		t: "c";
+		m: string;
+		s: string;
+		d: string;
+		f?: string | undefined;
+		u?: string | undefined;
+	}, {
+		id: string;
+		t: "c";
+		m: string;
+		s: string;
+		d: string;
+		f?: string | undefined;
+		u?: string | undefined;
+	}>,
+	z.ZodObject<{
+		t: z.ZodLiteral<"cr">;
+		c: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		c: string;
+		t: "cr";
+	}, {
+		c: string;
+		t: "cr";
+	}>,
+	z.ZodObject<{
+		t: z.ZodLiteral<"co">;
+		m: z.ZodArray<z.ZodObject<{
+			m: z.ZodString;
+			s: z.ZodString;
+			f: z.ZodOptional<z.ZodString>;
+			t: z.ZodLiteral<"c">;
+			id: z.ZodString;
+			d: z.ZodString;
+			u: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			id: string;
+			t: "c";
+			m: string;
+			s: string;
+			d: string;
+			f?: string | undefined;
+			u?: string | undefined;
+		}, {
+			id: string;
+			t: "c";
+			m: string;
+			s: string;
+			d: string;
+			f?: string | undefined;
+			u?: string | undefined;
+		}>, "many">;
+		c: z.ZodOptional<z.ZodString>;
+	}, "strip", z.ZodTypeAny, {
+		t: "co";
+		m: {
+			id: string;
+			t: "c";
+			m: string;
+			s: string;
+			d: string;
+			f?: string | undefined;
+			u?: string | undefined;
+		}[];
+		c?: string | undefined;
+	}, {
+		t: "co";
+		m: {
+			id: string;
+			t: "c";
+			m: string;
+			s: string;
+			d: string;
+			f?: string | undefined;
+			u?: string | undefined;
+		}[];
+		c?: string | undefined;
+	}>,
+	z.ZodObject<{
+		t: z.ZodLiteral<"cru">;
+		id: z.ZodString;
+		m: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		id: string;
+		t: "cru";
+		m: string;
+	}, {
+		id: string;
+		t: "cru";
+		m: string;
+	}>,
+	z.ZodObject<{
+		t: z.ZodLiteral<"cu">;
+		id: z.ZodString;
+		m: z.ZodString;
+		u: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		id: string;
+		t: "cu";
+		m: string;
+		u: string;
+	}, {
+		id: string;
+		t: "cu";
+		m: string;
+		u: string;
+	}>,
+	z.ZodObject<{
+		t: z.ZodLiteral<"cd">;
+		id: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		id: string;
+		t: "cd";
+	}, {
+		id: string;
+		t: "cd";
+	}>
+]>;
 export declare enum DamageType {
 	PHYSICAL = "physical",
 	MAGICAL = "magical",

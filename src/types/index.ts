@@ -23,6 +23,7 @@ export * from "./collectedEntities";
 export * from "./accounts";
 export * from "./campaigns";
 
+export * from "./campaignWebSocket";
 export * from "./damageCalculator";
 export * from "./jsonStorage";
 export * from "./server";

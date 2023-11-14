@@ -12,6 +12,7 @@ export const ATTRIBUTE_MIN = -15;
 export const ATTRIBUTE_MAX = 15;
 export const ENTITY_TEXT_MAX = 10_000;
 export const ENTITY_FLUX_MAX = 500;
+export const CHAT_MAX = 1_000;
 export const ATTRIBUTES = [
   "per",
   "tek",
