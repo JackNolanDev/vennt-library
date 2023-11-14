@@ -55295,26 +55295,27 @@ export declare const DELETE_CHAT_TYPE = "cd";
 export declare const sendChatMessageValidator: z.ZodObject<{
 	t: z.ZodLiteral<"cs">;
 	m: z.ZodString;
-	s: z.ZodString;
+	e: z.ZodOptional<z.ZodString>;
 	f: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
 	t: "cs";
 	m: string;
-	s: string;
+	e?: string | undefined;
 	f?: string | undefined;
 }, {
 	t: "cs";
 	m: string;
-	s: string;
+	e?: string | undefined;
 	f?: string | undefined;
 }>;
 export type SendChatMessage = z.infer<typeof sendChatMessageValidator>;
 export declare const chatMessageValidator: z.ZodObject<{
 	m: z.ZodString;
-	s: z.ZodString;
+	e: z.ZodOptional<z.ZodString>;
 	f: z.ZodOptional<z.ZodString>;
 	t: z.ZodLiteral<"c">;
 	id: z.ZodString;
+	s: z.ZodString;
 	d: z.ZodString;
 	u: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
@@ -55323,6 +55324,7 @@ export declare const chatMessageValidator: z.ZodObject<{
 	m: string;
 	s: string;
 	d: string;
+	e?: string | undefined;
 	f?: string | undefined;
 	u?: string | undefined;
 }, {
@@ -55331,6 +55333,7 @@ export declare const chatMessageValidator: z.ZodObject<{
 	m: string;
 	s: string;
 	d: string;
+	e?: string | undefined;
 	f?: string | undefined;
 	u?: string | undefined;
 }>;
@@ -55350,10 +55353,11 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 	t: z.ZodLiteral<"co">;
 	m: z.ZodArray<z.ZodObject<{
 		m: z.ZodString;
-		s: z.ZodString;
+		e: z.ZodOptional<z.ZodString>;
 		f: z.ZodOptional<z.ZodString>;
 		t: z.ZodLiteral<"c">;
 		id: z.ZodString;
+		s: z.ZodString;
 		d: z.ZodString;
 		u: z.ZodOptional<z.ZodString>;
 	}, "strip", z.ZodTypeAny, {
@@ -55362,6 +55366,7 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 		m: string;
 		s: string;
 		d: string;
+		e?: string | undefined;
 		f?: string | undefined;
 		u?: string | undefined;
 	}, {
@@ -55370,6 +55375,7 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 		m: string;
 		s: string;
 		d: string;
+		e?: string | undefined;
 		f?: string | undefined;
 		u?: string | undefined;
 	}>, "many">;
@@ -55382,6 +55388,7 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 		m: string;
 		s: string;
 		d: string;
+		e?: string | undefined;
 		f?: string | undefined;
 		u?: string | undefined;
 	}[];
@@ -55394,6 +55401,7 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 		m: string;
 		s: string;
 		d: string;
+		e?: string | undefined;
 		f?: string | undefined;
 		u?: string | undefined;
 	}[];
@@ -55446,25 +55454,26 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 	z.ZodObject<{
 		t: z.ZodLiteral<"cs">;
 		m: z.ZodString;
-		s: z.ZodString;
+		e: z.ZodOptional<z.ZodString>;
 		f: z.ZodOptional<z.ZodString>;
 	}, "strip", z.ZodTypeAny, {
 		t: "cs";
 		m: string;
-		s: string;
+		e?: string | undefined;
 		f?: string | undefined;
 	}, {
 		t: "cs";
 		m: string;
-		s: string;
+		e?: string | undefined;
 		f?: string | undefined;
 	}>,
 	z.ZodObject<{
 		m: z.ZodString;
-		s: z.ZodString;
+		e: z.ZodOptional<z.ZodString>;
 		f: z.ZodOptional<z.ZodString>;
 		t: z.ZodLiteral<"c">;
 		id: z.ZodString;
+		s: z.ZodString;
 		d: z.ZodString;
 		u: z.ZodOptional<z.ZodString>;
 	}, "strip", z.ZodTypeAny, {
@@ -55473,6 +55482,7 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 		m: string;
 		s: string;
 		d: string;
+		e?: string | undefined;
 		f?: string | undefined;
 		u?: string | undefined;
 	}, {
@@ -55481,6 +55491,7 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 		m: string;
 		s: string;
 		d: string;
+		e?: string | undefined;
 		f?: string | undefined;
 		u?: string | undefined;
 	}>,
@@ -55498,10 +55509,11 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 		t: z.ZodLiteral<"co">;
 		m: z.ZodArray<z.ZodObject<{
 			m: z.ZodString;
-			s: z.ZodString;
+			e: z.ZodOptional<z.ZodString>;
 			f: z.ZodOptional<z.ZodString>;
 			t: z.ZodLiteral<"c">;
 			id: z.ZodString;
+			s: z.ZodString;
 			d: z.ZodString;
 			u: z.ZodOptional<z.ZodString>;
 		}, "strip", z.ZodTypeAny, {
@@ -55510,6 +55522,7 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 			m: string;
 			s: string;
 			d: string;
+			e?: string | undefined;
 			f?: string | undefined;
 			u?: string | undefined;
 		}, {
@@ -55518,6 +55531,7 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 			m: string;
 			s: string;
 			d: string;
+			e?: string | undefined;
 			f?: string | undefined;
 			u?: string | undefined;
 		}>, "many">;
@@ -55530,6 +55544,7 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 			m: string;
 			s: string;
 			d: string;
+			e?: string | undefined;
 			f?: string | undefined;
 			u?: string | undefined;
 		}[];
@@ -55542,6 +55557,7 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 			m: string;
 			s: string;
 			d: string;
+			e?: string | undefined;
 			f?: string | undefined;
 			u?: string | undefined;
 		}[];

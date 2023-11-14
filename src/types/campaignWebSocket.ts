@@ -14,14 +14,15 @@ export const DELETE_CHAT_TYPE = "cd";
 export const sendChatMessageValidator = z.object({
   t: z.literal(SEND_CHAT_TYPE), // type
   m: z.string().max(CHAT_MAX), // message
-  s: idValidator, // sender (user / entity id)
-  f: idValidator.optional(), // for (when sending DMs - has to be user id)
+  e: idValidator.optional(), // sending entity
+  f: idValidator.optional(), // for user (when sending DMs)
 });
 export type SendChatMessage = z.infer<typeof sendChatMessageValidator>;
 
 export const chatMessageValidator = sendChatMessageValidator.extend({
   t: z.literal(CHAT_TYPE), // type
   id: idValidator, // message ID
+  s: idValidator, // sender user
   d: z.string().datetime(), // timestamp of message
   u: z.string().datetime().optional(), // timestamp of message updated (if it was updated)
 });
