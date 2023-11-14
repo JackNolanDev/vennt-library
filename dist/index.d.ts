@@ -55308,6 +55308,7 @@ export declare const sendChatMessageValidator: z.ZodObject<{
 	s: string;
 	f?: string | undefined;
 }>;
+export type SendChatMessage = z.infer<typeof sendChatMessageValidator>;
 export declare const chatMessageValidator: z.ZodObject<{
 	m: z.ZodString;
 	s: z.ZodString;
@@ -55333,6 +55334,7 @@ export declare const chatMessageValidator: z.ZodObject<{
 	f?: string | undefined;
 	u?: string | undefined;
 }>;
+export type ChatMessage = z.infer<typeof chatMessageValidator>;
 export declare const requestOldChatMessagesValidator: z.ZodObject<{
 	t: z.ZodLiteral<"cr">;
 	c: z.ZodString;
@@ -55343,6 +55345,7 @@ export declare const requestOldChatMessagesValidator: z.ZodObject<{
 	c: string;
 	t: "cr";
 }>;
+export type RequestOldChatMessages = z.infer<typeof requestOldChatMessagesValidator>;
 export declare const oldChatMessagesValidator: z.ZodObject<{
 	t: z.ZodLiteral<"co">;
 	m: z.ZodArray<z.ZodObject<{
@@ -55396,6 +55399,7 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 	}[];
 	c?: string | undefined;
 }>;
+export type OldChatMessages = z.infer<typeof oldChatMessagesValidator>;
 export declare const requestUpdateChatMessageValidator: z.ZodObject<{
 	t: z.ZodLiteral<"cru">;
 	id: z.ZodString;
@@ -55409,6 +55413,7 @@ export declare const requestUpdateChatMessageValidator: z.ZodObject<{
 	t: "cru";
 	m: string;
 }>;
+export type RequestUpdateChatMessage = z.infer<typeof requestUpdateChatMessageValidator>;
 export declare const updatedChatMessageValidator: z.ZodObject<{
 	t: z.ZodLiteral<"cu">;
 	id: z.ZodString;
@@ -55425,6 +55430,7 @@ export declare const updatedChatMessageValidator: z.ZodObject<{
 	m: string;
 	u: string;
 }>;
+export type UpdatedChatMessage = z.infer<typeof updatedChatMessageValidator>;
 export declare const deleteChatMessageValidator: z.ZodObject<{
 	t: z.ZodLiteral<"cd">;
 	id: z.ZodString;
@@ -55435,7 +55441,8 @@ export declare const deleteChatMessageValidator: z.ZodObject<{
 	id: string;
 	t: "cd";
 }>;
-export declare const campaignWSMessage: z.ZodUnion<[
+export type DeleteChatMessage = z.infer<typeof deleteChatMessageValidator>;
+export declare const campaignWSMessageValidator: z.ZodUnion<[
 	z.ZodObject<{
 		t: z.ZodLiteral<"cs">;
 		m: z.ZodString;
@@ -55580,6 +55587,7 @@ export declare const campaignWSMessage: z.ZodUnion<[
 		t: "cd";
 	}>
 ]>;
+export type CampaignWSMessage = z.infer<typeof campaignWSMessageValidator>;
 export declare enum DamageType {
 	PHYSICAL = "physical",
 	MAGICAL = "magical",
