@@ -30,7 +30,7 @@ export type ChatMessage = z.infer<typeof chatMessageValidator>;
 
 export const requestOldChatMessagesValidator = z.object({
   type: z.literal(REQUEST_CHAT_TYPE),
-  cursor: z.string().max(100), // cursor
+  cursor: z.string().max(300), // cursor
 });
 export type RequestOldChatMessages = z.infer<
   typeof requestOldChatMessagesValidator
@@ -39,7 +39,7 @@ export type RequestOldChatMessages = z.infer<
 export const oldChatMessagesValidator = z.object({
   type: z.literal(OLD_CHAT_TYPE),
   message: z.array(chatMessageValidator).max(100),
-  cursor: z.string().max(100).optional(), // cursor to get next page
+  cursor: z.string().max(300).optional(), // cursor to get next page
 });
 export type OldChatMessages = z.infer<typeof oldChatMessagesValidator>;
 
