@@ -55293,314 +55293,314 @@ export declare const REQUEST_UPDATE_CHAT_TYPE = "cru";
 export declare const UPDATE_CHAT_TYPE = "cu";
 export declare const DELETE_CHAT_TYPE = "cd";
 export declare const sendChatMessageValidator: z.ZodObject<{
-	t: z.ZodLiteral<"cs">;
-	m: z.ZodString;
-	e: z.ZodOptional<z.ZodString>;
-	f: z.ZodOptional<z.ZodString>;
+	type: z.ZodLiteral<"cs">;
+	message: z.ZodString;
+	entity: z.ZodOptional<z.ZodString>;
+	for: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-	t: "cs";
-	m: string;
-	e?: string | undefined;
-	f?: string | undefined;
+	message: string;
+	type: "cs";
+	entity?: string | undefined;
+	for?: string | undefined;
 }, {
-	t: "cs";
-	m: string;
-	e?: string | undefined;
-	f?: string | undefined;
+	message: string;
+	type: "cs";
+	entity?: string | undefined;
+	for?: string | undefined;
 }>;
 export type SendChatMessage = z.infer<typeof sendChatMessageValidator>;
 export declare const chatMessageValidator: z.ZodObject<{
-	m: z.ZodString;
-	e: z.ZodOptional<z.ZodString>;
-	f: z.ZodOptional<z.ZodString>;
-	t: z.ZodLiteral<"c">;
+	message: z.ZodString;
+	entity: z.ZodOptional<z.ZodString>;
+	for: z.ZodOptional<z.ZodString>;
+	type: z.ZodLiteral<"c">;
 	id: z.ZodString;
-	s: z.ZodString;
-	d: z.ZodString;
-	u: z.ZodOptional<z.ZodString>;
+	sender: z.ZodString;
+	time: z.ZodString;
+	updated: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
+	message: string;
+	type: "c";
+	time: string;
 	id: string;
-	t: "c";
-	m: string;
-	s: string;
-	d: string;
-	e?: string | undefined;
-	f?: string | undefined;
-	u?: string | undefined;
+	sender: string;
+	entity?: string | undefined;
+	for?: string | undefined;
+	updated?: string | undefined;
 }, {
+	message: string;
+	type: "c";
+	time: string;
 	id: string;
-	t: "c";
-	m: string;
-	s: string;
-	d: string;
-	e?: string | undefined;
-	f?: string | undefined;
-	u?: string | undefined;
+	sender: string;
+	entity?: string | undefined;
+	for?: string | undefined;
+	updated?: string | undefined;
 }>;
 export type ChatMessage = z.infer<typeof chatMessageValidator>;
 export declare const requestOldChatMessagesValidator: z.ZodObject<{
-	t: z.ZodLiteral<"cr">;
-	c: z.ZodString;
+	type: z.ZodLiteral<"cr">;
+	cursor: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-	c: string;
-	t: "cr";
+	type: "cr";
+	cursor: string;
 }, {
-	c: string;
-	t: "cr";
+	type: "cr";
+	cursor: string;
 }>;
 export type RequestOldChatMessages = z.infer<typeof requestOldChatMessagesValidator>;
 export declare const oldChatMessagesValidator: z.ZodObject<{
-	t: z.ZodLiteral<"co">;
-	m: z.ZodArray<z.ZodObject<{
-		m: z.ZodString;
-		e: z.ZodOptional<z.ZodString>;
-		f: z.ZodOptional<z.ZodString>;
-		t: z.ZodLiteral<"c">;
+	type: z.ZodLiteral<"co">;
+	message: z.ZodArray<z.ZodObject<{
+		message: z.ZodString;
+		entity: z.ZodOptional<z.ZodString>;
+		for: z.ZodOptional<z.ZodString>;
+		type: z.ZodLiteral<"c">;
 		id: z.ZodString;
-		s: z.ZodString;
-		d: z.ZodString;
-		u: z.ZodOptional<z.ZodString>;
+		sender: z.ZodString;
+		time: z.ZodString;
+		updated: z.ZodOptional<z.ZodString>;
 	}, "strip", z.ZodTypeAny, {
+		message: string;
+		type: "c";
+		time: string;
 		id: string;
-		t: "c";
-		m: string;
-		s: string;
-		d: string;
-		e?: string | undefined;
-		f?: string | undefined;
-		u?: string | undefined;
+		sender: string;
+		entity?: string | undefined;
+		for?: string | undefined;
+		updated?: string | undefined;
 	}, {
+		message: string;
+		type: "c";
+		time: string;
 		id: string;
-		t: "c";
-		m: string;
-		s: string;
-		d: string;
-		e?: string | undefined;
-		f?: string | undefined;
-		u?: string | undefined;
+		sender: string;
+		entity?: string | undefined;
+		for?: string | undefined;
+		updated?: string | undefined;
 	}>, "many">;
-	c: z.ZodOptional<z.ZodString>;
+	cursor: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-	t: "co";
-	m: {
+	message: {
+		message: string;
+		type: "c";
+		time: string;
 		id: string;
-		t: "c";
-		m: string;
-		s: string;
-		d: string;
-		e?: string | undefined;
-		f?: string | undefined;
-		u?: string | undefined;
+		sender: string;
+		entity?: string | undefined;
+		for?: string | undefined;
+		updated?: string | undefined;
 	}[];
-	c?: string | undefined;
+	type: "co";
+	cursor?: string | undefined;
 }, {
-	t: "co";
-	m: {
+	message: {
+		message: string;
+		type: "c";
+		time: string;
 		id: string;
-		t: "c";
-		m: string;
-		s: string;
-		d: string;
-		e?: string | undefined;
-		f?: string | undefined;
-		u?: string | undefined;
+		sender: string;
+		entity?: string | undefined;
+		for?: string | undefined;
+		updated?: string | undefined;
 	}[];
-	c?: string | undefined;
+	type: "co";
+	cursor?: string | undefined;
 }>;
 export type OldChatMessages = z.infer<typeof oldChatMessagesValidator>;
 export declare const requestUpdateChatMessageValidator: z.ZodObject<{
-	t: z.ZodLiteral<"cru">;
+	type: z.ZodLiteral<"cru">;
 	id: z.ZodString;
-	m: z.ZodString;
+	message: z.ZodString;
 }, "strip", z.ZodTypeAny, {
+	message: string;
+	type: "cru";
 	id: string;
-	t: "cru";
-	m: string;
 }, {
+	message: string;
+	type: "cru";
 	id: string;
-	t: "cru";
-	m: string;
 }>;
 export type RequestUpdateChatMessage = z.infer<typeof requestUpdateChatMessageValidator>;
 export declare const updatedChatMessageValidator: z.ZodObject<{
-	t: z.ZodLiteral<"cu">;
+	type: z.ZodLiteral<"cu">;
 	id: z.ZodString;
-	m: z.ZodString;
-	u: z.ZodString;
+	message: z.ZodString;
+	updated: z.ZodString;
 }, "strip", z.ZodTypeAny, {
+	message: string;
+	type: "cu";
 	id: string;
-	t: "cu";
-	m: string;
-	u: string;
+	updated: string;
 }, {
+	message: string;
+	type: "cu";
 	id: string;
-	t: "cu";
-	m: string;
-	u: string;
+	updated: string;
 }>;
 export type UpdatedChatMessage = z.infer<typeof updatedChatMessageValidator>;
 export declare const deleteChatMessageValidator: z.ZodObject<{
-	t: z.ZodLiteral<"cd">;
+	type: z.ZodLiteral<"cd">;
 	id: z.ZodString;
 }, "strip", z.ZodTypeAny, {
+	type: "cd";
 	id: string;
-	t: "cd";
 }, {
+	type: "cd";
 	id: string;
-	t: "cd";
 }>;
 export type DeleteChatMessage = z.infer<typeof deleteChatMessageValidator>;
 export declare const campaignWSMessageValidator: z.ZodUnion<[
 	z.ZodObject<{
-		t: z.ZodLiteral<"cs">;
-		m: z.ZodString;
-		e: z.ZodOptional<z.ZodString>;
-		f: z.ZodOptional<z.ZodString>;
+		type: z.ZodLiteral<"cs">;
+		message: z.ZodString;
+		entity: z.ZodOptional<z.ZodString>;
+		for: z.ZodOptional<z.ZodString>;
 	}, "strip", z.ZodTypeAny, {
-		t: "cs";
-		m: string;
-		e?: string | undefined;
-		f?: string | undefined;
+		message: string;
+		type: "cs";
+		entity?: string | undefined;
+		for?: string | undefined;
 	}, {
-		t: "cs";
-		m: string;
-		e?: string | undefined;
-		f?: string | undefined;
+		message: string;
+		type: "cs";
+		entity?: string | undefined;
+		for?: string | undefined;
 	}>,
 	z.ZodObject<{
-		m: z.ZodString;
-		e: z.ZodOptional<z.ZodString>;
-		f: z.ZodOptional<z.ZodString>;
-		t: z.ZodLiteral<"c">;
+		message: z.ZodString;
+		entity: z.ZodOptional<z.ZodString>;
+		for: z.ZodOptional<z.ZodString>;
+		type: z.ZodLiteral<"c">;
 		id: z.ZodString;
-		s: z.ZodString;
-		d: z.ZodString;
-		u: z.ZodOptional<z.ZodString>;
+		sender: z.ZodString;
+		time: z.ZodString;
+		updated: z.ZodOptional<z.ZodString>;
 	}, "strip", z.ZodTypeAny, {
+		message: string;
+		type: "c";
+		time: string;
 		id: string;
-		t: "c";
-		m: string;
-		s: string;
-		d: string;
-		e?: string | undefined;
-		f?: string | undefined;
-		u?: string | undefined;
+		sender: string;
+		entity?: string | undefined;
+		for?: string | undefined;
+		updated?: string | undefined;
 	}, {
+		message: string;
+		type: "c";
+		time: string;
 		id: string;
-		t: "c";
-		m: string;
-		s: string;
-		d: string;
-		e?: string | undefined;
-		f?: string | undefined;
-		u?: string | undefined;
+		sender: string;
+		entity?: string | undefined;
+		for?: string | undefined;
+		updated?: string | undefined;
 	}>,
 	z.ZodObject<{
-		t: z.ZodLiteral<"cr">;
-		c: z.ZodString;
+		type: z.ZodLiteral<"cr">;
+		cursor: z.ZodString;
 	}, "strip", z.ZodTypeAny, {
-		c: string;
-		t: "cr";
+		type: "cr";
+		cursor: string;
 	}, {
-		c: string;
-		t: "cr";
+		type: "cr";
+		cursor: string;
 	}>,
 	z.ZodObject<{
-		t: z.ZodLiteral<"co">;
-		m: z.ZodArray<z.ZodObject<{
-			m: z.ZodString;
-			e: z.ZodOptional<z.ZodString>;
-			f: z.ZodOptional<z.ZodString>;
-			t: z.ZodLiteral<"c">;
+		type: z.ZodLiteral<"co">;
+		message: z.ZodArray<z.ZodObject<{
+			message: z.ZodString;
+			entity: z.ZodOptional<z.ZodString>;
+			for: z.ZodOptional<z.ZodString>;
+			type: z.ZodLiteral<"c">;
 			id: z.ZodString;
-			s: z.ZodString;
-			d: z.ZodString;
-			u: z.ZodOptional<z.ZodString>;
+			sender: z.ZodString;
+			time: z.ZodString;
+			updated: z.ZodOptional<z.ZodString>;
 		}, "strip", z.ZodTypeAny, {
+			message: string;
+			type: "c";
+			time: string;
 			id: string;
-			t: "c";
-			m: string;
-			s: string;
-			d: string;
-			e?: string | undefined;
-			f?: string | undefined;
-			u?: string | undefined;
+			sender: string;
+			entity?: string | undefined;
+			for?: string | undefined;
+			updated?: string | undefined;
 		}, {
+			message: string;
+			type: "c";
+			time: string;
 			id: string;
-			t: "c";
-			m: string;
-			s: string;
-			d: string;
-			e?: string | undefined;
-			f?: string | undefined;
-			u?: string | undefined;
+			sender: string;
+			entity?: string | undefined;
+			for?: string | undefined;
+			updated?: string | undefined;
 		}>, "many">;
-		c: z.ZodOptional<z.ZodString>;
+		cursor: z.ZodOptional<z.ZodString>;
 	}, "strip", z.ZodTypeAny, {
-		t: "co";
-		m: {
+		message: {
+			message: string;
+			type: "c";
+			time: string;
 			id: string;
-			t: "c";
-			m: string;
-			s: string;
-			d: string;
-			e?: string | undefined;
-			f?: string | undefined;
-			u?: string | undefined;
+			sender: string;
+			entity?: string | undefined;
+			for?: string | undefined;
+			updated?: string | undefined;
 		}[];
-		c?: string | undefined;
+		type: "co";
+		cursor?: string | undefined;
 	}, {
-		t: "co";
-		m: {
+		message: {
+			message: string;
+			type: "c";
+			time: string;
 			id: string;
-			t: "c";
-			m: string;
-			s: string;
-			d: string;
-			e?: string | undefined;
-			f?: string | undefined;
-			u?: string | undefined;
+			sender: string;
+			entity?: string | undefined;
+			for?: string | undefined;
+			updated?: string | undefined;
 		}[];
-		c?: string | undefined;
+		type: "co";
+		cursor?: string | undefined;
 	}>,
 	z.ZodObject<{
-		t: z.ZodLiteral<"cru">;
+		type: z.ZodLiteral<"cru">;
 		id: z.ZodString;
-		m: z.ZodString;
+		message: z.ZodString;
 	}, "strip", z.ZodTypeAny, {
+		message: string;
+		type: "cru";
 		id: string;
-		t: "cru";
-		m: string;
 	}, {
+		message: string;
+		type: "cru";
 		id: string;
-		t: "cru";
-		m: string;
 	}>,
 	z.ZodObject<{
-		t: z.ZodLiteral<"cu">;
+		type: z.ZodLiteral<"cu">;
 		id: z.ZodString;
-		m: z.ZodString;
-		u: z.ZodString;
+		message: z.ZodString;
+		updated: z.ZodString;
 	}, "strip", z.ZodTypeAny, {
+		message: string;
+		type: "cu";
 		id: string;
-		t: "cu";
-		m: string;
-		u: string;
+		updated: string;
 	}, {
+		message: string;
+		type: "cu";
 		id: string;
-		t: "cu";
-		m: string;
-		u: string;
+		updated: string;
 	}>,
 	z.ZodObject<{
-		t: z.ZodLiteral<"cd">;
+		type: z.ZodLiteral<"cd">;
 		id: z.ZodString;
 	}, "strip", z.ZodTypeAny, {
+		type: "cd";
 		id: string;
-		t: "cd";
 	}, {
+		type: "cd";
 		id: string;
-		t: "cd";
 	}>
 ]>;
 export type CampaignWSMessage = z.infer<typeof campaignWSMessageValidator>;
