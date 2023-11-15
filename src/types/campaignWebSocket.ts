@@ -38,7 +38,7 @@ export type RequestOldChatMessages = z.infer<
 
 export const oldChatMessagesValidator = z.object({
   t: z.literal(OLD_CHAT_TYPE),
-  m: z.array(chatMessageValidator).min(1).max(100),
+  m: z.array(chatMessageValidator).max(100),
   c: z.string().max(100).optional(), // cursor to get next page
 });
 export type OldChatMessages = z.infer<typeof oldChatMessagesValidator>;
