@@ -107,6 +107,9 @@ interface PendingAdjustment {
   builtIn?: boolean;
 }
 
+// TODO: It may be worthwhile building a dependency graph of all attributes and their dependencies
+// We would have to go through the graph and prune any loops, then work through the graph in order
+
 export const computeAttributes = (
   entity: CollectedEntity
 ): ComputedAttributes => {
