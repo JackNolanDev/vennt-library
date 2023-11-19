@@ -11,7 +11,11 @@ export const REQUEST_UPDATE_CHAT_TYPE = "cru";
 export const UPDATE_CHAT_TYPE = "cu";
 export const DELETE_CHAT_TYPE = "cd";
 
-export const sendChatMessageValidator = z.object({
+export const baseWebsocketMessageValidator = z.object({
+  request_id: idValidator.optional(),
+});
+
+export const sendChatMessageValidator = baseWebsocketMessageValidator.extend({
   type: z.literal(SEND_CHAT_TYPE),
   message: z.string().max(CHAT_MAX),
   entity: idValidator.optional(),
@@ -28,39 +32,43 @@ export const chatMessageValidator = sendChatMessageValidator.extend({
 });
 export type ChatMessage = z.infer<typeof chatMessageValidator>;
 
-export const requestOldChatMessagesValidator = z.object({
-  type: z.literal(REQUEST_CHAT_TYPE),
-  cursor: z.string().max(300), // cursor
-});
+export const requestOldChatMessagesValidator =
+  baseWebsocketMessageValidator.extend({
+    type: z.literal(REQUEST_CHAT_TYPE),
+    cursor: z.string().max(300), // cursor
+  });
 export type RequestOldChatMessages = z.infer<
   typeof requestOldChatMessagesValidator
 >;
 
-export const oldChatMessagesValidator = z.object({
+export const oldChatMessagesValidator = baseWebsocketMessageValidator.extend({
   type: z.literal(OLD_CHAT_TYPE),
   message: z.array(chatMessageValidator).max(100),
   cursor: z.string().max(300).optional(), // cursor to get next page
 });
 export type OldChatMessages = z.infer<typeof oldChatMessagesValidator>;
 
-export const requestUpdateChatMessageValidator = z.object({
-  type: z.literal(REQUEST_UPDATE_CHAT_TYPE),
-  id: idValidator, // message ID
-  message: z.string().max(CHAT_MAX), // new message
-});
+export const requestUpdateChatMessageValidator =
+  baseWebsocketMessageValidator.extend({
+    type: z.literal(REQUEST_UPDATE_CHAT_TYPE),
+    id: idValidator, // message ID
+    message: z.string().max(CHAT_MAX), // new message
+  });
 export type RequestUpdateChatMessage = z.infer<
   typeof requestUpdateChatMessageValidator
 >;
 
-export const updatedChatMessageValidator = z.object({
-  type: z.literal(UPDATE_CHAT_TYPE),
-  id: idValidator, // message ID
-  message: z.string().max(CHAT_MAX), // new message
-  updated: z.string().datetime(), // timestamp of message updated
-});
+export const updatedChatMessageValidator = baseWebsocketMessageValidator.extend(
+  {
+    type: z.literal(UPDATE_CHAT_TYPE),
+    id: idValidator, // message ID
+    message: z.string().max(CHAT_MAX), // new message
+    updated: z.string().datetime(), // timestamp of message updated
+  }
+);
 export type UpdatedChatMessage = z.infer<typeof updatedChatMessageValidator>;
 
-export const deleteChatMessageValidator = z.object({
+export const deleteChatMessageValidator = baseWebsocketMessageValidator.extend({
   type: z.literal(DELETE_CHAT_TYPE),
   id: idValidator, // message ID
 });

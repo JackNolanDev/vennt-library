@@ -100,7 +100,7 @@ export const attrShortName = (attr: EntityAttribute): string => {
   const nameMap: Record<EntityAttribute, string> = {
     init: "Initiative",
     // acc: "Accuracy",
-    L: "Level",
+    l: "Level",
   };
   const customName = nameMap[attr];
   if (customName) {
