@@ -11,6 +11,9 @@ export const REQUEST_UPDATE_CHAT_TYPE = "cru";
 export const UPDATE_CHAT_TYPE = "cu";
 export const DELETE_CHAT_TYPE = "cd";
 
+export const REQUEST_DICE_ROLL_TYPE = "dr";
+export const DICE_ROLL_RESULT_TYPE = "d";
+
 export const baseWebsocketMessageValidator = z.object({
   request_id: idValidator.optional(),
 });
@@ -31,22 +34,6 @@ export const chatMessageValidator = sendChatMessageValidator.extend({
   updated: z.string().datetime().optional(),
 });
 export type ChatMessage = z.infer<typeof chatMessageValidator>;
-
-export const requestOldChatMessagesValidator =
-  baseWebsocketMessageValidator.extend({
-    type: z.literal(REQUEST_CHAT_TYPE),
-    cursor: z.string().max(300), // cursor
-  });
-export type RequestOldChatMessages = z.infer<
-  typeof requestOldChatMessagesValidator
->;
-
-export const oldChatMessagesValidator = baseWebsocketMessageValidator.extend({
-  type: z.literal(OLD_CHAT_TYPE),
-  message: z.array(chatMessageValidator).max(100),
-  cursor: z.string().max(300).optional(), // cursor to get next page
-});
-export type OldChatMessages = z.infer<typeof oldChatMessagesValidator>;
 
 export const requestUpdateChatMessageValidator =
   baseWebsocketMessageValidator.extend({
@@ -74,6 +61,41 @@ export const deleteChatMessageValidator = baseWebsocketMessageValidator.extend({
 });
 export type DeleteChatMessage = z.infer<typeof deleteChatMessageValidator>;
 
+export const requestDiceRollTypeValidator =
+  baseWebsocketMessageValidator.extend({
+    type: z.literal(REQUEST_DICE_ROLL_TYPE),
+    entity: idValidator.optional(),
+    dice: z.string().max(CHAT_MAX),
+  });
+export type RequestDiceRollType = z.infer<typeof requestDiceRollTypeValidator>;
+
+export const diceRollResultValidator = requestDiceRollTypeValidator.extend({
+  type: z.literal(DICE_ROLL_RESULT_TYPE),
+  sender: idValidator,
+  time: z.string().datetime(),
+  // TODO: Maybe change to object instead of stringified object so it can be validated
+  result: z.unknown(),
+});
+export type DiceRollResult = z.infer<typeof diceRollResultValidator>;
+
+export const requestOldChatMessagesValidator =
+  baseWebsocketMessageValidator.extend({
+    type: z.literal(REQUEST_CHAT_TYPE),
+    cursor: z.string().max(300), // cursor
+  });
+export type RequestOldChatMessages = z.infer<
+  typeof requestOldChatMessagesValidator
+>;
+
+export const oldChatMessagesValidator = baseWebsocketMessageValidator.extend({
+  type: z.literal(OLD_CHAT_TYPE),
+  message: z
+    .array(z.union([chatMessageValidator, diceRollResultValidator]))
+    .max(100),
+  cursor: z.string().max(300).optional(), // cursor to get next page
+});
+export type OldChatMessages = z.infer<typeof oldChatMessagesValidator>;
+
 export const campaignWSMessageValidator = z.union([
   sendChatMessageValidator,
   chatMessageValidator,
@@ -82,5 +104,7 @@ export const campaignWSMessageValidator = z.union([
   requestUpdateChatMessageValidator,
   updatedChatMessageValidator,
   deleteChatMessageValidator,
+  requestDiceRollTypeValidator,
+  diceRollResultValidator,
 ]);
 export type CampaignWSMessage = z.infer<typeof campaignWSMessageValidator>;

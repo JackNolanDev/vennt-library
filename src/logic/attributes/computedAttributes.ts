@@ -261,6 +261,7 @@ export const computeAttributes = (
       srcName = "Base Equations";
     }
     if (typeof adjust === "number") {
+      // basic +/- attribute adjustment
       attrs[attr].val += adjust;
       const reason = `${attr} ${adjust >= 0 ? "+" : "-"} ${Math.abs(adjust)} ${
         srcName ? `(From ${srcName})` : ""
@@ -272,6 +273,7 @@ export const computeAttributes = (
           ? abilityExtendEntityAttributes(src.ability, attrs)
           : attrs;
       if (typeof adjust === "string") {
+        // equation-based attribute adjustment
         const newVal = solveEquation(adjust, extendedAttrs);
         if (newVal) {
           attrs[attr].val = newVal;
@@ -279,6 +281,7 @@ export const computeAttributes = (
           appendReason(attr, reason, itemId, abilityId);
         }
       } else {
+        // effects dice rolls for attribute
         const diceCheck = attrs[attr].dice;
         if (diceCheck) {
           attrs[attr].dice = combineDiceSettings(
