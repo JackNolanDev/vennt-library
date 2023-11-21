@@ -18,6 +18,13 @@ export const baseWebsocketMessageValidator = z.object({
   request_id: idValidator.optional(),
 });
 
+export const baseStoredWebsocketMessageValidator = z.object({
+  id: idValidator,
+  sender: idValidator,
+  time: z.string().datetime(),
+  updated: z.string().datetime().optional(),
+});
+
 export const sendChatMessageValidator = baseWebsocketMessageValidator.extend({
   type: z.literal(SEND_CHAT_TYPE),
   message: z.string().max(CHAT_MAX),
@@ -26,13 +33,11 @@ export const sendChatMessageValidator = baseWebsocketMessageValidator.extend({
 });
 export type SendChatMessage = z.infer<typeof sendChatMessageValidator>;
 
-export const chatMessageValidator = sendChatMessageValidator.extend({
-  type: z.literal(CHAT_TYPE),
-  id: idValidator,
-  sender: idValidator,
-  time: z.string().datetime(),
-  updated: z.string().datetime().optional(),
-});
+export const chatMessageValidator = sendChatMessageValidator
+  .merge(baseStoredWebsocketMessageValidator)
+  .extend({
+    type: z.literal(CHAT_TYPE),
+  });
 export type ChatMessage = z.infer<typeof chatMessageValidator>;
 
 export const requestUpdateChatMessageValidator =
@@ -61,23 +66,21 @@ export const deleteChatMessageValidator = baseWebsocketMessageValidator.extend({
 });
 export type DeleteChatMessage = z.infer<typeof deleteChatMessageValidator>;
 
-export const requestDiceRollTypeValidator =
-  baseWebsocketMessageValidator.extend({
-    type: z.literal(REQUEST_DICE_ROLL_TYPE),
-    entity: idValidator.optional(),
-    dice: z.string().max(CHAT_MAX),
-    message: z.string().max(CHAT_MAX).optional(),
-    gm_only: z.literal("t").optional(), // using a string instead of a true boolean to make it simpler to store in the string map
-  });
-export type RequestDiceRollType = z.infer<typeof requestDiceRollTypeValidator>;
-
-export const diceRollResultValidator = requestDiceRollTypeValidator.extend({
-  type: z.literal(DICE_ROLL_RESULT_TYPE),
-  sender: idValidator,
-  time: z.string().datetime(),
-  // TODO: Maybe change to object instead of stringified object so it can be validated
-  result: z.string().max(ENTITY_TEXT_MAX),
+export const requestDiceRollValidator = baseWebsocketMessageValidator.extend({
+  type: z.literal(REQUEST_DICE_ROLL_TYPE),
+  entity: idValidator.optional(),
+  dice: z.string().max(CHAT_MAX),
+  message: z.string().max(CHAT_MAX).optional(),
+  gm_only: z.literal("t").optional(), // using a string instead of a true boolean to make it simpler to store in the string map
 });
+export type RequestDiceRoll = z.infer<typeof requestDiceRollValidator>;
+
+export const diceRollResultValidator = requestDiceRollValidator
+  .merge(baseStoredWebsocketMessageValidator)
+  .extend({
+    type: z.literal(DICE_ROLL_RESULT_TYPE),
+    result: z.string().max(ENTITY_TEXT_MAX),
+  });
 export type DiceRollResult = z.infer<typeof diceRollResultValidator>;
 
 export const storedMessageValidator = z.union([
@@ -110,7 +113,7 @@ export const campaignWSMessageValidator = z.union([
   requestUpdateChatMessageValidator,
   updatedChatMessageValidator,
   deleteChatMessageValidator,
-  requestDiceRollTypeValidator,
+  requestDiceRollValidator,
   diceRollResultValidator,
 ]);
 export type CampaignWSMessage = z.infer<typeof campaignWSMessageValidator>;
