@@ -55409,26 +55409,26 @@ export declare const requestDiceRollTypeValidator: z.ZodObject<{
 	type: z.ZodLiteral<"dr">;
 	entity: z.ZodOptional<z.ZodString>;
 	dice: z.ZodString;
-	message: z.ZodString;
+	message: z.ZodOptional<z.ZodString>;
 	gm_only: z.ZodOptional<z.ZodLiteral<"t">>;
 }, "strip", z.ZodTypeAny, {
-	message: string;
 	type: "dr";
 	dice: string;
 	request_id?: string | undefined;
 	entity?: string | undefined;
+	message?: string | undefined;
 	gm_only?: "t" | undefined;
 }, {
-	message: string;
 	type: "dr";
 	dice: string;
 	request_id?: string | undefined;
 	entity?: string | undefined;
+	message?: string | undefined;
 	gm_only?: "t" | undefined;
 }>;
 export type RequestDiceRollType = z.infer<typeof requestDiceRollTypeValidator>;
 export declare const diceRollResultValidator: z.ZodObject<{
-	message: z.ZodString;
+	message: z.ZodOptional<z.ZodString>;
 	dice: z.ZodString;
 	entity: z.ZodOptional<z.ZodString>;
 	gm_only: z.ZodOptional<z.ZodLiteral<"t">>;
@@ -55436,27 +55436,27 @@ export declare const diceRollResultValidator: z.ZodObject<{
 	type: z.ZodLiteral<"d">;
 	sender: z.ZodString;
 	time: z.ZodString;
-	result: z.ZodUnknown;
+	result: z.ZodString;
 }, "strip", z.ZodTypeAny, {
-	message: string;
 	type: "d";
 	dice: string;
 	time: string;
 	sender: string;
+	result: string;
+	message?: string | undefined;
 	entity?: string | undefined;
 	gm_only?: "t" | undefined;
 	request_id?: string | undefined;
-	result?: unknown;
 }, {
-	message: string;
 	type: "d";
 	dice: string;
 	time: string;
 	sender: string;
+	result: string;
+	message?: string | undefined;
 	entity?: string | undefined;
 	gm_only?: "t" | undefined;
 	request_id?: string | undefined;
-	result?: unknown;
 }>;
 export type DiceRollResult = z.infer<typeof diceRollResultValidator>;
 export declare const storedMessageValidator: z.ZodUnion<[
@@ -55492,7 +55492,7 @@ export declare const storedMessageValidator: z.ZodUnion<[
 		updated?: string | undefined;
 	}>,
 	z.ZodObject<{
-		message: z.ZodString;
+		message: z.ZodOptional<z.ZodString>;
 		dice: z.ZodString;
 		entity: z.ZodOptional<z.ZodString>;
 		gm_only: z.ZodOptional<z.ZodLiteral<"t">>;
@@ -55500,27 +55500,27 @@ export declare const storedMessageValidator: z.ZodUnion<[
 		type: z.ZodLiteral<"d">;
 		sender: z.ZodString;
 		time: z.ZodString;
-		result: z.ZodUnknown;
+		result: z.ZodString;
 	}, "strip", z.ZodTypeAny, {
-		message: string;
 		type: "d";
 		dice: string;
 		time: string;
 		sender: string;
+		result: string;
+		message?: string | undefined;
 		entity?: string | undefined;
 		gm_only?: "t" | undefined;
 		request_id?: string | undefined;
-		result?: unknown;
 	}, {
-		message: string;
 		type: "d";
 		dice: string;
 		time: string;
 		sender: string;
+		result: string;
+		message?: string | undefined;
 		entity?: string | undefined;
 		gm_only?: "t" | undefined;
 		request_id?: string | undefined;
-		result?: unknown;
 	}>
 ]>;
 export type StoredMessage = z.infer<typeof storedMessageValidator>;
@@ -55574,7 +55574,7 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 			updated?: string | undefined;
 		}>,
 		z.ZodObject<{
-			message: z.ZodString;
+			message: z.ZodOptional<z.ZodString>;
 			dice: z.ZodString;
 			entity: z.ZodOptional<z.ZodString>;
 			gm_only: z.ZodOptional<z.ZodLiteral<"t">>;
@@ -55582,27 +55582,27 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 			type: z.ZodLiteral<"d">;
 			sender: z.ZodString;
 			time: z.ZodString;
-			result: z.ZodUnknown;
+			result: z.ZodString;
 		}, "strip", z.ZodTypeAny, {
-			message: string;
 			type: "d";
 			dice: string;
 			time: string;
 			sender: string;
+			result: string;
+			message?: string | undefined;
 			entity?: string | undefined;
 			gm_only?: "t" | undefined;
 			request_id?: string | undefined;
-			result?: unknown;
 		}, {
-			message: string;
 			type: "d";
 			dice: string;
 			time: string;
 			sender: string;
+			result: string;
+			message?: string | undefined;
 			entity?: string | undefined;
 			gm_only?: "t" | undefined;
 			request_id?: string | undefined;
-			result?: unknown;
 		}>
 	]>, "many">;
 	cursor: z.ZodOptional<z.ZodString>;
@@ -55618,15 +55618,15 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 		for?: string | undefined;
 		updated?: string | undefined;
 	} | {
-		message: string;
 		type: "d";
 		dice: string;
 		time: string;
 		sender: string;
+		result: string;
+		message?: string | undefined;
 		entity?: string | undefined;
 		gm_only?: "t" | undefined;
 		request_id?: string | undefined;
-		result?: unknown;
 	})[];
 	type: "co";
 	request_id?: string | undefined;
@@ -55643,15 +55643,15 @@ export declare const oldChatMessagesValidator: z.ZodObject<{
 		for?: string | undefined;
 		updated?: string | undefined;
 	} | {
-		message: string;
 		type: "d";
 		dice: string;
 		time: string;
 		sender: string;
+		result: string;
+		message?: string | undefined;
 		entity?: string | undefined;
 		gm_only?: "t" | undefined;
 		request_id?: string | undefined;
-		result?: unknown;
 	})[];
 	type: "co";
 	request_id?: string | undefined;
@@ -55758,7 +55758,7 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 				updated?: string | undefined;
 			}>,
 			z.ZodObject<{
-				message: z.ZodString;
+				message: z.ZodOptional<z.ZodString>;
 				dice: z.ZodString;
 				entity: z.ZodOptional<z.ZodString>;
 				gm_only: z.ZodOptional<z.ZodLiteral<"t">>;
@@ -55766,27 +55766,27 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 				type: z.ZodLiteral<"d">;
 				sender: z.ZodString;
 				time: z.ZodString;
-				result: z.ZodUnknown;
+				result: z.ZodString;
 			}, "strip", z.ZodTypeAny, {
-				message: string;
 				type: "d";
 				dice: string;
 				time: string;
 				sender: string;
+				result: string;
+				message?: string | undefined;
 				entity?: string | undefined;
 				gm_only?: "t" | undefined;
 				request_id?: string | undefined;
-				result?: unknown;
 			}, {
-				message: string;
 				type: "d";
 				dice: string;
 				time: string;
 				sender: string;
+				result: string;
+				message?: string | undefined;
 				entity?: string | undefined;
 				gm_only?: "t" | undefined;
 				request_id?: string | undefined;
-				result?: unknown;
 			}>
 		]>, "many">;
 		cursor: z.ZodOptional<z.ZodString>;
@@ -55802,15 +55802,15 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 			for?: string | undefined;
 			updated?: string | undefined;
 		} | {
-			message: string;
 			type: "d";
 			dice: string;
 			time: string;
 			sender: string;
+			result: string;
+			message?: string | undefined;
 			entity?: string | undefined;
 			gm_only?: "t" | undefined;
 			request_id?: string | undefined;
-			result?: unknown;
 		})[];
 		type: "co";
 		request_id?: string | undefined;
@@ -55827,15 +55827,15 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 			for?: string | undefined;
 			updated?: string | undefined;
 		} | {
-			message: string;
 			type: "d";
 			dice: string;
 			time: string;
 			sender: string;
+			result: string;
+			message?: string | undefined;
 			entity?: string | undefined;
 			gm_only?: "t" | undefined;
 			request_id?: string | undefined;
-			result?: unknown;
 		})[];
 		type: "co";
 		request_id?: string | undefined;
@@ -55894,25 +55894,25 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 		type: z.ZodLiteral<"dr">;
 		entity: z.ZodOptional<z.ZodString>;
 		dice: z.ZodString;
-		message: z.ZodString;
+		message: z.ZodOptional<z.ZodString>;
 		gm_only: z.ZodOptional<z.ZodLiteral<"t">>;
 	}, "strip", z.ZodTypeAny, {
-		message: string;
 		type: "dr";
 		dice: string;
 		request_id?: string | undefined;
 		entity?: string | undefined;
+		message?: string | undefined;
 		gm_only?: "t" | undefined;
 	}, {
-		message: string;
 		type: "dr";
 		dice: string;
 		request_id?: string | undefined;
 		entity?: string | undefined;
+		message?: string | undefined;
 		gm_only?: "t" | undefined;
 	}>,
 	z.ZodObject<{
-		message: z.ZodString;
+		message: z.ZodOptional<z.ZodString>;
 		dice: z.ZodString;
 		entity: z.ZodOptional<z.ZodString>;
 		gm_only: z.ZodOptional<z.ZodLiteral<"t">>;
@@ -55920,27 +55920,27 @@ export declare const campaignWSMessageValidator: z.ZodUnion<[
 		type: z.ZodLiteral<"d">;
 		sender: z.ZodString;
 		time: z.ZodString;
-		result: z.ZodUnknown;
+		result: z.ZodString;
 	}, "strip", z.ZodTypeAny, {
-		message: string;
 		type: "d";
 		dice: string;
 		time: string;
 		sender: string;
+		result: string;
+		message?: string | undefined;
 		entity?: string | undefined;
 		gm_only?: "t" | undefined;
 		request_id?: string | undefined;
-		result?: unknown;
 	}, {
-		message: string;
 		type: "d";
 		dice: string;
 		time: string;
 		sender: string;
+		result: string;
+		message?: string | undefined;
 		entity?: string | undefined;
 		gm_only?: "t" | undefined;
 		request_id?: string | undefined;
-		result?: unknown;
 	}>
 ]>;
 export type CampaignWSMessage = z.infer<typeof campaignWSMessageValidator>;

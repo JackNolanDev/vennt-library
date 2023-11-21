@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { CHAT_MAX, idValidator } from ".";
+import { CHAT_MAX, ENTITY_TEXT_MAX, idValidator } from ".";
 
 export const CONNECTION_AUTHORIZED_MSG = "ok";
 
@@ -66,7 +66,7 @@ export const requestDiceRollTypeValidator =
     type: z.literal(REQUEST_DICE_ROLL_TYPE),
     entity: idValidator.optional(),
     dice: z.string().max(CHAT_MAX),
-    message: z.string().max(CHAT_MAX),
+    message: z.string().max(CHAT_MAX).optional(),
     gm_only: z.literal("t").optional(), // using a string instead of a true boolean to make it simpler to store in the string map
   });
 export type RequestDiceRollType = z.infer<typeof requestDiceRollTypeValidator>;
@@ -76,7 +76,7 @@ export const diceRollResultValidator = requestDiceRollTypeValidator.extend({
   sender: idValidator,
   time: z.string().datetime(),
   // TODO: Maybe change to object instead of stringified object so it can be validated
-  result: z.unknown(),
+  result: z.string().max(ENTITY_TEXT_MAX),
 });
 export type DiceRollResult = z.infer<typeof diceRollResultValidator>;
 
