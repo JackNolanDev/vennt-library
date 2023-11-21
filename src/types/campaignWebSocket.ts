@@ -66,6 +66,8 @@ export const requestDiceRollTypeValidator =
     type: z.literal(REQUEST_DICE_ROLL_TYPE),
     entity: idValidator.optional(),
     dice: z.string().max(CHAT_MAX),
+    message: z.string().max(CHAT_MAX),
+    gm_only: z.literal("t").optional(), // using a string instead of a true boolean to make it simpler to store in the string map
   });
 export type RequestDiceRollType = z.infer<typeof requestDiceRollTypeValidator>;
 
@@ -78,6 +80,12 @@ export const diceRollResultValidator = requestDiceRollTypeValidator.extend({
 });
 export type DiceRollResult = z.infer<typeof diceRollResultValidator>;
 
+export const storedMessageValidator = z.union([
+  chatMessageValidator,
+  diceRollResultValidator,
+]);
+export type StoredMessage = z.infer<typeof storedMessageValidator>;
+
 export const requestOldChatMessagesValidator =
   baseWebsocketMessageValidator.extend({
     type: z.literal(REQUEST_CHAT_TYPE),
@@ -89,9 +97,7 @@ export type RequestOldChatMessages = z.infer<
 
 export const oldChatMessagesValidator = baseWebsocketMessageValidator.extend({
   type: z.literal(OLD_CHAT_TYPE),
-  message: z
-    .array(z.union([chatMessageValidator, diceRollResultValidator]))
-    .max(100),
+  message: storedMessageValidator.array().max(100),
   cursor: z.string().max(300).optional(), // cursor to get next page
 });
 export type OldChatMessages = z.infer<typeof oldChatMessagesValidator>;

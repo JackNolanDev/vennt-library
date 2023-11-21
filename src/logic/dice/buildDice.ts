@@ -87,7 +87,7 @@ export const buildDice = (
     : {
         discord: ` ! ${comment}`,
         roll20: ` [${comment}]`,
-        web: ` # ${comment}`,
+        web: "",
       };
   return {
     discord:
