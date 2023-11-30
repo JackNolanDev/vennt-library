@@ -53076,6 +53076,7 @@ export declare const campaignInviteWithDetailsValidator: z.ZodObject<{
 	from: string;
 	created: string;
 }>;
+export declare const campaignInviteLinkHashValidator: z.ZodString;
 export declare const postCampaignInviteLinkValidator: z.ZodObject<{
 	campaign_id: z.ZodString;
 	hash: z.ZodString;

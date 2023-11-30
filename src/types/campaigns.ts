@@ -41,25 +41,23 @@ export const postCampaignInviteValidator = z.object({
   to: nameValidator,
   role: campaignRoleValidator,
 });
-
 export const campaignInviteValidator = postCampaignInviteValidator.extend({
   id: idValidator,
   from: nameValidator,
   created: z.string().datetime(),
 });
-
 export const campaignInviteWithDetailsValidator =
   campaignInviteValidator.extend({
     name: nameValidator,
     desc: z.string().max(COMMENT_MAX),
   });
 
+export const campaignInviteLinkHashValidator = z.string().length(10);
 export const postCampaignInviteLinkValidator = z.object({
   campaign_id: idValidator,
-  hash: z.string().length(10),
+  hash: campaignInviteLinkHashValidator,
   expires: z.string().datetime(),
 });
-
 export const campaignInviteLinkValidator =
   postCampaignInviteLinkValidator.extend({
     id: idValidator,
