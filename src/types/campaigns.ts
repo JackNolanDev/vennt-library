@@ -54,6 +54,18 @@ export const campaignInviteWithDetailsValidator =
     desc: z.string().max(COMMENT_MAX),
   });
 
+export const postCampaignInviteLinkValidator = z.object({
+  campaign_id: idValidator,
+  hash: z.string().length(10),
+  expires: z.string().datetime(),
+});
+
+export const campaignInviteLinkValidator =
+  postCampaignInviteLinkValidator.extend({
+    id: idValidator,
+    created: z.string().datetime(),
+  });
+
 export const campaignMemberValidator = z.object({
   id: idValidator,
   campaign_id: idValidator,
@@ -78,6 +90,7 @@ export const campaignEntityValidator = postCampaignEntityValidator.extend({
 export const fullCampaignDetailsValidator = z.object({
   campaign: campaignValidator,
   invites: campaignInviteValidator.array().optional(),
+  invite_links: campaignInviteLinkValidator.array().optional(),
   members: campaignMemberValidator.array(),
   entities: campaignEntityValidator.array(),
 });
@@ -92,6 +105,10 @@ export type CampaignInvite = z.infer<typeof campaignInviteValidator>;
 export type CampaignInviteWithDetails = z.infer<
   typeof campaignInviteWithDetailsValidator
 >;
+export type PostCampaignInviteLink = z.infer<
+  typeof postCampaignInviteLinkValidator
+>;
+export type CampaignInviteLink = z.infer<typeof campaignInviteLinkValidator>;
 export type PostCampaignEntity = z.infer<typeof postCampaignEntityValidator>;
 export type CampaignMember = z.infer<typeof campaignMemberValidator>;
 export type CampaignEntity = z.infer<typeof campaignEntityValidator>;

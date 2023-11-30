@@ -53076,6 +53076,38 @@ export declare const campaignInviteWithDetailsValidator: z.ZodObject<{
 	from: string;
 	created: string;
 }>;
+export declare const postCampaignInviteLinkValidator: z.ZodObject<{
+	campaign_id: z.ZodString;
+	hash: z.ZodString;
+	expires: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+	campaign_id: string;
+	hash: string;
+	expires: string;
+}, {
+	campaign_id: string;
+	hash: string;
+	expires: string;
+}>;
+export declare const campaignInviteLinkValidator: z.ZodObject<{
+	campaign_id: z.ZodString;
+	hash: z.ZodString;
+	expires: z.ZodString;
+	id: z.ZodString;
+	created: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+	id: string;
+	campaign_id: string;
+	created: string;
+	hash: string;
+	expires: string;
+}, {
+	id: string;
+	campaign_id: string;
+	created: string;
+	hash: string;
+	expires: string;
+}>;
 export declare const campaignMemberValidator: z.ZodObject<{
 	id: z.ZodString;
 	campaign_id: z.ZodString;
@@ -54021,6 +54053,25 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 		to: string;
 		from: string;
 		created: string;
+	}>, "many">>;
+	invite_links: z.ZodOptional<z.ZodArray<z.ZodObject<{
+		campaign_id: z.ZodString;
+		hash: z.ZodString;
+		expires: z.ZodString;
+		id: z.ZodString;
+		created: z.ZodString;
+	}, "strip", z.ZodTypeAny, {
+		id: string;
+		campaign_id: string;
+		created: string;
+		hash: string;
+		expires: string;
+	}, {
+		id: string;
+		campaign_id: string;
+		created: string;
+		hash: string;
+		expires: string;
 	}>, "many">>;
 	members: z.ZodArray<z.ZodObject<{
 		id: z.ZodString;
@@ -55090,6 +55141,13 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 		from: string;
 		created: string;
 	}[] | undefined;
+	invite_links?: {
+		id: string;
+		campaign_id: string;
+		created: string;
+		hash: string;
+		expires: string;
+	}[] | undefined;
 }, {
 	campaign: {
 		name: string;
@@ -55271,6 +55329,13 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 		from: string;
 		created: string;
 	}[] | undefined;
+	invite_links?: {
+		id: string;
+		campaign_id: string;
+		created: string;
+		hash: string;
+		expires: string;
+	}[] | undefined;
 }>;
 export type CampaignRole = z.infer<typeof campaignRoleValidator>;
 export type CampaignDesc = z.infer<typeof campaignDescValidator>;
@@ -55280,6 +55345,8 @@ export type CampaignWithRole = z.infer<typeof campaignWithRoleValidator>;
 export type PostCampaignInvite = z.infer<typeof postCampaignInviteValidator>;
 export type CampaignInvite = z.infer<typeof campaignInviteValidator>;
 export type CampaignInviteWithDetails = z.infer<typeof campaignInviteWithDetailsValidator>;
+export type PostCampaignInviteLink = z.infer<typeof postCampaignInviteLinkValidator>;
+export type CampaignInviteLink = z.infer<typeof campaignInviteLinkValidator>;
 export type PostCampaignEntity = z.infer<typeof postCampaignEntityValidator>;
 export type CampaignMember = z.infer<typeof campaignMemberValidator>;
 export type CampaignEntity = z.infer<typeof campaignEntityValidator>;
