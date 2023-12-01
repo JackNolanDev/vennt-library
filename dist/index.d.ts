@@ -53080,21 +53080,21 @@ export declare const campaignInviteLinkHashValidator: z.ZodString;
 export declare const postCampaignInviteLinkValidator: z.ZodObject<{
 	campaign_id: z.ZodString;
 	hash: z.ZodString;
-	expires: z.ZodString;
+	minutes_to_expire: z.ZodNumber;
 }, "strip", z.ZodTypeAny, {
 	campaign_id: string;
 	hash: string;
-	expires: string;
+	minutes_to_expire: number;
 }, {
 	campaign_id: string;
 	hash: string;
-	expires: string;
+	minutes_to_expire: number;
 }>;
 export declare const campaignInviteLinkValidator: z.ZodObject<{
 	campaign_id: z.ZodString;
 	hash: z.ZodString;
-	expires: z.ZodString;
 	id: z.ZodString;
+	expires: z.ZodString;
 	created: z.ZodString;
 }, "strip", z.ZodTypeAny, {
 	id: string;
@@ -54058,8 +54058,8 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 	invite_links: z.ZodOptional<z.ZodArray<z.ZodObject<{
 		campaign_id: z.ZodString;
 		hash: z.ZodString;
-		expires: z.ZodString;
 		id: z.ZodString;
+		expires: z.ZodString;
 		created: z.ZodString;
 	}, "strip", z.ZodTypeAny, {
 		id: string;

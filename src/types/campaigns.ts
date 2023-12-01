@@ -56,11 +56,13 @@ export const campaignInviteLinkHashValidator = z.string().length(10);
 export const postCampaignInviteLinkValidator = z.object({
   campaign_id: idValidator,
   hash: campaignInviteLinkHashValidator,
-  expires: z.string().datetime(),
+  minutes_to_expire: z.number().int().min(1),
 });
-export const campaignInviteLinkValidator =
-  postCampaignInviteLinkValidator.extend({
+export const campaignInviteLinkValidator = postCampaignInviteLinkValidator
+  .omit({ minutes_to_expire: true })
+  .extend({
     id: idValidator,
+    expires: z.string().datetime(),
     created: z.string().datetime(),
   });
 
