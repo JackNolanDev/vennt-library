@@ -52933,6 +52933,17 @@ export declare const campaignRoleValidator: z.ZodEnum<[
 	"PLAYER",
 	"GM"
 ]>;
+export declare const campaignRoleObjectValidator: z.ZodObject<{
+	role: z.ZodEnum<[
+		"SPECTATOR",
+		"PLAYER",
+		"GM"
+	]>;
+}, "strip", z.ZodTypeAny, {
+	role: "SPECTATOR" | "PLAYER" | "GM";
+}, {
+	role: "SPECTATOR" | "PLAYER" | "GM";
+}>;
 export declare const campaignDescValidator: z.ZodObject<{
 	desc: z.ZodString;
 }, "strip", z.ZodTypeAny, {
@@ -53002,13 +53013,13 @@ export declare const campaignWithRoleValidator: z.ZodObject<{
 	init_round: number;
 }>;
 export declare const postCampaignInviteValidator: z.ZodObject<{
-	campaign_id: z.ZodString;
-	to: z.ZodString;
 	role: z.ZodEnum<[
 		"SPECTATOR",
 		"PLAYER",
 		"GM"
 	]>;
+	campaign_id: z.ZodString;
+	to: z.ZodString;
 }, "strip", z.ZodTypeAny, {
 	role: "SPECTATOR" | "PLAYER" | "GM";
 	campaign_id: string;
@@ -53110,15 +53121,15 @@ export declare const campaignInviteLinkValidator: z.ZodObject<{
 	expires: string;
 }>;
 export declare const campaignMemberValidator: z.ZodObject<{
-	id: z.ZodString;
-	campaign_id: z.ZodString;
-	account_id: z.ZodString;
-	username: z.ZodString;
 	role: z.ZodEnum<[
 		"SPECTATOR",
 		"PLAYER",
 		"GM"
 	]>;
+	id: z.ZodString;
+	campaign_id: z.ZodString;
+	account_id: z.ZodString;
+	username: z.ZodString;
 }, "strip", z.ZodTypeAny, {
 	id: string;
 	username: string;
@@ -54075,15 +54086,15 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 		expires: string;
 	}>, "many">>;
 	members: z.ZodArray<z.ZodObject<{
-		id: z.ZodString;
-		campaign_id: z.ZodString;
-		account_id: z.ZodString;
-		username: z.ZodString;
 		role: z.ZodEnum<[
 			"SPECTATOR",
 			"PLAYER",
 			"GM"
 		]>;
+		id: z.ZodString;
+		campaign_id: z.ZodString;
+		account_id: z.ZodString;
+		username: z.ZodString;
 	}, "strip", z.ZodTypeAny, {
 		id: string;
 		username: string;

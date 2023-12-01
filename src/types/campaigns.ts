@@ -18,6 +18,10 @@ export const CAMPAIGN_ROLES = [
 ] as const;
 export const campaignRoleValidator = z.enum(CAMPAIGN_ROLES);
 
+export const campaignRoleObjectValidator = z.object({
+  role: campaignRoleValidator,
+});
+
 export const campaignDescValidator = z.object({
   desc: z.string().max(COMMENT_MAX),
 });
@@ -32,14 +36,13 @@ export const campaignValidator = postCampaignValidator.extend({
   init_round: z.number().int().nonnegative(),
 });
 
-export const campaignWithRoleValidator = campaignValidator.extend({
-  role: campaignRoleValidator,
-});
+export const campaignWithRoleValidator = campaignValidator.merge(
+  campaignRoleObjectValidator
+);
 
-export const postCampaignInviteValidator = z.object({
+export const postCampaignInviteValidator = campaignRoleObjectValidator.extend({
   campaign_id: idValidator,
   to: nameValidator,
-  role: campaignRoleValidator,
 });
 export const campaignInviteValidator = postCampaignInviteValidator.extend({
   id: idValidator,
@@ -66,12 +69,11 @@ export const campaignInviteLinkValidator = postCampaignInviteLinkValidator
     created: z.string().datetime(),
   });
 
-export const campaignMemberValidator = z.object({
+export const campaignMemberValidator = campaignRoleObjectValidator.extend({
   id: idValidator,
   campaign_id: idValidator,
   account_id: idValidator,
   username: nameValidator,
-  role: campaignRoleValidator,
 });
 
 export const postCampaignEntityValidator = z.object({
