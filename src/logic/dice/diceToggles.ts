@@ -6,6 +6,8 @@ import {
   UsesCheck,
   DiceSettings,
   DiceToggle,
+  FullEntityAbility,
+  FullEntityItem,
 } from "../..";
 
 export const diceTogglesForEntity = (
@@ -14,7 +16,11 @@ export const diceTogglesForEntity = (
 ): DiceToggles => {
   const toggles: DiceToggles = {};
 
-  const saveSettingToToggle = (key: string, check?: UsesCheck): void => {
+  const saveSettingToToggle = (
+    key: string,
+    check?: UsesCheck,
+    src?: { ability_id?: string; item_id?: string }
+  ): void => {
     if (!check) {
       return;
     }
@@ -24,7 +30,8 @@ export const diceTogglesForEntity = (
     const toggle: DiceToggle = {
       setting,
       attr: check.attr,
-      label: check.label,
+      ...(check.label && { label: check.label }),
+      ...((src?.ability_id || src?.item_id) && { src }),
     };
     toggles[key] = toggle;
   };
@@ -40,7 +47,9 @@ export const diceTogglesForEntity = (
         .map((criteria) => criteria.check) ?? [];
     checks.push(ability.uses?.check);
     checks.forEach((check) => {
-      saveSettingToToggle(ability.name, check);
+      saveSettingToToggle(ability.name, check, {
+        ability_id: (ability as FullEntityAbility).id,
+      });
     });
   });
 
@@ -51,7 +60,9 @@ export const diceTogglesForEntity = (
         !item.custom_fields?.in_storage
     )
     .forEach((item) => {
-      saveSettingToToggle(item.name, item.uses?.check);
+      saveSettingToToggle(item.name, item.uses?.check, {
+        item_id: (item as FullEntityItem).id,
+      });
     });
 
   return toggles;

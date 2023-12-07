@@ -60506,6 +60506,10 @@ export type DiceToggle = {
 	setting: DiceSettings;
 	default?: boolean;
 	label?: string;
+	src?: {
+		ability_id?: string;
+		item_id?: string;
+	};
 };
 export type DiceToggles = {
 	[key: string]: DiceToggle;

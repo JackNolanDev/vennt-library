@@ -34,3 +34,15 @@ export const WEAPON_ITEM: EntityItem = {
   active: true,
   id: "5d2f9718-0462-441c-afe8-40a705ba34f7",
 };
+
+export const STR_DICE_TOGGLE_ITEM: EntityItem = {
+  name: "str toggle item",
+  bulk: 1,
+  desc: "Item causes toggle",
+  type: "equipment",
+  custom_fields: {},
+  uses: { check: { dice_settings: { flow: 1 }, attr: "str" } },
+  comment: "",
+  active: true,
+  id: "3454d2af-d63d-4c15-b036-6f385c52927e",
+};

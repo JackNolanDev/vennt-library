@@ -28,6 +28,7 @@ export type DiceToggle = {
   setting: DiceSettings;
   default?: boolean; // currently not really supported
   label?: string;
+  src?: { ability_id?: string; item_id?: string };
 };
 export type DiceToggles = {
   [key: string]: DiceToggle;
