@@ -53704,6 +53704,129 @@ export declare const campaignEntityValidator: z.ZodObject<{
 			icon?: string | undefined;
 		}[]> | undefined;
 	}>;
+	computed_attributes: z.ZodNullable<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+		base: z.ZodOptional<z.ZodNumber>;
+		val: z.ZodNumber;
+		reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			val: z.ZodNumber;
+			src: z.ZodString;
+			abilityId: z.ZodOptional<z.ZodString>;
+			itemId: z.ZodOptional<z.ZodString>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}, {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}>, "many">>;
+		dice: z.ZodOptional<z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>;
+	}, "strip", z.ZodTypeAny, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}>>>>;
 }, "strip", z.ZodTypeAny, {
 	type: "CHARACTER" | "COG";
 	name: string;
@@ -53860,6 +53983,32 @@ export declare const campaignEntityValidator: z.ZodObject<{
 	};
 	owner: string;
 	gm_only: boolean;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 }, {
 	type: "CHARACTER" | "COG";
 	name: string;
@@ -54016,6 +54165,32 @@ export declare const campaignEntityValidator: z.ZodObject<{
 	};
 	owner: string;
 	gm_only: boolean;
+	computed_attributes?: Record<string, {
+		val: number;
+		base?: number | undefined;
+		reason?: {
+			val: number;
+			src: string;
+			abilityId?: string | undefined;
+			itemId?: string | undefined;
+		}[] | undefined;
+		dice?: {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		} | undefined;
+	}> | null | undefined;
 }>;
 export declare const fullCampaignDetailsValidator: z.ZodObject<{
 	campaign: z.ZodObject<{
@@ -54659,6 +54834,129 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 				icon?: string | undefined;
 			}[]> | undefined;
 		}>;
+		computed_attributes: z.ZodNullable<z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			base: z.ZodOptional<z.ZodNumber>;
+			val: z.ZodNumber;
+			reason: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				val: z.ZodNumber;
+				src: z.ZodString;
+				abilityId: z.ZodOptional<z.ZodString>;
+				itemId: z.ZodOptional<z.ZodString>;
+			}, "strip", z.ZodTypeAny, {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}, {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}>, "many">>;
+			dice: z.ZodOptional<z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>;
+		}, "strip", z.ZodTypeAny, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}>>>>;
 	}, "strip", z.ZodTypeAny, {
 		type: "CHARACTER" | "COG";
 		name: string;
@@ -54815,6 +55113,32 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 		};
 		owner: string;
 		gm_only: boolean;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	}, {
 		type: "CHARACTER" | "COG";
 		name: string;
@@ -54971,6 +55295,32 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 		};
 		owner: string;
 		gm_only: boolean;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	}>, "many">;
 }, "strip", z.ZodTypeAny, {
 	campaign: {
@@ -55144,6 +55494,32 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 		};
 		owner: string;
 		gm_only: boolean;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	}[];
 	invites?: {
 		id: string;
@@ -55332,6 +55708,32 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 		};
 		owner: string;
 		gm_only: boolean;
+		computed_attributes?: Record<string, {
+			val: number;
+			base?: number | undefined;
+			reason?: {
+				val: number;
+				src: string;
+				abilityId?: string | undefined;
+				itemId?: string | undefined;
+			}[] | undefined;
+			dice?: {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			} | undefined;
+		}> | null | undefined;
 	}[];
 	invites?: {
 		id: string;

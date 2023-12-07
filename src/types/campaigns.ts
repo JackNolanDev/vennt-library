@@ -6,6 +6,7 @@ import {
   entityTypeValidator,
   attributesValidator,
   otherAttributesValidator,
+  computedAttributesValidator,
 } from ".";
 
 export const CAMPAIGN_ROLE_SPECTATOR = "SPECTATOR";
@@ -87,6 +88,7 @@ export const campaignEntityValidator = postCampaignEntityValidator.extend({
   type: entityTypeValidator,
   attributes: attributesValidator,
   other_fields: otherAttributesValidator,
+  computed_attributes: computedAttributesValidator.optional().nullable(),
 });
 
 export const fullCampaignDetailsValidator = z.object({
