@@ -18,8 +18,11 @@ export const baseWebsocketMessageValidator = z.object({
   request_id: idValidator.optional(),
 });
 
+export const storedWebsocketMessageId = z
+  .string()
+  .regex(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/);
 export const baseStoredWebsocketMessageValidator = z.object({
-  id: idValidator,
+  id: storedWebsocketMessageId,
   sender: idValidator,
   time: z.string().datetime(),
   updated: z.string().datetime().optional(),
@@ -43,7 +46,7 @@ export type ChatMessage = z.infer<typeof chatMessageValidator>;
 export const requestUpdateChatMessageValidator =
   baseWebsocketMessageValidator.extend({
     type: z.literal(REQUEST_UPDATE_CHAT_TYPE),
-    id: idValidator, // message ID
+    id: storedWebsocketMessageId, // message ID
     message: z.string().max(CHAT_MAX), // new message
   });
 export type RequestUpdateChatMessage = z.infer<
@@ -53,7 +56,7 @@ export type RequestUpdateChatMessage = z.infer<
 export const updatedChatMessageValidator = baseWebsocketMessageValidator.extend(
   {
     type: z.literal(UPDATE_CHAT_TYPE),
-    id: idValidator, // message ID
+    id: storedWebsocketMessageId, // message ID
     message: z.string().max(CHAT_MAX), // new message
     updated: z.string().datetime(), // timestamp of message updated
   }
@@ -62,7 +65,7 @@ export type UpdatedChatMessage = z.infer<typeof updatedChatMessageValidator>;
 
 export const deleteChatMessageValidator = baseWebsocketMessageValidator.extend({
   type: z.literal(DELETE_CHAT_TYPE),
-  id: idValidator, // message ID
+  id: storedWebsocketMessageId, // message ID
 });
 export type DeleteChatMessage = z.infer<typeof deleteChatMessageValidator>;
 

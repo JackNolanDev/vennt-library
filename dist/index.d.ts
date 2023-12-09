@@ -55782,6 +55782,7 @@ export declare const baseWebsocketMessageValidator: z.ZodObject<{
 }, {
 	request_id?: string | undefined;
 }>;
+export declare const storedWebsocketMessageId: z.ZodString;
 export declare const baseStoredWebsocketMessageValidator: z.ZodObject<{
 	id: z.ZodString;
 	sender: z.ZodString;
