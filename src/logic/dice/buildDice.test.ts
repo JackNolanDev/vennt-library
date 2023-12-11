@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { ComputedAttributes } from "../..";
-import { defaultDice } from "./buildDice";
+import { buildDice, defaultDice } from "./buildDice";
 
 const TEST_ATTRS: ComputedAttributes = {
   wis: { val: 4 },
@@ -8,6 +8,19 @@ const TEST_ATTRS: ComputedAttributes = {
   dmg: { val: 0, dice: { end: "+str" } },
   blade_dmg: { val: 1, dice: { count: 1 } },
 };
+
+describe("buildDice", () => {
+  test("comment is returned", () => {
+    const result = buildDice(1, 6, undefined, undefined, "test check");
+    expect(result).toStrictEqual({
+      web: "1d6",
+      discord: "1d6  ! test check",
+      roll20: "1d6 [test check]",
+      settings: { adjust: 0, count: 1, sides: 6 },
+      comment: "test check",
+    });
+  });
+});
 
 describe("defaultDice", () => {
   test("expect basic 3d6 format", () => {

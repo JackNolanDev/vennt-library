@@ -131,6 +131,7 @@ export const buildDice = (
       endStr +
       commentFields.web,
     settings: { ...settings, adjust, count, sides },
+    comment,
   };
 };
 

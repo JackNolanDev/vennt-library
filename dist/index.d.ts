@@ -60520,6 +60520,7 @@ export type DiceCommands = {
 	roll20: string;
 	web: string;
 	settings: DiceSettings;
+	comment?: string;
 };
 export type ConsolidatedItem = FullEntityItem & {
 	ids: string[];
