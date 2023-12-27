@@ -4,6 +4,7 @@ import {
   ComputedAttributes,
   EntityAttribute,
   DiceToggles,
+  replaceVariablesInEquation,
 } from "../..";
 import { combineEnabledTogglesSettings } from "./diceSettings";
 
@@ -171,6 +172,9 @@ export const diceParseFromString = (
   attrs?: ComputedAttributes,
   relevantAttrs?: EntityAttribute[]
 ): DiceCommands | undefined => {
+  if (attrs) {
+    diceStr = replaceVariablesInEquation(diceStr, attrs).cleanedEquation;
+  }
   const match = diceStr.match(/\(?(\d+)\)?d(\d+)/u);
   if (!match || match.length < 3) {
     return undefined;

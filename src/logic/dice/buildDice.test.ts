@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { ComputedAttributes } from "../..";
-import { buildDice, defaultDice } from "./buildDice";
+import { buildDice, defaultDice, diceParseFromString } from "./buildDice";
 
 const TEST_ATTRS: ComputedAttributes = {
   wis: { val: 4 },
@@ -48,5 +48,36 @@ describe("defaultDice", () => {
       sides: 6,
       flow: 2,
     });
+  });
+});
+
+describe("diceParseFromString", () => {
+  test("simple dice parse", () => {
+    const result = diceParseFromString("3d6+5");
+    expect(result?.settings).toStrictEqual({
+      adjust: "+5",
+      count: 3,
+      sides: 6,
+    });
+    expect(result?.web).toBe("3d6+5");
+  });
+  test("undefined when no valid dice formula", () => {
+    const result = diceParseFromString("hello");
+    expect(result).toBeUndefined();
+  });
+  test("attrs are replaced in the equation when provided", () => {
+    const result = diceParseFromString(
+      "(str)d4-wis",
+      {},
+      undefined,
+      undefined,
+      TEST_ATTRS
+    );
+    expect(result?.settings).toStrictEqual({
+      adjust: "-4",
+      count: 2,
+      sides: 4,
+    });
+    expect(result?.web).toBe("2d4-4");
   });
 });
