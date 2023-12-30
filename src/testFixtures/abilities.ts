@@ -40,3 +40,13 @@ export const DEX_EXPLODES_DICE_TOGGLE_ABILITY: EntityAbility = {
   uses: { check: { dice_settings: { explodes: true }, attr: "dex" } },
   active: false,
 };
+
+export const CASTING_CHECK_USES_FIELDS_ABILITY: EntityAbility = {
+  name: "casting uses fields",
+  effect: "",
+  custom_fields: { keys: { casting_bonus: "4" } },
+  uses: {
+    check: { attr: "casting", dice_settings: { end: "+casting_bonus" } },
+  },
+  active: false,
+};

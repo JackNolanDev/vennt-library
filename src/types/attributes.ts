@@ -64,6 +64,20 @@ export const builtInAttributesValidator = z.object({
   actions_on_turn: z.number().int().optional(),
   reactions_on_turn: z.number().int().optional(),
   heroic_creativity_bonus: z.number().int().optional(),
+  // SPECIAL DAMAGE
+  burning: combatStatValidator.optional(),
+  bleeding: combatStatValidator.optional(),
+  paralysis: combatStatValidator.optional(),
+  stun: combatStatValidator.optional(),
+  agi_dmg: combatStatValidator.optional(),
+  cha_dmg: combatStatValidator.optional(),
+  dex_dmg: combatStatValidator.optional(),
+  int_dmg: combatStatValidator.optional(),
+  per_dmg: combatStatValidator.optional(),
+  spi_dmg: combatStatValidator.optional(),
+  str_dmg: combatStatValidator.optional(),
+  tek_dmg: combatStatValidator.optional(),
+  wis_dmg: combatStatValidator.optional(),
   // WEAPON SPECIFIC BONUSES
   aggressive_acc: z.number().int().optional(),
   aggressive_dmg: z.number().int().optional(),
@@ -121,20 +135,6 @@ export const builtInAttributesValidator = z.object({
   piercing_damage_resistance: z.number().int().optional(),
   slashing_damage_resistance: z.number().int().optional(),
   bludgeoning_damage_resistance: z.number().int().optional(),
-  // SPECIAL DAMAGE
-  burning: combatStatValidator.optional(),
-  bleeding: combatStatValidator.optional(),
-  paralysis: combatStatValidator.optional(),
-  stun: combatStatValidator.optional(),
-  agi_dmg: combatStatValidator.optional(),
-  cha_dmg: combatStatValidator.optional(),
-  dex_dmg: combatStatValidator.optional(),
-  int_dmg: combatStatValidator.optional(),
-  per_dmg: combatStatValidator.optional(),
-  spi_dmg: combatStatValidator.optional(),
-  str_dmg: combatStatValidator.optional(),
-  tek_dmg: combatStatValidator.optional(),
-  wis_dmg: combatStatValidator.optional(),
 });
 
 export const attributeNameValidator = z

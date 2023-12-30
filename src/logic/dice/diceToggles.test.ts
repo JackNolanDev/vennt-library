@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import {
   ARMOR_ITEM,
+  CASTING_CHECK_USES_FIELDS_ABILITY,
   DEX_DICE_TOGGLE_ABILITY,
   DEX_EXPLODES_DICE_TOGGLE_ABILITY,
   SHIELD_WHEN_HEALTHY,
@@ -19,6 +20,7 @@ describe("diceTogglesForEntity", () => {
         SHIELD_WHEN_HEALTHY,
         DEX_DICE_TOGGLE_ABILITY,
         DEX_EXPLODES_DICE_TOGGLE_ABILITY,
+        CASTING_CHECK_USES_FIELDS_ABILITY,
       ],
       [ARMOR_ITEM, WEAPON_ITEM, STR_DICE_TOGGLE_ITEM]
     );
@@ -38,6 +40,10 @@ describe("diceTogglesForEntity", () => {
         attr: "str",
         setting: { flow: 1 },
         src: { item_id: "3454d2af-d63d-4c15-b036-6f385c52927e" },
+      },
+      [CASTING_CHECK_USES_FIELDS_ABILITY.name]: {
+        attr: "casting",
+        setting: { end: "+4" },
       },
     });
   });
