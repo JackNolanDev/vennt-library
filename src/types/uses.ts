@@ -141,13 +141,13 @@ export const useRadioInputBase = useInputBase.extend({
   type: z.literal("radio"),
 });
 export type UseRadioInput = z.infer<typeof useRadioInputBase> & {
-  choices: Record<string, UseInputs | null>;
+  choices: Record<string, UseInputs>;
 };
 export const useRadioInput: z.ZodType<UseRadioInput> = useRadioInputBase.extend(
   {
     choices: z.record(
       z.string().min(1),
-      z.lazy(() => useInputs.nullable())
+      z.lazy(() => useInputs)
     ),
   }
 );
