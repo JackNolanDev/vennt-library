@@ -38,6 +38,11 @@ describe("computeAttributes", () => {
       buildEntity({ hp: 5, max_hp: 1 }, [SHIELD_WHEN_HEALTHY], [ARMOR_ITEM]),
       { hp: 5, max_hp: 30, armor: 3, burden: 1 },
     ],
+    [
+      "zero minimums are enforced",
+      buildEntity({ speed: -2, agi: -3, sp: -100 }),
+      { speed: 0, sp: -100 },
+    ],
   ];
 
   test.each(mathTestCases)("%s", (_label, entity, expectedAttrVal) => {

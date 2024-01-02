@@ -1,4 +1,4 @@
-import { solveEquation } from "..";
+import { MIN_ZEROS, solveEquation } from "..";
 import {
   DEFAULT_ADJUSTMENTS,
   DEFAULT_ATTRS_MAP,
@@ -293,6 +293,14 @@ export const computeAttributes = (
           attrs[attr].dice = adjust;
         }
       }
+    }
+  });
+
+  // 6. enforce zero minimums
+  Object.entries(attrs).forEach(([attr, details]) => {
+    if (details && details.val < 0 && MIN_ZEROS.has(attr)) {
+      details.val = 0;
+      appendReason(attr, `${attr}'s minimum value is 0`);
     }
   });
 
