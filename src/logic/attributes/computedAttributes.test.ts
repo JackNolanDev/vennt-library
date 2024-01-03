@@ -3,6 +3,7 @@ import { CollectedEntity, EntityAttribute } from "../..";
 import { computeAttributes } from "./computedAttributes";
 import {
   ARMOR_ITEM,
+  BROKEN_LEG_GRIEVOUS_WOUND,
   SHIELD_WHEN_HEALTHY,
   WEAPON_ITEM,
   buildEntity,
@@ -54,8 +55,8 @@ describe("computeAttributes", () => {
 
   test("reasons are generated", () => {
     const entity = buildEntity(
-      { hp: 30, cha: 2, cha_dmg: 1 },
-      [SHIELD_WHEN_HEALTHY],
+      { hp: 30, cha: 2, cha_dmg: 1, speed: 0, agi: 1 },
+      [SHIELD_WHEN_HEALTHY, BROKEN_LEG_GRIEVOUS_WOUND],
       [WEAPON_ITEM, ARMOR_ITEM]
     );
     const attrs = computeAttributes(entity);
@@ -74,6 +75,12 @@ describe("computeAttributes", () => {
         val: 1,
         itemId: "5d2f9718-0462-441c-afe8-40a705ba34f7",
       },
+    ]);
+    expect(attrs.speed.reason).toStrictEqual([
+      { src: "Base Value", val: 0 },
+      { src: "speed - 2 (From Broken Leg)", val: -2 },
+      { src: "speed + 3 + agi - burden (From Base Equations)", val: -1 },
+      { src: "speed's minimum value is 0", val: 0 },
     ]);
   });
 

@@ -50,3 +50,15 @@ export const CASTING_CHECK_USES_FIELDS_ABILITY: EntityAbility = {
   },
   active: false,
 };
+
+export const BROKEN_LEG_GRIEVOUS_WOUND: EntityAbility = {
+  name: "Broken Leg",
+  effect: "You take a -2 to Speed and a -1 to Agility. You walk with a limp.",
+  custom_fields: {
+    cost: { passive: true },
+    activation: "Passive",
+    path: "Grievous Wound",
+  },
+  uses: { adjust: { time: "permanent", attr: { speed: -2, agi: -1 } } },
+  active: false,
+};

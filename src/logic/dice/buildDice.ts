@@ -56,13 +56,14 @@ export const buildDice = (
   if (settings.end) {
     endStr = settings.end;
   }
-  if (settings.flow) {
-    count += settings.flow;
-    dropLowest += settings.flow;
+  const { flow, ebb } = calculateFlowEbb(settings.flow, settings.ebb);
+  if (flow) {
+    count += flow;
+    dropLowest += flow;
   }
-  if (settings.ebb) {
-    count += settings.ebb;
-    dropHighest += settings.ebb;
+  if (ebb) {
+    count += ebb;
+    dropHighest += ebb;
   }
   if (settings.drop) {
     dropLowest += settings.drop;
@@ -162,6 +163,31 @@ export const defaultDice = (
     settings,
     comment
   );
+};
+
+const calculateFlowEbb = (
+  flow: number | undefined,
+  ebb: number | undefined
+): { flow: number; ebb: number } => {
+  if (!flow) {
+    flow = 0;
+  }
+  if (!ebb) {
+    ebb = 0;
+  }
+  if (flow === ebb) {
+    return { flow: 0, ebb: 0 };
+  }
+
+  if (flow > ebb) {
+    flow -= ebb;
+    ebb = 0;
+  } else {
+    ebb -= flow;
+    flow = 0;
+  }
+
+  return { flow, ebb };
 };
 
 export const diceParseFromString = (
