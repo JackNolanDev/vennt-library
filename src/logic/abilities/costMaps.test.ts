@@ -37,7 +37,11 @@ describe("parseActivationCostMap", () => {
     ["1 Reaction, * MP", { reactions: 1 }, undefined],
     ["1 Action, 3 Vim", { actions: 1, vim: 3 }, undefined],
     ["1 Reaction, 2 HP", { reactions: 1, hp: 2 }, undefined],
-    ["2 Actions, 4 MP, 2 Vim", { actions: 2, mp: 4, vim: 2 }, undefined],
+    [
+      "Activation: 2 Actions, 4 MP, 2 Vim",
+      { actions: 2, mp: 4, vim: 2 },
+      undefined,
+    ],
     ["2 Actions, 0-3* MP", { actions: 2 }, undefined],
     ["2 Actions, 1-3* MP", { actions: 2, mp: 1 }, undefined],
     ["2 Actions, 2* MP", { actions: 2, mp: 2 }, undefined],

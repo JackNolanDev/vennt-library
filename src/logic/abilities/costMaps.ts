@@ -28,11 +28,11 @@ export const addAbilityCostMaps = (
   return sumMap;
 };
 
-const numberLabelRegex = "\\s*(?<label>mp|vim|hp|hero point|action|reaction)?";
+const numberLabelRegex = "\\s*(?<label>mp|vim|hp|hero point|action|reaction)";
 
 const tripleRegex =
   "\\[\\s(?<spell_half>.*)\\s\\/\\s(?<spell_regular>.*)\\s\\/\\s(?<spell_double>.*)\\s\\]";
-const labelledTripleRegex = `${tripleRegex}${numberLabelRegex}`;
+const labelledTripleRegex = `${tripleRegex}${numberLabelRegex}?`;
 
 const numberRegex = "(?<number>-?\\d+|an?)(?:-\\d+)?\\*?";
 const labelledNumberRegex = `${numberRegex}${numberLabelRegex}`;
