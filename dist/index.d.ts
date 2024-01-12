@@ -5154,6 +5154,8 @@ export declare const abilityCostNumberValidator: z.ZodObject<{
 	actions?: number | undefined;
 	reactions?: number | undefined;
 }>;
+export type AbilityCostMapNumber = z.infer<typeof abilityCostNumberValidator>;
+export declare const numericAbilityCostKeys: ("hp" | "mp" | "vim" | "hero" | "actions" | "reactions")[];
 export declare const abilityCostBooleanValidator: z.ZodObject<{
 	attack: z.ZodOptional<z.ZodBoolean>;
 	passive: z.ZodOptional<z.ZodBoolean>;
@@ -5173,6 +5175,8 @@ export declare const abilityCostBooleanValidator: z.ZodObject<{
 	rest?: boolean | undefined;
 	intermission?: boolean | undefined;
 }>;
+export type AbilityCostMapBoolean = z.infer<typeof abilityCostBooleanValidator>;
+export declare const booleanAbilityCostKeys: ("rest" | "attack" | "passive" | "respite" | "intermission")[];
 export declare const abilityCostValidator: z.ZodObject<{
 	hp: z.ZodOptional<z.ZodNumber>;
 	mp: z.ZodOptional<z.ZodNumber>;
@@ -5296,6 +5300,80 @@ export declare const abilityFieldsValidator: z.ZodObject<{
 		rest?: boolean | undefined;
 		intermission?: boolean | undefined;
 	}>>;
+	spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+		hp: z.ZodOptional<z.ZodNumber>;
+		mp: z.ZodOptional<z.ZodNumber>;
+		vim: z.ZodOptional<z.ZodNumber>;
+		hero: z.ZodOptional<z.ZodNumber>;
+		actions: z.ZodOptional<z.ZodNumber>;
+		reactions: z.ZodOptional<z.ZodNumber>;
+		attack: z.ZodOptional<z.ZodBoolean>;
+		passive: z.ZodOptional<z.ZodBoolean>;
+		respite: z.ZodOptional<z.ZodBoolean>;
+		rest: z.ZodOptional<z.ZodBoolean>;
+		intermission: z.ZodOptional<z.ZodBoolean>;
+	}, "strip", z.ZodTypeAny, {
+		hp?: number | undefined;
+		mp?: number | undefined;
+		vim?: number | undefined;
+		hero?: number | undefined;
+		actions?: number | undefined;
+		reactions?: number | undefined;
+		attack?: boolean | undefined;
+		passive?: boolean | undefined;
+		respite?: boolean | undefined;
+		rest?: boolean | undefined;
+		intermission?: boolean | undefined;
+	}, {
+		hp?: number | undefined;
+		mp?: number | undefined;
+		vim?: number | undefined;
+		hero?: number | undefined;
+		actions?: number | undefined;
+		reactions?: number | undefined;
+		attack?: boolean | undefined;
+		passive?: boolean | undefined;
+		respite?: boolean | undefined;
+		rest?: boolean | undefined;
+		intermission?: boolean | undefined;
+	}>, "many">>;
+	spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
+		hp: z.ZodOptional<z.ZodNumber>;
+		mp: z.ZodOptional<z.ZodNumber>;
+		vim: z.ZodOptional<z.ZodNumber>;
+		hero: z.ZodOptional<z.ZodNumber>;
+		actions: z.ZodOptional<z.ZodNumber>;
+		reactions: z.ZodOptional<z.ZodNumber>;
+		attack: z.ZodOptional<z.ZodBoolean>;
+		passive: z.ZodOptional<z.ZodBoolean>;
+		respite: z.ZodOptional<z.ZodBoolean>;
+		rest: z.ZodOptional<z.ZodBoolean>;
+		intermission: z.ZodOptional<z.ZodBoolean>;
+	}, "strip", z.ZodTypeAny, {
+		hp?: number | undefined;
+		mp?: number | undefined;
+		vim?: number | undefined;
+		hero?: number | undefined;
+		actions?: number | undefined;
+		reactions?: number | undefined;
+		attack?: boolean | undefined;
+		passive?: boolean | undefined;
+		respite?: boolean | undefined;
+		rest?: boolean | undefined;
+		intermission?: boolean | undefined;
+	}, {
+		hp?: number | undefined;
+		mp?: number | undefined;
+		vim?: number | undefined;
+		hero?: number | undefined;
+		actions?: number | undefined;
+		reactions?: number | undefined;
+		attack?: boolean | undefined;
+		passive?: boolean | undefined;
+		respite?: boolean | undefined;
+		rest?: boolean | undefined;
+		intermission?: boolean | undefined;
+	}>>;
 	mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 	cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 	not_req: z.ZodOptional<z.ZodBoolean>;
@@ -5328,6 +5406,32 @@ export declare const abilityFieldsValidator: z.ZodObject<{
 	build_dc?: string | undefined;
 	build_time?: string | undefined;
 	cost?: {
+		hp?: number | undefined;
+		mp?: number | undefined;
+		vim?: number | undefined;
+		hero?: number | undefined;
+		actions?: number | undefined;
+		reactions?: number | undefined;
+		attack?: boolean | undefined;
+		passive?: boolean | undefined;
+		respite?: boolean | undefined;
+		rest?: boolean | undefined;
+		intermission?: boolean | undefined;
+	} | undefined;
+	spell_cost?: {
+		hp?: number | undefined;
+		mp?: number | undefined;
+		vim?: number | undefined;
+		hero?: number | undefined;
+		actions?: number | undefined;
+		reactions?: number | undefined;
+		attack?: boolean | undefined;
+		passive?: boolean | undefined;
+		respite?: boolean | undefined;
+		rest?: boolean | undefined;
+		intermission?: boolean | undefined;
+	}[] | undefined;
+	spell_maintenance_cost?: {
 		hp?: number | undefined;
 		mp?: number | undefined;
 		vim?: number | undefined;
@@ -5373,6 +5477,32 @@ export declare const abilityFieldsValidator: z.ZodObject<{
 		rest?: boolean | undefined;
 		intermission?: boolean | undefined;
 	} | undefined;
+	spell_cost?: {
+		hp?: number | undefined;
+		mp?: number | undefined;
+		vim?: number | undefined;
+		hero?: number | undefined;
+		actions?: number | undefined;
+		reactions?: number | undefined;
+		attack?: boolean | undefined;
+		passive?: boolean | undefined;
+		respite?: boolean | undefined;
+		rest?: boolean | undefined;
+		intermission?: boolean | undefined;
+	}[] | undefined;
+	spell_maintenance_cost?: {
+		hp?: number | undefined;
+		mp?: number | undefined;
+		vim?: number | undefined;
+		hero?: number | undefined;
+		actions?: number | undefined;
+		reactions?: number | undefined;
+		attack?: boolean | undefined;
+		passive?: boolean | undefined;
+		respite?: boolean | undefined;
+		rest?: boolean | undefined;
+		intermission?: boolean | undefined;
+	} | undefined;
 	mp_cost?: number[] | undefined;
 	cast_dl?: number[] | undefined;
 	not_req?: boolean | undefined;
@@ -5396,6 +5526,8 @@ export declare const abilityFieldsNameValidator: z.ZodEnum<[
 	"build_dc",
 	"build_time",
 	"cost",
+	"spell_cost",
+	"spell_maintenance_cost",
 	"mp_cost",
 	"cast_dl",
 	"not_req",
@@ -5420,6 +5552,80 @@ export declare const abilityValidator: z.ZodObject<{
 		build_dc: z.ZodOptional<z.ZodString>;
 		build_time: z.ZodOptional<z.ZodString>;
 		cost: z.ZodOptional<z.ZodObject<{
+			hp: z.ZodOptional<z.ZodNumber>;
+			mp: z.ZodOptional<z.ZodNumber>;
+			vim: z.ZodOptional<z.ZodNumber>;
+			hero: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			attack: z.ZodOptional<z.ZodBoolean>;
+			passive: z.ZodOptional<z.ZodBoolean>;
+			respite: z.ZodOptional<z.ZodBoolean>;
+			rest: z.ZodOptional<z.ZodBoolean>;
+			intermission: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}>>;
+		spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			hp: z.ZodOptional<z.ZodNumber>;
+			mp: z.ZodOptional<z.ZodNumber>;
+			vim: z.ZodOptional<z.ZodNumber>;
+			hero: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			attack: z.ZodOptional<z.ZodBoolean>;
+			passive: z.ZodOptional<z.ZodBoolean>;
+			respite: z.ZodOptional<z.ZodBoolean>;
+			rest: z.ZodOptional<z.ZodBoolean>;
+			intermission: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}>, "many">>;
+		spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
 			hp: z.ZodOptional<z.ZodNumber>;
 			mp: z.ZodOptional<z.ZodNumber>;
 			vim: z.ZodOptional<z.ZodNumber>;
@@ -5500,6 +5706,32 @@ export declare const abilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -5521,6 +5753,32 @@ export declare const abilityValidator: z.ZodObject<{
 		build_dc?: string | undefined;
 		build_time?: string | undefined;
 		cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
 			hp?: number | undefined;
 			mp?: number | undefined;
 			vim?: number | undefined;
@@ -7013,6 +7271,32 @@ export declare const abilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -7267,6 +7551,32 @@ export declare const abilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -7295,6 +7605,80 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 		build_dc: z.ZodOptional<z.ZodString>;
 		build_time: z.ZodOptional<z.ZodString>;
 		cost: z.ZodOptional<z.ZodObject<{
+			hp: z.ZodOptional<z.ZodNumber>;
+			mp: z.ZodOptional<z.ZodNumber>;
+			vim: z.ZodOptional<z.ZodNumber>;
+			hero: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			attack: z.ZodOptional<z.ZodBoolean>;
+			passive: z.ZodOptional<z.ZodBoolean>;
+			respite: z.ZodOptional<z.ZodBoolean>;
+			rest: z.ZodOptional<z.ZodBoolean>;
+			intermission: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}>>;
+		spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			hp: z.ZodOptional<z.ZodNumber>;
+			mp: z.ZodOptional<z.ZodNumber>;
+			vim: z.ZodOptional<z.ZodNumber>;
+			hero: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			attack: z.ZodOptional<z.ZodBoolean>;
+			passive: z.ZodOptional<z.ZodBoolean>;
+			respite: z.ZodOptional<z.ZodBoolean>;
+			rest: z.ZodOptional<z.ZodBoolean>;
+			intermission: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}>, "many">>;
+		spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
 			hp: z.ZodOptional<z.ZodNumber>;
 			mp: z.ZodOptional<z.ZodNumber>;
 			vim: z.ZodOptional<z.ZodNumber>;
@@ -7375,6 +7759,32 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -7396,6 +7806,32 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 		build_dc?: string | undefined;
 		build_time?: string | undefined;
 		cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
 			hp?: number | undefined;
 			mp?: number | undefined;
 			vim?: number | undefined;
@@ -8887,6 +9323,32 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -9129,6 +9591,32 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 		build_dc?: string | undefined;
 		build_time?: string | undefined;
 		cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
 			hp?: number | undefined;
 			mp?: number | undefined;
 			vim?: number | undefined;
@@ -9181,6 +9669,32 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -9435,6 +9949,32 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -9464,6 +10004,80 @@ export declare const fullAbilityValidator: z.ZodObject<{
 		build_dc: z.ZodOptional<z.ZodString>;
 		build_time: z.ZodOptional<z.ZodString>;
 		cost: z.ZodOptional<z.ZodObject<{
+			hp: z.ZodOptional<z.ZodNumber>;
+			mp: z.ZodOptional<z.ZodNumber>;
+			vim: z.ZodOptional<z.ZodNumber>;
+			hero: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			attack: z.ZodOptional<z.ZodBoolean>;
+			passive: z.ZodOptional<z.ZodBoolean>;
+			respite: z.ZodOptional<z.ZodBoolean>;
+			rest: z.ZodOptional<z.ZodBoolean>;
+			intermission: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}>>;
+		spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+			hp: z.ZodOptional<z.ZodNumber>;
+			mp: z.ZodOptional<z.ZodNumber>;
+			vim: z.ZodOptional<z.ZodNumber>;
+			hero: z.ZodOptional<z.ZodNumber>;
+			actions: z.ZodOptional<z.ZodNumber>;
+			reactions: z.ZodOptional<z.ZodNumber>;
+			attack: z.ZodOptional<z.ZodBoolean>;
+			passive: z.ZodOptional<z.ZodBoolean>;
+			respite: z.ZodOptional<z.ZodBoolean>;
+			rest: z.ZodOptional<z.ZodBoolean>;
+			intermission: z.ZodOptional<z.ZodBoolean>;
+		}, "strip", z.ZodTypeAny, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}, {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}>, "many">>;
+		spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
 			hp: z.ZodOptional<z.ZodNumber>;
 			mp: z.ZodOptional<z.ZodNumber>;
 			vim: z.ZodOptional<z.ZodNumber>;
@@ -9544,6 +10158,32 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -9565,6 +10205,32 @@ export declare const fullAbilityValidator: z.ZodObject<{
 		build_dc?: string | undefined;
 		build_time?: string | undefined;
 		cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
 			hp?: number | undefined;
 			mp?: number | undefined;
 			vim?: number | undefined;
@@ -11061,6 +11727,32 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -11317,6 +12009,32 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		}[] | undefined;
+		spell_maintenance_cost?: {
+			hp?: number | undefined;
+			mp?: number | undefined;
+			vim?: number | undefined;
+			hero?: number | undefined;
+			actions?: number | undefined;
+			reactions?: number | undefined;
+			attack?: boolean | undefined;
+			passive?: boolean | undefined;
+			respite?: boolean | undefined;
+			rest?: boolean | undefined;
+			intermission?: boolean | undefined;
+		} | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -11333,8 +12051,6 @@ export type UncompleteEntityAbility = z.infer<typeof abilityValidator>;
 export type FullEntityAbility = z.infer<typeof fullAbilityValidator>;
 export type EntityAbility = UncompleteEntityAbility | FullEntityAbility;
 export type PartialEntityAbility = z.infer<typeof partialAbilityValidator>;
-export type AbilityCostMapNumber = z.infer<typeof abilityCostNumberValidator>;
-export type AbilityCostMapBoolean = z.infer<typeof abilityCostBooleanValidator>;
 export type AbilityCostMap = z.infer<typeof abilityCostValidator>;
 export type EntityAbilityFieldsStrings = z.infer<typeof abilityFieldsValidatorStrings>;
 export type EntityAbilityFields = z.infer<typeof abilityFieldsNameValidator>;
@@ -11514,6 +12230,80 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>, "many">>;
+			spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -11558,6 +12348,32 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -11579,6 +12395,32 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -13075,6 +13917,32 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -13331,6 +14199,32 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -13363,6 +14257,32 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -13659,6 +14579,32 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -13874,6 +14820,80 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>, "many">>;
+			spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -13918,6 +14938,32 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -13939,6 +14985,32 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -15435,6 +16507,32 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -15691,6 +16789,32 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -15723,6 +16847,32 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -16007,6 +17157,32 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -27002,6 +28178,59 @@ export declare const otherAttributesValidator: z.ZodObject<{
 		count?: number | undefined;
 		sides?: number | undefined;
 	}>>;
+	attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+		explodes: z.ZodOptional<z.ZodBoolean>;
+		rr1s: z.ZodOptional<z.ZodBoolean>;
+		drop: z.ZodOptional<z.ZodNumber>;
+		fatigued: z.ZodOptional<z.ZodBoolean>;
+		end: z.ZodOptional<z.ZodString>;
+		flow: z.ZodOptional<z.ZodNumber>;
+		ebb: z.ZodOptional<z.ZodNumber>;
+		heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+		otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			toggled: z.ZodBoolean;
+		}, "strip", z.ZodTypeAny, {
+			toggled: boolean;
+		}, {
+			toggled: boolean;
+		}>>>;
+		adjust: z.ZodOptional<z.ZodUnion<[
+			z.ZodNumber,
+			z.ZodString
+		]>>;
+		count: z.ZodOptional<z.ZodNumber>;
+		sides: z.ZodOptional<z.ZodNumber>;
+	}, "strip", z.ZodTypeAny, {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	}, {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	}>>>;
 	in_combat: z.ZodOptional<z.ZodBoolean>;
 	disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 		msg: z.ZodString;
@@ -27042,6 +28271,22 @@ export declare const otherAttributesValidator: z.ZodObject<{
 		count?: number | undefined;
 		sides?: number | undefined;
 	} | undefined;
+	attribute_dice_settings?: Record<string, {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	}> | undefined;
 	in_combat?: boolean | undefined;
 	disabled_actions?: Record<string, {
 		msg: string;
@@ -27076,6 +28321,22 @@ export declare const otherAttributesValidator: z.ZodObject<{
 		count?: number | undefined;
 		sides?: number | undefined;
 	} | undefined;
+	attribute_dice_settings?: Record<string, {
+		explodes?: boolean | undefined;
+		rr1s?: boolean | undefined;
+		drop?: number | undefined;
+		fatigued?: boolean | undefined;
+		end?: string | undefined;
+		flow?: number | undefined;
+		ebb?: number | undefined;
+		heroic_creativity_bonus?: number | undefined;
+		otherToggles?: Record<string, {
+			toggled: boolean;
+		}> | undefined;
+		adjust?: string | number | undefined;
+		count?: number | undefined;
+		sides?: number | undefined;
+	}> | undefined;
 	in_combat?: boolean | undefined;
 	disabled_actions?: Record<string, {
 		msg: string;
@@ -27550,6 +28811,59 @@ export declare const entityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		}>>;
+		attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>>;
 		in_combat: z.ZodOptional<z.ZodBoolean>;
 		disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 			msg: z.ZodString;
@@ -27590,6 +28904,22 @@ export declare const entityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -27624,6 +28954,22 @@ export declare const entityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -27778,6 +29124,22 @@ export declare const entityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -27932,6 +29294,22 @@ export declare const entityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -28408,6 +29786,59 @@ export declare const fullEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		}>>;
+		attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>>;
 		in_combat: z.ZodOptional<z.ZodBoolean>;
 		disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 			msg: z.ZodString;
@@ -28448,6 +29879,22 @@ export declare const fullEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -28482,6 +29929,22 @@ export declare const fullEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -28762,6 +30225,22 @@ export declare const fullEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -28944,6 +30423,22 @@ export declare const fullEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -29570,6 +31065,59 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		}>>;
+		attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>>;
 		in_combat: z.ZodOptional<z.ZodBoolean>;
 		disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 			msg: z.ZodString;
@@ -29610,6 +31158,22 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -29644,6 +31208,22 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -29823,6 +31403,22 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -30002,6 +31598,22 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -30181,6 +31793,22 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -30360,6 +31988,22 @@ export declare const partialEntityValidator: z.ZodEffects<z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -31035,6 +32679,59 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			}>>;
+			attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>>;
 			in_combat: z.ZodOptional<z.ZodBoolean>;
 			disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 				msg: z.ZodString;
@@ -31075,6 +32772,22 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -31109,6 +32822,22 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -31263,6 +32992,22 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -31417,6 +33162,22 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -31441,6 +33202,80 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			build_dc: z.ZodOptional<z.ZodString>;
 			build_time: z.ZodOptional<z.ZodString>;
 			cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
+			spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>, "many">>;
+			spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
 				hp: z.ZodOptional<z.ZodNumber>;
 				mp: z.ZodOptional<z.ZodNumber>;
 				vim: z.ZodOptional<z.ZodNumber>;
@@ -31521,6 +33356,32 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -31542,6 +33403,32 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -33034,6 +34921,32 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -33276,6 +35189,32 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -35125,6 +37064,32 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -35733,6 +37698,22 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -35771,6 +37752,32 @@ export declare const collectedEntityValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -35963,6 +37970,22 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -36448,6 +38471,59 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			}>>;
+			attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>>;
 			in_combat: z.ZodOptional<z.ZodBoolean>;
 			disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 				msg: z.ZodString;
@@ -36488,6 +38564,22 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -36522,6 +38614,22 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -36802,6 +38910,22 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -36984,6 +39108,22 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -37071,6 +39211,80 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>, "many">>;
+			spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -37115,6 +39329,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -37136,6 +39376,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -38632,6 +40898,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -38876,6 +41168,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -40747,6 +43065,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -41358,6 +43702,22 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -41429,6 +43789,32 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -41624,6 +44010,22 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -41739,6 +44141,80 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>, "many">>;
+			spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -41783,6 +44259,32 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -41804,6 +44306,32 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -43296,6 +45824,32 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -43538,6 +46092,32 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -45773,6 +48353,59 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			}>>;
+			attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>>;
 			in_combat: z.ZodOptional<z.ZodBoolean>;
 			disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 				msg: z.ZodString;
@@ -45813,6 +48446,22 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -45847,6 +48496,22 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -46001,6 +48666,22 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -46155,6 +48836,22 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -46229,6 +48926,32 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -46849,6 +49572,22 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -46892,6 +49631,32 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -47084,6 +49849,22 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -47181,6 +49962,80 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>, "many">>;
+			spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -47225,6 +50080,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -47246,6 +50127,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -48742,6 +51649,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -48986,6 +51919,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -51227,6 +54186,59 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			}>>;
+			attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>>;
 			in_combat: z.ZodOptional<z.ZodBoolean>;
 			disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 				msg: z.ZodString;
@@ -51267,6 +54279,22 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -51301,6 +54329,22 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -51581,6 +54625,22 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -51763,6 +54823,22 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -51895,6 +54971,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -52506,6 +55608,22 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -52585,6 +55703,32 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -52780,6 +55924,22 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -53624,6 +56784,59 @@ export declare const campaignEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		}>>;
+		attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+			explodes: z.ZodOptional<z.ZodBoolean>;
+			rr1s: z.ZodOptional<z.ZodBoolean>;
+			drop: z.ZodOptional<z.ZodNumber>;
+			fatigued: z.ZodOptional<z.ZodBoolean>;
+			end: z.ZodOptional<z.ZodString>;
+			flow: z.ZodOptional<z.ZodNumber>;
+			ebb: z.ZodOptional<z.ZodNumber>;
+			heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+			otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				toggled: z.ZodBoolean;
+			}, "strip", z.ZodTypeAny, {
+				toggled: boolean;
+			}, {
+				toggled: boolean;
+			}>>>;
+			adjust: z.ZodOptional<z.ZodUnion<[
+				z.ZodNumber,
+				z.ZodString
+			]>>;
+			count: z.ZodOptional<z.ZodNumber>;
+			sides: z.ZodOptional<z.ZodNumber>;
+		}, "strip", z.ZodTypeAny, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}>>>;
 		in_combat: z.ZodOptional<z.ZodBoolean>;
 		disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 			msg: z.ZodString;
@@ -53664,6 +56877,22 @@ export declare const campaignEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -53698,6 +56927,22 @@ export declare const campaignEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -53975,6 +57220,22 @@ export declare const campaignEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -54157,6 +57418,22 @@ export declare const campaignEntityValidator: z.ZodObject<{
 			count?: number | undefined;
 			sides?: number | undefined;
 		} | undefined;
+		attribute_dice_settings?: Record<string, {
+			explodes?: boolean | undefined;
+			rr1s?: boolean | undefined;
+			drop?: number | undefined;
+			fatigued?: boolean | undefined;
+			end?: string | undefined;
+			flow?: number | undefined;
+			ebb?: number | undefined;
+			heroic_creativity_bonus?: number | undefined;
+			otherToggles?: Record<string, {
+				toggled: boolean;
+			}> | undefined;
+			adjust?: string | number | undefined;
+			count?: number | undefined;
+			sides?: number | undefined;
+		}> | undefined;
 		in_combat?: boolean | undefined;
 		disabled_actions?: Record<string, {
 			msg: string;
@@ -54754,6 +58031,59 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			}>>;
+			attribute_dice_settings: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+				explodes: z.ZodOptional<z.ZodBoolean>;
+				rr1s: z.ZodOptional<z.ZodBoolean>;
+				drop: z.ZodOptional<z.ZodNumber>;
+				fatigued: z.ZodOptional<z.ZodBoolean>;
+				end: z.ZodOptional<z.ZodString>;
+				flow: z.ZodOptional<z.ZodNumber>;
+				ebb: z.ZodOptional<z.ZodNumber>;
+				heroic_creativity_bonus: z.ZodOptional<z.ZodNumber>;
+				otherToggles: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodObject<{
+					toggled: z.ZodBoolean;
+				}, "strip", z.ZodTypeAny, {
+					toggled: boolean;
+				}, {
+					toggled: boolean;
+				}>>>;
+				adjust: z.ZodOptional<z.ZodUnion<[
+					z.ZodNumber,
+					z.ZodString
+				]>>;
+				count: z.ZodOptional<z.ZodNumber>;
+				sides: z.ZodOptional<z.ZodNumber>;
+			}, "strip", z.ZodTypeAny, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}>>>;
 			in_combat: z.ZodOptional<z.ZodBoolean>;
 			disabled_actions: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodArray<z.ZodObject<{
 				msg: z.ZodString;
@@ -54794,6 +58124,22 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -54828,6 +58174,22 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -55105,6 +58467,22 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -55287,6 +58665,22 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -55486,6 +58880,22 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -55700,6 +59110,22 @@ export declare const fullCampaignDetailsValidator: z.ZodObject<{
 				count?: number | undefined;
 				sides?: number | undefined;
 			} | undefined;
+			attribute_dice_settings?: Record<string, {
+				explodes?: boolean | undefined;
+				rr1s?: boolean | undefined;
+				drop?: number | undefined;
+				fatigued?: boolean | undefined;
+				end?: string | undefined;
+				flow?: number | undefined;
+				ebb?: number | undefined;
+				heroic_creativity_bonus?: number | undefined;
+				otherToggles?: Record<string, {
+					toggled: boolean;
+				}> | undefined;
+				adjust?: string | number | undefined;
+				count?: number | undefined;
+				sides?: number | undefined;
+			}> | undefined;
 			in_combat?: boolean | undefined;
 			disabled_actions?: Record<string, {
 				msg: string;
@@ -56620,6 +60046,80 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_cost: z.ZodOptional<z.ZodArray<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>, "many">>;
+			spell_maintenance_cost: z.ZodOptional<z.ZodObject<{
+				hp: z.ZodOptional<z.ZodNumber>;
+				mp: z.ZodOptional<z.ZodNumber>;
+				vim: z.ZodOptional<z.ZodNumber>;
+				hero: z.ZodOptional<z.ZodNumber>;
+				actions: z.ZodOptional<z.ZodNumber>;
+				reactions: z.ZodOptional<z.ZodNumber>;
+				attack: z.ZodOptional<z.ZodBoolean>;
+				passive: z.ZodOptional<z.ZodBoolean>;
+				respite: z.ZodOptional<z.ZodBoolean>;
+				rest: z.ZodOptional<z.ZodBoolean>;
+				intermission: z.ZodOptional<z.ZodBoolean>;
+			}, "strip", z.ZodTypeAny, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}, {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}>>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -56664,6 +60164,32 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -56685,6 +60211,32 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -58177,6 +61729,32 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -58431,6 +62009,32 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -58461,6 +62065,32 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -58724,6 +62354,32 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 			build_dc?: string | undefined;
 			build_time?: string | undefined;
 			cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			} | undefined;
+			spell_cost?: {
+				hp?: number | undefined;
+				mp?: number | undefined;
+				vim?: number | undefined;
+				hero?: number | undefined;
+				actions?: number | undefined;
+				reactions?: number | undefined;
+				attack?: boolean | undefined;
+				passive?: boolean | undefined;
+				respite?: boolean | undefined;
+				rest?: boolean | undefined;
+				intermission?: boolean | undefined;
+			}[] | undefined;
+			spell_maintenance_cost?: {
 				hp?: number | undefined;
 				mp?: number | undefined;
 				vim?: number | undefined;
@@ -60537,6 +64193,11 @@ export interface AttrAdjustment {
 }
 export declare const DEFAULT_ADJUSTMENTS: AttrAdjustment[];
 export declare const DEFAULT_CHARACTER_ADJUSTMENTS: AttrAdjustment[];
+export declare const addAbilityCostMaps: (a: AbilityCostMap, b: AbilityCostMap) => AbilityCostMap;
+export declare const parseActivationCostMap: (activation: string) => {
+	cost: AbilityCostMap;
+	spellCost?: AbilityCostMap[];
+};
 export declare const abilityExtendEntityAttributes: (ability: EntityAbility, attrs: ComputedAttributes) => ComputedAttributes;
 export declare const ATTRIBUTE_DAMAGES: string[];
 export declare const MIN_ZEROS: Set<string>;
