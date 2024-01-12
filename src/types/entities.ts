@@ -3,6 +3,7 @@ import {
   CHANGELOG_MAX,
   CHARACTER_GIFTS,
   NAME_MAX,
+  attributeNameValidator,
   attributesValidator,
   cogCreateOptionsValidator,
   computedAttributesValidator,
@@ -31,6 +32,9 @@ export const otherAttributesValidator = z.object({
   cog_type: z.string().max(NAME_MAX).optional(),
   cog_creation_options: cogCreateOptionsValidator.optional(),
   dice_settings: diceSettingsValidator.optional(),
+  attribute_dice_settings: z
+    .record(attributeNameValidator, diceSettingsValidator)
+    .optional(),
   in_combat: z.boolean().optional(),
   disabled_actions: disabledActionsValidator.optional(),
 });

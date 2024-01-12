@@ -19,6 +19,11 @@ export const abilityCostNumberValidator = z.object({
   actions: z.number().int().optional(),
   reactions: z.number().int().optional(),
 });
+export type AbilityCostMapNumber = z.infer<typeof abilityCostNumberValidator>;
+
+export const numericAbilityCostKeys = Object.keys(
+  abilityCostNumberValidator.keyof().Values
+) as Array<keyof AbilityCostMapNumber>;
 
 export const abilityCostBooleanValidator = z.object({
   attack: z.boolean().optional(),
@@ -27,6 +32,11 @@ export const abilityCostBooleanValidator = z.object({
   rest: z.boolean().optional(),
   intermission: z.boolean().optional(),
 });
+export type AbilityCostMapBoolean = z.infer<typeof abilityCostBooleanValidator>;
+
+export const booleanAbilityCostKeys = Object.keys(
+  abilityCostBooleanValidator.keyof().Values
+) as Array<keyof AbilityCostMapBoolean>;
 
 export const abilityCostValidator = abilityCostNumberValidator.merge(
   abilityCostBooleanValidator
@@ -48,6 +58,8 @@ export const abilityFieldsValidatorStrings = z.object({
 
 export const abilityFieldsValidator = abilityFieldsValidatorStrings.extend({
   cost: abilityCostValidator.optional(),
+  spell_cost: abilityCostValidator.array().length(3).optional(),
+  spell_maintenance_cost: abilityCostValidator.optional(),
   mp_cost: z.number().int().array().length(3).optional(),
   cast_dl: z.number().int().array().length(3).optional(),
   not_req: z.boolean().optional(),
@@ -84,8 +96,6 @@ export type UncompleteEntityAbility = z.infer<typeof abilityValidator>;
 export type FullEntityAbility = z.infer<typeof fullAbilityValidator>;
 export type EntityAbility = UncompleteEntityAbility | FullEntityAbility;
 export type PartialEntityAbility = z.infer<typeof partialAbilityValidator>;
-export type AbilityCostMapNumber = z.infer<typeof abilityCostNumberValidator>;
-export type AbilityCostMapBoolean = z.infer<typeof abilityCostBooleanValidator>;
 export type AbilityCostMap = z.infer<typeof abilityCostValidator>;
 export type EntityAbilityFieldsStrings = z.infer<
   typeof abilityFieldsValidatorStrings

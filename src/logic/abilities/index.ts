@@ -1,6 +1,8 @@
 import { solveEquation } from "..";
 import { ComputedAttributes, EntityAbility } from "../..";
 
+export * from "./costMaps";
+
 export const abilityExtendEntityAttributes = (
   ability: EntityAbility,
   attrs: ComputedAttributes
