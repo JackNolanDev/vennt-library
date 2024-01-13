@@ -5374,6 +5374,7 @@ export declare const abilityFieldsValidator: z.ZodObject<{
 		rest?: boolean | undefined;
 		intermission?: boolean | undefined;
 	}>>;
+	spell_maintained: z.ZodOptional<z.ZodBoolean>;
 	mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 	cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 	not_req: z.ZodOptional<z.ZodBoolean>;
@@ -5444,6 +5445,7 @@ export declare const abilityFieldsValidator: z.ZodObject<{
 		rest?: boolean | undefined;
 		intermission?: boolean | undefined;
 	} | undefined;
+	spell_maintained?: boolean | undefined;
 	mp_cost?: number[] | undefined;
 	cast_dl?: number[] | undefined;
 	not_req?: boolean | undefined;
@@ -5503,6 +5505,7 @@ export declare const abilityFieldsValidator: z.ZodObject<{
 		rest?: boolean | undefined;
 		intermission?: boolean | undefined;
 	} | undefined;
+	spell_maintained?: boolean | undefined;
 	mp_cost?: number[] | undefined;
 	cast_dl?: number[] | undefined;
 	not_req?: boolean | undefined;
@@ -5528,6 +5531,7 @@ export declare const abilityFieldsNameValidator: z.ZodEnum<[
 	"cost",
 	"spell_cost",
 	"spell_maintenance_cost",
+	"spell_maintained",
 	"mp_cost",
 	"cast_dl",
 	"not_req",
@@ -5662,6 +5666,7 @@ export declare const abilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		}>>;
+		spell_maintained: z.ZodOptional<z.ZodBoolean>;
 		mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 		cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 		not_req: z.ZodOptional<z.ZodBoolean>;
@@ -5732,6 +5737,7 @@ export declare const abilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -5791,6 +5797,7 @@ export declare const abilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -7297,6 +7304,7 @@ export declare const abilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -7577,6 +7585,7 @@ export declare const abilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -7715,6 +7724,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		}>>;
+		spell_maintained: z.ZodOptional<z.ZodBoolean>;
 		mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 		cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 		not_req: z.ZodOptional<z.ZodBoolean>;
@@ -7785,6 +7795,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -7844,6 +7855,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -9349,6 +9361,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -9629,6 +9642,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -9695,6 +9709,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -9975,6 +9990,7 @@ export declare const partialAbilityValidator: z.ZodEffects<z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -10114,6 +10130,7 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		}>>;
+		spell_maintained: z.ZodOptional<z.ZodBoolean>;
 		mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 		cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 		not_req: z.ZodOptional<z.ZodBoolean>;
@@ -10184,6 +10201,7 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -10243,6 +10261,7 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -11753,6 +11772,7 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -12035,6 +12055,7 @@ export declare const fullAbilityValidator: z.ZodObject<{
 			rest?: boolean | undefined;
 			intermission?: boolean | undefined;
 		} | undefined;
+		spell_maintained?: boolean | undefined;
 		mp_cost?: number[] | undefined;
 		cast_dl?: number[] | undefined;
 		not_req?: boolean | undefined;
@@ -12304,6 +12325,7 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_maintained: z.ZodOptional<z.ZodBoolean>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -12374,6 +12396,7 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -12433,6 +12456,7 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -13943,6 +13967,7 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -14225,6 +14250,7 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -14295,6 +14321,7 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -14605,6 +14632,7 @@ export declare const postAbilitiesResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -14894,6 +14922,7 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_maintained: z.ZodOptional<z.ZodBoolean>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -14964,6 +14993,7 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -15023,6 +15053,7 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -16533,6 +16564,7 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -16815,6 +16847,7 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -16885,6 +16918,7 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -17195,6 +17229,7 @@ export declare const patchAbilityResponseValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -33312,6 +33347,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_maintained: z.ZodOptional<z.ZodBoolean>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -33382,6 +33418,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -33441,6 +33478,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -34947,6 +34985,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -35227,6 +35266,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -37090,6 +37130,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -37790,6 +37831,7 @@ export declare const collectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -39285,6 +39327,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_maintained: z.ZodOptional<z.ZodBoolean>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -39355,6 +39398,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -39414,6 +39458,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -40924,6 +40969,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -41206,6 +41252,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -43091,6 +43138,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -43827,6 +43875,7 @@ export declare const fullCollectedEntityValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -44215,6 +44264,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_maintained: z.ZodOptional<z.ZodBoolean>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -44285,6 +44335,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -44344,6 +44395,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -45850,6 +45902,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -46130,6 +46183,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -48964,6 +49018,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -49669,6 +49724,7 @@ export declare const collectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -50036,6 +50092,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_maintained: z.ZodOptional<z.ZodBoolean>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -50106,6 +50163,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -50165,6 +50223,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -51675,6 +51734,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -51957,6 +52017,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -54997,6 +55058,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -55741,6 +55803,7 @@ export declare const fullCollectedEntityWithChangelogValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -60120,6 +60183,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			}>>;
+			spell_maintained: z.ZodOptional<z.ZodBoolean>;
 			mp_cost: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			cast_dl: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
 			not_req: z.ZodOptional<z.ZodBoolean>;
@@ -60190,6 +60254,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -60249,6 +60314,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -61755,6 +61821,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -62035,6 +62102,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -62103,6 +62171,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;
@@ -62392,6 +62461,7 @@ export declare const pathsAndAbilitiesValidator: z.ZodObject<{
 				rest?: boolean | undefined;
 				intermission?: boolean | undefined;
 			} | undefined;
+			spell_maintained?: boolean | undefined;
 			mp_cost?: number[] | undefined;
 			cast_dl?: number[] | undefined;
 			not_req?: boolean | undefined;

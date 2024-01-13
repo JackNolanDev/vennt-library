@@ -60,6 +60,7 @@ export const abilityFieldsValidator = abilityFieldsValidatorStrings.extend({
   cost: abilityCostValidator.optional(),
   spell_cost: abilityCostValidator.array().length(3).optional(),
   spell_maintenance_cost: abilityCostValidator.optional(),
+  spell_maintained: z.boolean().optional(),
   mp_cost: z.number().int().array().length(3).optional(),
   cast_dl: z.number().int().array().length(3).optional(),
   not_req: z.boolean().optional(),
